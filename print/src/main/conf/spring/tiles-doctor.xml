@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="doctor.parent" template="/WEB-INF/jsp/template/main_layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/jsp/doctor/head.jsp" />
+		<put-attribute name="left" value="/WEB-INF/jsp/doctor/left.jsp" />
+		<put-attribute name="search" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="foot" value="/WEB-INF/jsp/common/footer.jsp" />
+		<put-attribute name="script" value="/WEB-INF/jsp/common/blank.jsp" />
+	</definition>
+	
+	<!-- 普通医生登录后主页 -->	
+	<definition name="tiles.doctor.index" extends="doctor.parent">
+	    <put-attribute name="body"     value="/WEB-INF/jsp/doctor/dashboard.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/doctor/dashboard_script.jsp" />
+	</definition>
+	<!-- 超级医生登录后的主页 -->
+	<definition name="tiles.sdoctor.index" extends="doctor.parent">
+	    <put-attribute name="body"     value="/WEB-INF/jsp/doctor/s_dashboard.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/doctor/dashboard_script.jsp" />
+	</definition>
+	
+	<!-- 普通医生、超级医生 分类汇总主页 -->	
+	<definition name="tiles.doctor.subtotal" extends="doctor.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/doctor/subtotal.jsp" />
+	</definition>
+	<definition name="tiles.doctor.subtotal.list" extends="doctor.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/doctor/subtotal/list.jsp" />
+	</definition>
+	
+	<!-- 普通医生、超级医生 分类汇总 分享-->	
+	<definition name="tiles.doctor.share.list" extends="doctor.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/doctor/subtotal/share.jsp" />
+	     <put-attribute name="script" value="/WEB-INF/jsp/doctor/subtotal/script.jsp" />
+	</definition>
+	
+	<!-- 普通医生登录后按病历夹方式查看 -->	
+	<definition name="tiles.doctor.folder" extends="doctor.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/doctor/caseFolder/caseFolder.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/doctor/caseFolder/caseFolder_script.jsp" />
+		<put-attribute name="left" value="/WEB-INF/jsp/doctor/caseFolder/left.jsp" />
+	</definition>
+	
+	<!-- 医生 我的收藏 -->	
+	<definition name="tiles.doctor.collect.list" extends="doctor.parent">
+		<put-attribute name="head" value="/WEB-INF/jsp/doctor/collect/head.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/jsp/doctor/collect/list.jsp" />
+	    <put-attribute name="search" value="/WEB-INF/jsp/doctor/collect/search.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/doctor/dashboard_script.jsp" />
+	</definition>
+	<!-- 收藏夹管理 -->
+	<definition name="tiles.doctor.bookmark" extends="doctor.parent">
+		<put-attribute name="head" value="/WEB-INF/jsp/doctor/bookmark/head.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/jsp/doctor/bookmark/list.jsp" />
+	    <put-attribute name="search" value="/WEB-INF/jsp/doctor/bookmark/search.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/doctor/bookmark/script.jsp" />
+	</definition>
+	<!-- 修改医生信息 -->
+	<definition name="tiles.doctor.edit" extends="doctor.parent">
+		<put-attribute name="head" value="/WEB-INF/jsp/doctor/doctorEdit/head.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/doctor/doctorEdit/doctorEdit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/hospital/doctor/script.jsp" />
+	</definition>
+	
+	
+	<!-- 病例资料导入 -->
+	<definition name="tiles.doctor.import.casehistory" extends="doctor.parent">
+	    <put-attribute name="body"     value="/WEB-INF/jsp/doctor/import/import.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/doctor/import/script.jsp" />
+	</definition>
+	
+	<!-- 病例资料ftp 上传和下载 -->
+	<definition name="tiles.doctor.ftp" extends="doctor.parent">
+		<put-attribute name="head" value="/WEB-INF/jsp/doctor/ftp/head.jsp" />
+	    <put-attribute name="body"     value="/WEB-INF/jsp/doctor/ftp/dashboard.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/doctor/ftp/dashboard_script.jsp" />
+	</definition>
+	
+	<!-- 普通医生登录后主页 -->	
+	<definition name="tiles.doctor.import" extends="doctor.parent">
+	    <put-attribute name="body"     value="/WEB-INF//jsp/doctor/import/import.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/doctor/dashboard_script.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>

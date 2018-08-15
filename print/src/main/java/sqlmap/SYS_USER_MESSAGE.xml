@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SYS_USER_MESSAGE">
+  <resultMap id="result_map_SYS_USER_MESSAGE" type="com.lubian.cpf.vo.SysUserMessage">
+    <id property="messageId" column="MESSAGE_ID" jdbcType="INTEGER" />
+    <result property="title" column="TITLE" jdbcType="VARCHAR" />
+    <result property="content" column="CONTENT" jdbcType="VARCHAR" />
+    <result property="msgCount" column="MSG_COUNT" jdbcType="INTEGER" />
+    <result property="userType" column="USER_TYPE" jdbcType="CHAR" />
+    <result property="toUserIdStr" column="TO_USER_ID_STR" jdbcType="VARCHAR" />
+    <result property="isGenerated" column="IS_GENERATED" jdbcType="CHAR" />
+    <result property="modifyBy" column="MODIFY_BY" jdbcType="VARCHAR" />
+    <result property="modifyDt" column="MODIFY_DT" jdbcType="TIMESTAMP" />
+    <result property="createBy" column="CREATE_BY" jdbcType="VARCHAR" />
+    <result property="createDt" column="CREATE_DT" jdbcType="TIMESTAMP" />
+    <result property="orgId" column="ORG_ID" jdbcType="INTEGER" />
+    <result property="groupId" column="GROUP_ID" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="InsertSYS_USER_MESSAGE">
+    INSERT INTO SYS_USER_MESSAGE (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="title != null ">,TITLE</if>
+      <if test="content != null ">,CONTENT</if>
+      <if test="msgCount != null ">,MSG_COUNT</if>
+      <if test="userType != null ">,USER_TYPE</if>
+      <if test="toUserIdStr != null ">,TO_USER_ID_STR</if>
+      <if test="isGenerated != null ">,IS_GENERATED</if>
+      <if test="modifyBy != null ">,MODIFY_BY</if>
+      <if test="modifyDt != null ">,MODIFY_DT</if>
+      <if test="createBy != null ">,CREATE_BY</if>
+      <if test="createDt != null ">,CREATE_DT</if>
+      <if test="orgId != null ">,ORG_ID</if>
+      <if test="groupId != null ">,GROUP_ID</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="title != null ">,#{title,jdbcType=VARCHAR}</if>
+      <if test="content != null ">,#{content,jdbcType=VARCHAR}</if>
+      <if test="msgCount != null ">,#{msgCount,jdbcType=INTEGER}</if>
+      <if test="userType != null ">,#{userType,jdbcType=CHAR}</if>
+      <if test="toUserIdStr != null ">,#{toUserIdStr,jdbcType=VARCHAR}</if>
+      <if test="isGenerated != null ">,#{isGenerated,jdbcType=CHAR}</if>
+      <if test="modifyBy != null ">,#{modifyBy,jdbcType=VARCHAR}</if>
+      <if test="modifyDt != null ">,#{modifyDt,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">,#{createBy,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">,#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="orgId != null ">,#{orgId,jdbcType=INTEGER}</if>
+      <if test="groupId != null ">,#{groupId,jdbcType=INTEGER}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="messageId" order="AFTER">SELECT LAST_INSERT_ID() AS MESSAGE_ID</selectKey>
+  </insert>
+  <update id="UpdateSYS_USER_MESSAGE">
+    UPDATE SYS_USER_MESSAGE 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="title != null ">,TITLE=#{title,jdbcType=VARCHAR}</if>
+      <if test="content != null ">,CONTENT=#{content,jdbcType=VARCHAR}</if>
+      <if test="msgCount != null ">,MSG_COUNT=#{msgCount,jdbcType=INTEGER}</if>
+      <if test="userType != null ">,USER_TYPE=#{userType,jdbcType=CHAR}</if>
+      <if test="toUserIdStr != null ">,TO_USER_ID_STR=#{toUserIdStr,jdbcType=VARCHAR}</if>
+      <if test="isGenerated != null ">,IS_GENERATED=#{isGenerated,jdbcType=CHAR}</if>
+      <if test="modifyBy != null ">,MODIFY_BY=#{modifyBy,jdbcType=VARCHAR}</if>
+      <if test="modifyDt != null ">,MODIFY_DT=#{modifyDt,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">,CREATE_BY=#{createBy,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">,CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="orgId != null ">,ORG_ID=#{orgId,jdbcType=INTEGER}</if>
+      <if test="groupId != null ">,GROUP_ID=#{groupId,jdbcType=INTEGER}</if>
+    </trim>
+     WHERE MESSAGE_ID=#{messageId,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteSYS_USER_MESSAGE">DELETE FROM SYS_USER_MESSAGE WHERE MESSAGE_ID=#{messageId,jdbcType=INTEGER}</delete>
+  <select id="CountFindAllSYS_USER_MESSAGE" resultType="java.lang.Integer">SELECT count(1) as value FROM SYS_USER_MESSAGE</select>
+  <select id="CountSYS_USER_MESSAGE" resultType="java.lang.Integer">SELECT count(1) as value FROM SYS_USER_MESSAGE WHERE MESSAGE_ID=#{messageId,jdbcType=INTEGER}</select>
+  <select id="FindByPKSYS_USER_MESSAGE" resultMap="result_map_SYS_USER_MESSAGE">SELECT MESSAGE_ID,TITLE,CONTENT,MSG_COUNT,USER_TYPE,TO_USER_ID_STR,IS_GENERATED,MODIFY_BY,MODIFY_DT,CREATE_BY,CREATE_DT,ORG_ID,GROUP_ID FROM SYS_USER_MESSAGE WHERE MESSAGE_ID=#{messageId,jdbcType=INTEGER}</select>
+  <select id="FreeFindSYS_USER_MESSAGE" resultMap="result_map_SYS_USER_MESSAGE">
+    SELECT MESSAGE_ID,TITLE,CONTENT,MSG_COUNT,USER_TYPE,TO_USER_ID_STR,IS_GENERATED,MODIFY_BY,MODIFY_DT,CREATE_BY,CREATE_DT,ORG_ID,GROUP_ID FROM SYS_USER_MESSAGE
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="messageId != null ">AND MESSAGE_ID=#{messageId,jdbcType=INTEGER}</if>
+      <if test="title != null ">AND TITLE like '%${title}%'</if>
+      <if test="titleEq != null ">AND TITLE=#{titleEq,jdbcType=VARCHAR}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="msgCount != null ">AND MSG_COUNT=#{msgCount,jdbcType=INTEGER}</if>
+      <if test="userType != null ">AND USER_TYPE like '%${userType}%'</if>
+      <if test="userTypeEq != null ">AND USER_TYPE=#{userTypeEq,jdbcType=CHAR}</if>
+      <if test="toUserIdStr != null ">AND TO_USER_ID_STR like '%${toUserIdStr}%'</if>
+      <if test="toUserIdStrEq != null ">AND TO_USER_ID_STR=#{toUserIdStrEq,jdbcType=VARCHAR}</if>
+      <if test="isGenerated != null ">AND IS_GENERATED like '%${isGenerated}%'</if>
+      <if test="isGeneratedEq != null ">AND IS_GENERATED=#{isGeneratedEq,jdbcType=CHAR}</if>
+      <if test="modifyBy != null ">AND MODIFY_BY like '%${modifyBy}%'</if>
+      <if test="modifyByEq != null ">AND MODIFY_BY=#{modifyByEq,jdbcType=VARCHAR}</if>
+      <if test="modifyDt != null ">AND MODIFY_DT=#{modifyDt,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtFrom != null ">AND MODIFY_DT&gt;=#{modifyDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtTo != null ">AND MODIFY_DT&lt;=#{modifyDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">AND CREATE_BY like '%${createBy}%'</if>
+      <if test="createByEq != null ">AND CREATE_BY=#{createByEq,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="orgId != null ">AND ORG_ID=#{orgId,jdbcType=INTEGER}</if>
+      <if test="groupId != null ">AND GROUP_ID=#{groupId,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindSYS_USER_MESSAGE" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM SYS_USER_MESSAGE
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="messageId != null ">AND MESSAGE_ID=#{messageId,jdbcType=INTEGER}</if>
+      <if test="title != null ">AND TITLE like '%${title}%'</if>
+      <if test="titleEq != null ">AND TITLE=#{titleEq,jdbcType=VARCHAR}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="msgCount != null ">AND MSG_COUNT=#{msgCount,jdbcType=INTEGER}</if>
+      <if test="userType != null ">AND USER_TYPE like '%${userType}%'</if>
+      <if test="userTypeEq != null ">AND USER_TYPE=#{userTypeEq,jdbcType=CHAR}</if>
+      <if test="toUserIdStr != null ">AND TO_USER_ID_STR like '%${toUserIdStr}%'</if>
+      <if test="toUserIdStrEq != null ">AND TO_USER_ID_STR=#{toUserIdStrEq,jdbcType=VARCHAR}</if>
+      <if test="isGenerated != null ">AND IS_GENERATED like '%${isGenerated}%'</if>
+      <if test="isGeneratedEq != null ">AND IS_GENERATED=#{isGeneratedEq,jdbcType=CHAR}</if>
+      <if test="modifyBy != null ">AND MODIFY_BY like '%${modifyBy}%'</if>
+      <if test="modifyByEq != null ">AND MODIFY_BY=#{modifyByEq,jdbcType=VARCHAR}</if>
+      <if test="modifyDt != null ">AND MODIFY_DT=#{modifyDt,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtFrom != null ">AND MODIFY_DT&gt;=#{modifyDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtTo != null ">AND MODIFY_DT&lt;=#{modifyDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">AND CREATE_BY like '%${createBy}%'</if>
+      <if test="createByEq != null ">AND CREATE_BY=#{createByEq,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="orgId != null ">AND ORG_ID=#{orgId,jdbcType=INTEGER}</if>
+      <if test="groupId != null ">AND GROUP_ID=#{groupId,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="FreeFindSYS_USER_MESSAGEOrdered" resultMap="result_map_SYS_USER_MESSAGE">
+    SELECT MESSAGE_ID,TITLE,CONTENT,MSG_COUNT,USER_TYPE,TO_USER_ID_STR,IS_GENERATED,MODIFY_BY,MODIFY_DT,CREATE_BY,CREATE_DT,ORG_ID,GROUP_ID FROM SYS_USER_MESSAGE
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="messageId != null ">AND MESSAGE_ID=#{messageId,jdbcType=INTEGER}</if>
+      <if test="title != null ">AND TITLE like '%${title}%'</if>
+      <if test="titleEq != null ">AND TITLE=#{titleEq,jdbcType=VARCHAR}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="msgCount != null ">AND MSG_COUNT=#{msgCount,jdbcType=INTEGER}</if>
+      <if test="userType != null ">AND USER_TYPE like '%${userType}%'</if>
+      <if test="userTypeEq != null ">AND USER_TYPE=#{userTypeEq,jdbcType=CHAR}</if>
+      <if test="toUserIdStr != null ">AND TO_USER_ID_STR like '%${toUserIdStr}%'</if>
+      <if test="toUserIdStrEq != null ">AND TO_USER_ID_STR=#{toUserIdStrEq,jdbcType=VARCHAR}</if>
+      <if test="isGenerated != null ">AND IS_GENERATED like '%${isGenerated}%'</if>
+      <if test="isGeneratedEq != null ">AND IS_GENERATED=#{isGeneratedEq,jdbcType=CHAR}</if>
+      <if test="modifyBy != null ">AND MODIFY_BY like '%${modifyBy}%'</if>
+      <if test="modifyByEq != null ">AND MODIFY_BY=#{modifyByEq,jdbcType=VARCHAR}</if>
+      <if test="modifyDt != null ">AND MODIFY_DT=#{modifyDt,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtFrom != null ">AND MODIFY_DT&gt;=#{modifyDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtTo != null ">AND MODIFY_DT&lt;=#{modifyDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">AND CREATE_BY like '%${createBy}%'</if>
+      <if test="createByEq != null ">AND CREATE_BY=#{createByEq,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="orgId != null ">AND ORG_ID=#{orgId,jdbcType=INTEGER}</if>
+      <if test="groupId != null ">AND GROUP_ID=#{groupId,jdbcType=INTEGER}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

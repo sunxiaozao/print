@@ -1,0 +1,14 @@
+
+body {
+	color: #757575;
+}
+    
+#loginForm{
+	padding-left: 40px;
+}
+
+.b-login-form-foot {
+	margin: 120px 0 0 0;
+	padding: 40px;
+	line-height: normal;
+}

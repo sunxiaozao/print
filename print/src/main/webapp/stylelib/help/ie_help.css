@@ -1,0 +1,64 @@
+@media screen {
+
+    .container-fluid {
+        padding-left: 0;
+    }
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+        line-height: normal;
+        font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+    }
+
+    h1 {
+        margin-bottom: 40px;
+        padding: 10px 0 20px 100px;
+        font-size: 50px;
+        font-family: "Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+        font-weight: normal;
+    }
+
+    .m-step {
+        margin-bottom: 100px;
+    }
+
+    .m-step h2 {
+        display: block;
+        padding: 0 0 0 20px;
+        width: 80px;
+        /*border-top: 5px solid #666;*/
+        font-weight: bold;
+        font-style: italic;
+        font-size: 100px;
+        line-height: normal;
+        background-color: #333;
+        color:#fff;
+    }
+
+    .m-step .ms-c {
+        margin: -120px 0 0 160px;
+    }
+
+    .m-step .ms-c img {
+        border: 1px solid #ccc;
+    }
+
+    .m-key-alt {
+        display: inline-block;
+        margin: 0 10px;
+        width: 61px;
+        height: 61px;
+        background: transparent url(img/jr/key-alt.png) 0 0 no-repeat;
+        text-indent: -9999px;
+        vertical-align: middle;
+
+    }
+
+    #footer {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border-top: 1px solid #ddd;
+        font-size: 12px;
+        color:#666;
+    }
+}
+

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CDF_FAVORITE">
+  <resultMap id="flat_result_map_CDF_FAVORITE" type="com.lubian.cpf.vo.CdfFavorite">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="doctorId" column="DOCTOR_ID" jdbcType="INTEGER" />
+    <result property="caseId" column="CASE_ID" jdbcType="INTEGER" />
+    <result property="type" column="TYPE" jdbcType="VARCHAR" />
+    <result property="favoriteTime" column="FAVORITE_TIME" jdbcType="TIMESTAMP" />
+    <result property="reason" column="REASON" jdbcType="VARCHAR" />
+    <result property="bookmarkId" column="BOOKMARK_ID" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="result_map_CDF_FAVORITE" type="com.lubian.cpf.vo.CdfFavorite">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="doctorId" column="DOCTOR_ID" jdbcType="INTEGER" />
+    <result property="caseId" column="CASE_ID" jdbcType="INTEGER" />
+    <result property="type" column="TYPE" jdbcType="VARCHAR" />
+    <result property="favoriteTime" column="FAVORITE_TIME" jdbcType="TIMESTAMP" />
+    <result property="reason" column="REASON" jdbcType="VARCHAR" />
+    <result property="bookmarkId" column="BOOKMARK_ID" jdbcType="INTEGER" />
+    <collection property="caseHistory" column="{id=CASE_ID}" ofType="CpfCaseHistory" select="CPF_CASE_HISTORY.FindCPF_CASE_HISTORYForCDF_FAVORITE_caseHistory" />
+    <collection property="cdfBookmark" column="{id=BOOKMARK_ID}" ofType="CdfBookmark" select="CDF_BOOKMARK.FindCDF_BOOKMARKForCDF_FAVORITE_cdfBookmark" />
+  </resultMap>
+  <insert id="InsertCDF_FAVORITE">
+    INSERT INTO CDF_FAVORITE (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="doctorId != null ">,DOCTOR_ID</if>
+      <if test="caseId != null ">,CASE_ID</if>
+      <if test="type != null ">,TYPE</if>
+      <if test="favoriteTime != null ">,FAVORITE_TIME</if>
+      <if test="reason != null ">,REASON</if>
+      <if test="bookmarkId != null ">,BOOKMARK_ID</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="doctorId != null ">,#{doctorId,jdbcType=INTEGER}</if>
+      <if test="caseId != null ">,#{caseId,jdbcType=INTEGER}</if>
+      <if test="type != null ">,#{type,jdbcType=VARCHAR}</if>
+      <if test="favoriteTime != null ">,#{favoriteTime,jdbcType=TIMESTAMP}</if>
+      <if test="reason != null ">,#{reason,jdbcType=VARCHAR}</if>
+      <if test="bookmarkId != null ">,#{bookmarkId,jdbcType=INTEGER}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID() AS ID</selectKey>
+  </insert>
+  <update id="UpdateCDF_FAVORITE">
+    UPDATE CDF_FAVORITE 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="doctorId != null ">,DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="caseId != null ">,CASE_ID=#{caseId,jdbcType=INTEGER}</if>
+      <if test="type != null ">,TYPE=#{type,jdbcType=VARCHAR}</if>
+      <if test="favoriteTime != null ">,FAVORITE_TIME=#{favoriteTime,jdbcType=TIMESTAMP}</if>
+      <if test="reason != null ">,REASON=#{reason,jdbcType=VARCHAR}</if>
+      <if test="bookmarkId != null ">,BOOKMARK_ID=#{bookmarkId,jdbcType=INTEGER}</if>
+    </trim>
+     WHERE ID=#{id,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteCDF_FAVORITE">DELETE FROM CDF_FAVORITE WHERE ID=#{id,jdbcType=INTEGER}</delete>
+  <select id="CountFindAllCDF_FAVORITE" resultType="java.lang.Integer">SELECT count(1) as value FROM CDF_FAVORITE</select>
+  <select id="CountCDF_FAVORITE" resultType="java.lang.Integer">SELECT count(1) as value FROM CDF_FAVORITE WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FindByPKCDF_FAVORITE" resultMap="result_map_CDF_FAVORITE">SELECT ID,DOCTOR_ID,CASE_ID,TYPE,FAVORITE_TIME,REASON,BOOKMARK_ID FROM CDF_FAVORITE WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FreeFindCDF_FAVORITE" resultMap="result_map_CDF_FAVORITE">
+    SELECT ID,DOCTOR_ID,CASE_ID,TYPE,FAVORITE_TIME,REASON,BOOKMARK_ID FROM CDF_FAVORITE
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="caseId != null ">AND CASE_ID=#{caseId,jdbcType=INTEGER}</if>
+      <if test="type != null ">AND TYPE like '%${type}%'</if>
+      <if test="typeEq != null ">AND TYPE=#{typeEq,jdbcType=VARCHAR}</if>
+      <if test="favoriteTime != null ">AND FAVORITE_TIME=#{favoriteTime,jdbcType=TIMESTAMP}</if>
+      <if test="favoriteTimeFrom != null ">AND FAVORITE_TIME&gt;=#{favoriteTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="favoriteTimeTo != null ">AND FAVORITE_TIME&lt;=#{favoriteTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="reason != null ">AND REASON like '%${reason}%'</if>
+      <if test="reasonEq != null ">AND REASON=#{reasonEq,jdbcType=VARCHAR}</if>
+      <if test="bookmarkId != null ">AND BOOKMARK_ID=#{bookmarkId,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindCDF_FAVORITE" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM CDF_FAVORITE
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="caseId != null ">AND CASE_ID=#{caseId,jdbcType=INTEGER}</if>
+      <if test="type != null ">AND TYPE like '%${type}%'</if>
+      <if test="typeEq != null ">AND TYPE=#{typeEq,jdbcType=VARCHAR}</if>
+      <if test="favoriteTime != null ">AND FAVORITE_TIME=#{favoriteTime,jdbcType=TIMESTAMP}</if>
+      <if test="favoriteTimeFrom != null ">AND FAVORITE_TIME&gt;=#{favoriteTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="favoriteTimeTo != null ">AND FAVORITE_TIME&lt;=#{favoriteTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="reason != null ">AND REASON like '%${reason}%'</if>
+      <if test="reasonEq != null ">AND REASON=#{reasonEq,jdbcType=VARCHAR}</if>
+      <if test="bookmarkId != null ">AND BOOKMARK_ID=#{bookmarkId,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="FreeFindCDF_FAVORITEOrdered" resultMap="result_map_CDF_FAVORITE">
+    SELECT ID,DOCTOR_ID,CASE_ID,TYPE,FAVORITE_TIME,REASON,BOOKMARK_ID FROM CDF_FAVORITE
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="caseId != null ">AND CASE_ID=#{caseId,jdbcType=INTEGER}</if>
+      <if test="type != null ">AND TYPE like '%${type}%'</if>
+      <if test="typeEq != null ">AND TYPE=#{typeEq,jdbcType=VARCHAR}</if>
+      <if test="favoriteTime != null ">AND FAVORITE_TIME=#{favoriteTime,jdbcType=TIMESTAMP}</if>
+      <if test="favoriteTimeFrom != null ">AND FAVORITE_TIME&gt;=#{favoriteTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="favoriteTimeTo != null ">AND FAVORITE_TIME&lt;=#{favoriteTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="reason != null ">AND REASON like '%${reason}%'</if>
+      <if test="reasonEq != null ">AND REASON=#{reasonEq,jdbcType=VARCHAR}</if>
+      <if test="bookmarkId != null ">AND BOOKMARK_ID=#{bookmarkId,jdbcType=INTEGER}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

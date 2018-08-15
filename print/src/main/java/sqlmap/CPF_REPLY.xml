@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CPF_REPLY">
+  <resultMap id="flat_result_map_CPF_REPLY" type="com.lubian.cpf.vo.CpfReply">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="notebookId" column="NOTEBOOK_ID" jdbcType="INTEGER" />
+    <result property="patientId" column="PATIENT_ID" jdbcType="INTEGER" />
+    <result property="doctorId" column="DOCTOR_ID" jdbcType="INTEGER" />
+    <result property="content" column="CONTENT" jdbcType="VARCHAR" />
+    <result property="replyTime" column="REPLY_TIME" jdbcType="TIMESTAMP" />
+    <result property="status" column="STATUS" jdbcType="VARCHAR" />
+    <result property="replyCount" column="REPLY_COUNT" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="result_map_CPF_REPLY" type="com.lubian.cpf.vo.CpfReply">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="notebookId" column="NOTEBOOK_ID" jdbcType="INTEGER" />
+    <result property="patientId" column="PATIENT_ID" jdbcType="INTEGER" />
+    <result property="doctorId" column="DOCTOR_ID" jdbcType="INTEGER" />
+    <result property="content" column="CONTENT" jdbcType="VARCHAR" />
+    <result property="replyTime" column="REPLY_TIME" jdbcType="TIMESTAMP" />
+    <result property="status" column="STATUS" jdbcType="VARCHAR" />
+    <result property="replyCount" column="REPLY_COUNT" jdbcType="INTEGER" />
+    <collection property="cpfPatient" column="{id=PATIENT_ID}" ofType="CpfPatient" select="CPF_PATIENT.FindCPF_PATIENTForCPF_REPLY_cpfPatient" />
+    <collection property="sysDoctor" column="{id=DOCTOR_ID}" ofType="SysDoctor" select="SYS_DOCTOR.FindSYS_DOCTORForCPF_REPLY_sysDoctor" />
+  </resultMap>
+  <insert id="InsertCPF_REPLY">
+    INSERT INTO CPF_REPLY (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="notebookId != null ">,NOTEBOOK_ID</if>
+      <if test="patientId != null ">,PATIENT_ID</if>
+      <if test="doctorId != null ">,DOCTOR_ID</if>
+      <if test="content != null ">,CONTENT</if>
+      <if test="replyTime != null ">,REPLY_TIME</if>
+      <if test="status != null ">,STATUS</if>
+      <if test="replyCount != null ">,REPLY_COUNT</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="notebookId != null ">,#{notebookId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">,#{patientId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">,#{doctorId,jdbcType=INTEGER}</if>
+      <if test="content != null ">,#{content,jdbcType=VARCHAR}</if>
+      <if test="replyTime != null ">,#{replyTime,jdbcType=TIMESTAMP}</if>
+      <if test="status != null ">,#{status,jdbcType=VARCHAR}</if>
+      <if test="replyCount != null ">,#{replyCount,jdbcType=INTEGER}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID() AS ID</selectKey>
+  </insert>
+  <update id="UpdateCPF_REPLY">
+    UPDATE CPF_REPLY 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="notebookId != null ">,NOTEBOOK_ID=#{notebookId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">,PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">,DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="content != null ">,CONTENT=#{content,jdbcType=VARCHAR}</if>
+      <if test="replyTime != null ">,REPLY_TIME=#{replyTime,jdbcType=TIMESTAMP}</if>
+      <if test="status != null ">,STATUS=#{status,jdbcType=VARCHAR}</if>
+      <if test="replyCount != null ">,REPLY_COUNT=#{replyCount,jdbcType=INTEGER}</if>
+    </trim>
+     WHERE ID=#{id,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteCPF_REPLY">DELETE FROM CPF_REPLY WHERE ID=#{id,jdbcType=INTEGER}</delete>
+  <select id="CountFindAllCPF_REPLY" resultType="java.lang.Integer">SELECT count(1) as value FROM CPF_REPLY</select>
+  <select id="CountCPF_REPLY" resultType="java.lang.Integer">SELECT count(1) as value FROM CPF_REPLY WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FindByPKCPF_REPLY" resultMap="result_map_CPF_REPLY">SELECT ID,NOTEBOOK_ID,PATIENT_ID,DOCTOR_ID,CONTENT,REPLY_TIME,STATUS,REPLY_COUNT FROM CPF_REPLY WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FreeFindCPF_REPLY" resultMap="result_map_CPF_REPLY">
+    SELECT ID,NOTEBOOK_ID,PATIENT_ID,DOCTOR_ID,CONTENT,REPLY_TIME,STATUS,REPLY_COUNT FROM CPF_REPLY
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="notebookId != null ">AND NOTEBOOK_ID=#{notebookId,jdbcType=INTEGER}</if>
+      <if test="notebookId_instr != null ">AND NOTEBOOK_ID in (${notebookId_instr})</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="replyTime != null ">AND REPLY_TIME=#{replyTime,jdbcType=TIMESTAMP}</if>
+      <if test="replyTimeFrom != null ">AND REPLY_TIME&gt;=#{replyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="replyTimeTo != null ">AND REPLY_TIME&lt;=#{replyTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="status != null ">AND STATUS like '%${status}%'</if>
+      <if test="statusEq != null ">AND STATUS=#{statusEq,jdbcType=VARCHAR}</if>
+      <if test="replyCount != null ">AND REPLY_COUNT=#{replyCount,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindCPF_REPLY" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM CPF_REPLY
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="notebookId != null ">AND NOTEBOOK_ID=#{notebookId,jdbcType=INTEGER}</if>
+      <if test="notebookId_instr != null ">AND NOTEBOOK_ID in (${notebookId_instr})</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="replyTime != null ">AND REPLY_TIME=#{replyTime,jdbcType=TIMESTAMP}</if>
+      <if test="replyTimeFrom != null ">AND REPLY_TIME&gt;=#{replyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="replyTimeTo != null ">AND REPLY_TIME&lt;=#{replyTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="status != null ">AND STATUS like '%${status}%'</if>
+      <if test="statusEq != null ">AND STATUS=#{statusEq,jdbcType=VARCHAR}</if>
+      <if test="replyCount != null ">AND REPLY_COUNT=#{replyCount,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="FreeFindCPF_REPLYOrdered" resultMap="result_map_CPF_REPLY">
+    SELECT ID,NOTEBOOK_ID,PATIENT_ID,DOCTOR_ID,CONTENT,REPLY_TIME,STATUS,REPLY_COUNT FROM CPF_REPLY
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="notebookId != null ">AND NOTEBOOK_ID=#{notebookId,jdbcType=INTEGER}</if>
+      <if test="notebookId_instr != null ">AND NOTEBOOK_ID in (${notebookId_instr})</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="replyTime != null ">AND REPLY_TIME=#{replyTime,jdbcType=TIMESTAMP}</if>
+      <if test="replyTimeFrom != null ">AND REPLY_TIME&gt;=#{replyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="replyTimeTo != null ">AND REPLY_TIME&lt;=#{replyTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="status != null ">AND STATUS like '%${status}%'</if>
+      <if test="statusEq != null ">AND STATUS=#{statusEq,jdbcType=VARCHAR}</if>
+      <if test="replyCount != null ">AND REPLY_COUNT=#{replyCount,jdbcType=INTEGER}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

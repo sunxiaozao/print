@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SYS_MAIL_JOB">
+  <resultMap id="result_map_SYS_MAIL_JOB" type="com.lubian.cpf.vo.SysMailJob">
+    <id property="mailJobId" column="MAIL_JOB_ID" jdbcType="INTEGER" />
+    <result property="fromUserId" column="FROM_USER_ID" jdbcType="INTEGER" />
+    <result property="toUserIdStr" column="TO_USER_ID_STR" jdbcType="VARCHAR" />
+    <result property="userType" column="USER_TYPE" jdbcType="DECIMAL" />
+    <result property="subject" column="SUBJECT" jdbcType="VARCHAR" />
+    <result property="content" column="CONTENT" jdbcType="VARCHAR" />
+    <result property="mailType" column="MAIL_TYPE" jdbcType="CHAR" />
+    <result property="bisType" column="BIS_TYPE" jdbcType="CHAR" />
+    <result property="mailStatus" column="MAIL_STATUS" jdbcType="CHAR" />
+    <result property="mailCount" column="MAIL_COUNT" jdbcType="INTEGER" />
+    <result property="modifyBy" column="MODIFY_BY" jdbcType="VARCHAR" />
+    <result property="modifyDt" column="MODIFY_DT" jdbcType="TIMESTAMP" />
+    <result property="createBy" column="CREATE_BY" jdbcType="VARCHAR" />
+    <result property="createDt" column="CREATE_DT" jdbcType="TIMESTAMP" />
+    <result property="toEmailStr" column="TO_EMAIL_STR" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="InsertSYS_MAIL_JOB">
+    INSERT INTO SYS_MAIL_JOB (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="fromUserId != null ">,FROM_USER_ID</if>
+      <if test="toUserIdStr != null ">,TO_USER_ID_STR</if>
+      <if test="userType != null ">,USER_TYPE</if>
+      <if test="subject != null ">,SUBJECT</if>
+      <if test="content != null ">,CONTENT</if>
+      <if test="mailType != null ">,MAIL_TYPE</if>
+      <if test="bisType != null ">,BIS_TYPE</if>
+      <if test="mailStatus != null ">,MAIL_STATUS</if>
+      <if test="mailCount != null ">,MAIL_COUNT</if>
+      <if test="modifyBy != null ">,MODIFY_BY</if>
+      <if test="modifyDt != null ">,MODIFY_DT</if>
+      <if test="createBy != null ">,CREATE_BY</if>
+      <if test="createDt != null ">,CREATE_DT</if>
+      <if test="toEmailStr != null ">,TO_EMAIL_STR</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="fromUserId != null ">,#{fromUserId,jdbcType=INTEGER}</if>
+      <if test="toUserIdStr != null ">,#{toUserIdStr,jdbcType=VARCHAR}</if>
+      <if test="userType != null ">,#{userType,jdbcType=DECIMAL}</if>
+      <if test="subject != null ">,#{subject,jdbcType=VARCHAR}</if>
+      <if test="content != null ">,#{content,jdbcType=VARCHAR}</if>
+      <if test="mailType != null ">,#{mailType,jdbcType=CHAR}</if>
+      <if test="bisType != null ">,#{bisType,jdbcType=CHAR}</if>
+      <if test="mailStatus != null ">,#{mailStatus,jdbcType=CHAR}</if>
+      <if test="mailCount != null ">,#{mailCount,jdbcType=INTEGER}</if>
+      <if test="modifyBy != null ">,#{modifyBy,jdbcType=VARCHAR}</if>
+      <if test="modifyDt != null ">,#{modifyDt,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">,#{createBy,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">,#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="toEmailStr != null ">,#{toEmailStr,jdbcType=VARCHAR}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="mailJobId" order="AFTER">SELECT LAST_INSERT_ID() AS MAIL_JOB_ID</selectKey>
+  </insert>
+  <update id="UpdateSYS_MAIL_JOB">
+    UPDATE SYS_MAIL_JOB 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="fromUserId != null ">,FROM_USER_ID=#{fromUserId,jdbcType=INTEGER}</if>
+      <if test="toUserIdStr != null ">,TO_USER_ID_STR=#{toUserIdStr,jdbcType=VARCHAR}</if>
+      <if test="userType != null ">,USER_TYPE=#{userType,jdbcType=DECIMAL}</if>
+      <if test="subject != null ">,SUBJECT=#{subject,jdbcType=VARCHAR}</if>
+      <if test="content != null ">,CONTENT=#{content,jdbcType=VARCHAR}</if>
+      <if test="mailType != null ">,MAIL_TYPE=#{mailType,jdbcType=CHAR}</if>
+      <if test="bisType != null ">,BIS_TYPE=#{bisType,jdbcType=CHAR}</if>
+      <if test="mailStatus != null ">,MAIL_STATUS=#{mailStatus,jdbcType=CHAR}</if>
+      <if test="mailCount != null ">,MAIL_COUNT=#{mailCount,jdbcType=INTEGER}</if>
+      <if test="modifyBy != null ">,MODIFY_BY=#{modifyBy,jdbcType=VARCHAR}</if>
+      <if test="modifyDt != null ">,MODIFY_DT=#{modifyDt,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">,CREATE_BY=#{createBy,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">,CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="toEmailStr != null ">,TO_EMAIL_STR=#{toEmailStr,jdbcType=VARCHAR}</if>
+    </trim>
+     WHERE MAIL_JOB_ID=#{mailJobId,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteSYS_MAIL_JOB">DELETE FROM SYS_MAIL_JOB WHERE MAIL_JOB_ID=#{mailJobId,jdbcType=INTEGER}</delete>
+  <select id="CountFindAllSYS_MAIL_JOB" resultType="java.lang.Integer">SELECT count(1) as value FROM SYS_MAIL_JOB</select>
+  <select id="CountSYS_MAIL_JOB" resultType="java.lang.Integer">SELECT count(1) as value FROM SYS_MAIL_JOB WHERE MAIL_JOB_ID=#{mailJobId,jdbcType=INTEGER}</select>
+  <select id="FindByPKSYS_MAIL_JOB" resultMap="result_map_SYS_MAIL_JOB">SELECT MAIL_JOB_ID,FROM_USER_ID,TO_USER_ID_STR,USER_TYPE,SUBJECT,CONTENT,MAIL_TYPE,BIS_TYPE,MAIL_STATUS,MAIL_COUNT,MODIFY_BY,MODIFY_DT,CREATE_BY,CREATE_DT,TO_EMAIL_STR FROM SYS_MAIL_JOB WHERE MAIL_JOB_ID=#{mailJobId,jdbcType=INTEGER}</select>
+  <select id="FreeFindSYS_MAIL_JOB" resultMap="result_map_SYS_MAIL_JOB">
+    SELECT MAIL_JOB_ID,FROM_USER_ID,TO_USER_ID_STR,USER_TYPE,SUBJECT,CONTENT,MAIL_TYPE,BIS_TYPE,MAIL_STATUS,MAIL_COUNT,MODIFY_BY,MODIFY_DT,CREATE_BY,CREATE_DT,TO_EMAIL_STR FROM SYS_MAIL_JOB
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="mailJobId != null ">AND MAIL_JOB_ID=#{mailJobId,jdbcType=INTEGER}</if>
+      <if test="fromUserId != null ">AND FROM_USER_ID=#{fromUserId,jdbcType=INTEGER}</if>
+      <if test="toUserIdStr != null ">AND TO_USER_ID_STR like '%${toUserIdStr}%'</if>
+      <if test="toUserIdStrEq != null ">AND TO_USER_ID_STR=#{toUserIdStrEq,jdbcType=VARCHAR}</if>
+      <if test="userType != null ">AND USER_TYPE=#{userType,jdbcType=DECIMAL}</if>
+      <if test="subject != null ">AND SUBJECT like '%${subject}%'</if>
+      <if test="subjectEq != null ">AND SUBJECT=#{subjectEq,jdbcType=VARCHAR}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="mailType != null ">AND MAIL_TYPE like '%${mailType}%'</if>
+      <if test="mailTypeEq != null ">AND MAIL_TYPE=#{mailTypeEq,jdbcType=CHAR}</if>
+      <if test="bisType != null ">AND BIS_TYPE like '%${bisType}%'</if>
+      <if test="bisTypeEq != null ">AND BIS_TYPE=#{bisTypeEq,jdbcType=CHAR}</if>
+      <if test="mailStatus != null ">AND MAIL_STATUS like '%${mailStatus}%'</if>
+      <if test="mailStatusEq != null ">AND MAIL_STATUS=#{mailStatusEq,jdbcType=CHAR}</if>
+      <if test="mailCount != null ">AND MAIL_COUNT=#{mailCount,jdbcType=INTEGER}</if>
+      <if test="modifyBy != null ">AND MODIFY_BY like '%${modifyBy}%'</if>
+      <if test="modifyByEq != null ">AND MODIFY_BY=#{modifyByEq,jdbcType=VARCHAR}</if>
+      <if test="modifyDt != null ">AND MODIFY_DT=#{modifyDt,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtFrom != null ">AND MODIFY_DT&gt;=#{modifyDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtTo != null ">AND MODIFY_DT&lt;=#{modifyDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">AND CREATE_BY like '%${createBy}%'</if>
+      <if test="createByEq != null ">AND CREATE_BY=#{createByEq,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="toEmailStr != null ">AND TO_EMAIL_STR like '%${toEmailStr}%'</if>
+      <if test="toEmailStrEq != null ">AND TO_EMAIL_STR=#{toEmailStrEq,jdbcType=VARCHAR}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindSYS_MAIL_JOB" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM SYS_MAIL_JOB
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="mailJobId != null ">AND MAIL_JOB_ID=#{mailJobId,jdbcType=INTEGER}</if>
+      <if test="fromUserId != null ">AND FROM_USER_ID=#{fromUserId,jdbcType=INTEGER}</if>
+      <if test="toUserIdStr != null ">AND TO_USER_ID_STR like '%${toUserIdStr}%'</if>
+      <if test="toUserIdStrEq != null ">AND TO_USER_ID_STR=#{toUserIdStrEq,jdbcType=VARCHAR}</if>
+      <if test="userType != null ">AND USER_TYPE=#{userType,jdbcType=DECIMAL}</if>
+      <if test="subject != null ">AND SUBJECT like '%${subject}%'</if>
+      <if test="subjectEq != null ">AND SUBJECT=#{subjectEq,jdbcType=VARCHAR}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="mailType != null ">AND MAIL_TYPE like '%${mailType}%'</if>
+      <if test="mailTypeEq != null ">AND MAIL_TYPE=#{mailTypeEq,jdbcType=CHAR}</if>
+      <if test="bisType != null ">AND BIS_TYPE like '%${bisType}%'</if>
+      <if test="bisTypeEq != null ">AND BIS_TYPE=#{bisTypeEq,jdbcType=CHAR}</if>
+      <if test="mailStatus != null ">AND MAIL_STATUS like '%${mailStatus}%'</if>
+      <if test="mailStatusEq != null ">AND MAIL_STATUS=#{mailStatusEq,jdbcType=CHAR}</if>
+      <if test="mailCount != null ">AND MAIL_COUNT=#{mailCount,jdbcType=INTEGER}</if>
+      <if test="modifyBy != null ">AND MODIFY_BY like '%${modifyBy}%'</if>
+      <if test="modifyByEq != null ">AND MODIFY_BY=#{modifyByEq,jdbcType=VARCHAR}</if>
+      <if test="modifyDt != null ">AND MODIFY_DT=#{modifyDt,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtFrom != null ">AND MODIFY_DT&gt;=#{modifyDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtTo != null ">AND MODIFY_DT&lt;=#{modifyDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">AND CREATE_BY like '%${createBy}%'</if>
+      <if test="createByEq != null ">AND CREATE_BY=#{createByEq,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="toEmailStr != null ">AND TO_EMAIL_STR like '%${toEmailStr}%'</if>
+      <if test="toEmailStrEq != null ">AND TO_EMAIL_STR=#{toEmailStrEq,jdbcType=VARCHAR}</if>
+    </trim>
+  </select>
+  <select id="FreeFindSYS_MAIL_JOBOrdered" resultMap="result_map_SYS_MAIL_JOB">
+    SELECT MAIL_JOB_ID,FROM_USER_ID,TO_USER_ID_STR,USER_TYPE,SUBJECT,CONTENT,MAIL_TYPE,BIS_TYPE,MAIL_STATUS,MAIL_COUNT,MODIFY_BY,MODIFY_DT,CREATE_BY,CREATE_DT,TO_EMAIL_STR FROM SYS_MAIL_JOB
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="mailJobId != null ">AND MAIL_JOB_ID=#{mailJobId,jdbcType=INTEGER}</if>
+      <if test="fromUserId != null ">AND FROM_USER_ID=#{fromUserId,jdbcType=INTEGER}</if>
+      <if test="toUserIdStr != null ">AND TO_USER_ID_STR like '%${toUserIdStr}%'</if>
+      <if test="toUserIdStrEq != null ">AND TO_USER_ID_STR=#{toUserIdStrEq,jdbcType=VARCHAR}</if>
+      <if test="userType != null ">AND USER_TYPE=#{userType,jdbcType=DECIMAL}</if>
+      <if test="subject != null ">AND SUBJECT like '%${subject}%'</if>
+      <if test="subjectEq != null ">AND SUBJECT=#{subjectEq,jdbcType=VARCHAR}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="mailType != null ">AND MAIL_TYPE like '%${mailType}%'</if>
+      <if test="mailTypeEq != null ">AND MAIL_TYPE=#{mailTypeEq,jdbcType=CHAR}</if>
+      <if test="bisType != null ">AND BIS_TYPE like '%${bisType}%'</if>
+      <if test="bisTypeEq != null ">AND BIS_TYPE=#{bisTypeEq,jdbcType=CHAR}</if>
+      <if test="mailStatus != null ">AND MAIL_STATUS like '%${mailStatus}%'</if>
+      <if test="mailStatusEq != null ">AND MAIL_STATUS=#{mailStatusEq,jdbcType=CHAR}</if>
+      <if test="mailCount != null ">AND MAIL_COUNT=#{mailCount,jdbcType=INTEGER}</if>
+      <if test="modifyBy != null ">AND MODIFY_BY like '%${modifyBy}%'</if>
+      <if test="modifyByEq != null ">AND MODIFY_BY=#{modifyByEq,jdbcType=VARCHAR}</if>
+      <if test="modifyDt != null ">AND MODIFY_DT=#{modifyDt,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtFrom != null ">AND MODIFY_DT&gt;=#{modifyDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modifyDtTo != null ">AND MODIFY_DT&lt;=#{modifyDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">AND CREATE_BY like '%${createBy}%'</if>
+      <if test="createByEq != null ">AND CREATE_BY=#{createByEq,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="toEmailStr != null ">AND TO_EMAIL_STR like '%${toEmailStr}%'</if>
+      <if test="toEmailStrEq != null ">AND TO_EMAIL_STR=#{toEmailStrEq,jdbcType=VARCHAR}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CFG_DICT">
+  <resultMap id="result_map_CFG_DICT" type="com.lubian.cpf.vo.CfgDict">
+    <id property="dictId" column="DICT_ID" jdbcType="INTEGER" />
+    <result property="type" column="TYPE" jdbcType="VARCHAR" />
+    <result property="shortCode" column="SHORT_CODE" jdbcType="VARCHAR" />
+    <result property="longName" column="LONG_NAME" jdbcType="VARCHAR" />
+    <result property="value" column="VALUE" jdbcType="VARCHAR" />
+    <result property="priority" column="PRIORITY" jdbcType="INTEGER" />
+    <result property="parentId" column="PARENT_ID" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="InsertCFG_DICT">
+    INSERT INTO CFG_DICT (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="type != null ">,TYPE</if>
+      <if test="shortCode != null ">,SHORT_CODE</if>
+      <if test="longName != null ">,LONG_NAME</if>
+      <if test="value != null ">,VALUE</if>
+      <if test="priority != null ">,PRIORITY</if>
+      <if test="parentId != null ">,PARENT_ID</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="type != null ">,#{type,jdbcType=VARCHAR}</if>
+      <if test="shortCode != null ">,#{shortCode,jdbcType=VARCHAR}</if>
+      <if test="longName != null ">,#{longName,jdbcType=VARCHAR}</if>
+      <if test="value != null ">,#{value,jdbcType=VARCHAR}</if>
+      <if test="priority != null ">,#{priority,jdbcType=INTEGER}</if>
+      <if test="parentId != null ">,#{parentId,jdbcType=INTEGER}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="dictId" order="AFTER">SELECT LAST_INSERT_ID() AS DICT_ID</selectKey>
+  </insert>
+  <update id="UpdateCFG_DICT">
+    UPDATE CFG_DICT 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="type != null ">,TYPE=#{type,jdbcType=VARCHAR}</if>
+      <if test="shortCode != null ">,SHORT_CODE=#{shortCode,jdbcType=VARCHAR}</if>
+      <if test="longName != null ">,LONG_NAME=#{longName,jdbcType=VARCHAR}</if>
+      <if test="value != null ">,VALUE=#{value,jdbcType=VARCHAR}</if>
+      <if test="priority != null ">,PRIORITY=#{priority,jdbcType=INTEGER}</if>
+      <if test="parentId != null ">,PARENT_ID=#{parentId,jdbcType=INTEGER}</if>
+    </trim>
+     WHERE DICT_ID=#{dictId,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteCFG_DICT">DELETE FROM CFG_DICT WHERE DICT_ID=#{dictId,jdbcType=INTEGER}</delete>
+  <select id="CountFindAllCFG_DICT" resultType="java.lang.Integer">SELECT count(1) as value FROM CFG_DICT</select>
+  <select id="CountCFG_DICT" resultType="java.lang.Integer">SELECT count(1) as value FROM CFG_DICT WHERE DICT_ID=#{dictId,jdbcType=INTEGER}</select>
+  <select id="FindByPKCFG_DICT" resultMap="result_map_CFG_DICT">SELECT DICT_ID,TYPE,SHORT_CODE,LONG_NAME,VALUE,PRIORITY,PARENT_ID FROM CFG_DICT WHERE DICT_ID=#{dictId,jdbcType=INTEGER}</select>
+  <select id="FreeFindCFG_DICT" resultMap="result_map_CFG_DICT">
+    SELECT DICT_ID,TYPE,SHORT_CODE,LONG_NAME,VALUE,PRIORITY,PARENT_ID FROM CFG_DICT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="dictId != null ">AND DICT_ID=#{dictId,jdbcType=INTEGER}</if>
+      <if test="type != null ">AND TYPE=#{type,jdbcType=VARCHAR}</if>
+      <if test="shortCode != null ">AND SHORT_CODE like '%${shortCode}%'</if>
+      <if test="shortCodeEq != null ">AND SHORT_CODE=#{shortCodeEq,jdbcType=VARCHAR}</if>
+      <if test="longName != null ">AND LONG_NAME like '%${longName}%'</if>
+      <if test="longNameEq != null ">AND LONG_NAME=#{longNameEq,jdbcType=VARCHAR}</if>
+      <if test="value != null ">AND VALUE like '%${value}%'</if>
+      <if test="valueEq != null ">AND VALUE=#{valueEq,jdbcType=VARCHAR}</if>
+      <if test="priority != null ">AND PRIORITY=#{priority,jdbcType=INTEGER}</if>
+      <if test="parentId != null ">AND PARENT_ID=#{parentId,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindCFG_DICT" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM CFG_DICT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="dictId != null ">AND DICT_ID=#{dictId,jdbcType=INTEGER}</if>
+      <if test="type != null ">AND TYPE=#{type,jdbcType=VARCHAR}</if>
+      <if test="shortCode != null ">AND SHORT_CODE like '%${shortCode}%'</if>
+      <if test="shortCodeEq != null ">AND SHORT_CODE=#{shortCodeEq,jdbcType=VARCHAR}</if>
+      <if test="longName != null ">AND LONG_NAME like '%${longName}%'</if>
+      <if test="longNameEq != null ">AND LONG_NAME=#{longNameEq,jdbcType=VARCHAR}</if>
+      <if test="value != null ">AND VALUE like '%${value}%'</if>
+      <if test="valueEq != null ">AND VALUE=#{valueEq,jdbcType=VARCHAR}</if>
+      <if test="priority != null ">AND PRIORITY=#{priority,jdbcType=INTEGER}</if>
+      <if test="parentId != null ">AND PARENT_ID=#{parentId,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="FreeFindCFG_DICTOrdered" resultMap="result_map_CFG_DICT">
+    SELECT DICT_ID,TYPE,SHORT_CODE,LONG_NAME,VALUE,PRIORITY,PARENT_ID FROM CFG_DICT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="dictId != null ">AND DICT_ID=#{dictId,jdbcType=INTEGER}</if>
+      <if test="type != null ">AND TYPE=#{type,jdbcType=VARCHAR}</if>
+      <if test="shortCode != null ">AND SHORT_CODE like '%${shortCode}%'</if>
+      <if test="shortCodeEq != null ">AND SHORT_CODE=#{shortCodeEq,jdbcType=VARCHAR}</if>
+      <if test="longName != null ">AND LONG_NAME like '%${longName}%'</if>
+      <if test="longNameEq != null ">AND LONG_NAME=#{longNameEq,jdbcType=VARCHAR}</if>
+      <if test="value != null ">AND VALUE like '%${value}%'</if>
+      <if test="valueEq != null ">AND VALUE=#{valueEq,jdbcType=VARCHAR}</if>
+      <if test="priority != null ">AND PRIORITY=#{priority,jdbcType=INTEGER}</if>
+      <if test="parentId != null ">AND PARENT_ID=#{parentId,jdbcType=INTEGER}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

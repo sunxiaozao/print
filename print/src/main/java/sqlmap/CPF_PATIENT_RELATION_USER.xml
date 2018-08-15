@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CPF_PATIENT_RELATION_USER">
+  <resultMap id="flat_result_map_CPF_PATIENT_RELATION_USER" type="com.lubian.cpf.vo.CpfPatientRelationUser">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="relationPatientId" column="RELATION_PATIENT_ID" jdbcType="INTEGER" />
+    <result property="patientId" column="PATIENT_ID" jdbcType="INTEGER" />
+    <result property="userId" column="USER_ID" jdbcType="INTEGER" />
+    <result property="createDt" column="CREATE_DT" jdbcType="TIMESTAMP" />
+    <result property="type" column="TYPE" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="result_map_CPF_PATIENT_RELATION_USER" type="com.lubian.cpf.vo.CpfPatientRelationUser">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="relationPatientId" column="RELATION_PATIENT_ID" jdbcType="INTEGER" />
+    <result property="patientId" column="PATIENT_ID" jdbcType="INTEGER" />
+    <result property="userId" column="USER_ID" jdbcType="INTEGER" />
+    <result property="createDt" column="CREATE_DT" jdbcType="TIMESTAMP" />
+    <result property="type" column="TYPE" jdbcType="CHAR" />
+    <collection property="cpfPatient" column="{id=RELATION_PATIENT_ID}" ofType="CpfPatient" select="CPF_PATIENT.FindCPF_PATIENTForCPF_PATIENT_RELATION_USER_cpfPatient" />
+  </resultMap>
+  <insert id="InsertCPF_PATIENT_RELATION_USER">
+    INSERT INTO CPF_PATIENT_RELATION_USER (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="relationPatientId != null ">,RELATION_PATIENT_ID</if>
+      <if test="patientId != null ">,PATIENT_ID</if>
+      <if test="userId != null ">,USER_ID</if>
+      <if test="createDt != null ">,CREATE_DT</if>
+      <if test="type != null ">,TYPE</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="relationPatientId != null ">,#{relationPatientId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">,#{patientId,jdbcType=INTEGER}</if>
+      <if test="userId != null ">,#{userId,jdbcType=INTEGER}</if>
+      <if test="createDt != null ">,#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="type != null ">,#{type,jdbcType=CHAR}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID() AS ID</selectKey>
+  </insert>
+  <update id="UpdateCPF_PATIENT_RELATION_USER">
+    UPDATE CPF_PATIENT_RELATION_USER 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="relationPatientId != null ">,RELATION_PATIENT_ID=#{relationPatientId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">,PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="userId != null ">,USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="createDt != null ">,CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="type != null ">,TYPE=#{type,jdbcType=CHAR}</if>
+    </trim>
+     WHERE ID=#{id,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteCPF_PATIENT_RELATION_USER">DELETE FROM CPF_PATIENT_RELATION_USER WHERE ID=#{id,jdbcType=INTEGER}</delete>
+  <select id="CountFindAllCPF_PATIENT_RELATION_USER" resultType="java.lang.Integer">SELECT count(1) as value FROM CPF_PATIENT_RELATION_USER</select>
+  <select id="CountCPF_PATIENT_RELATION_USER" resultType="java.lang.Integer">SELECT count(1) as value FROM CPF_PATIENT_RELATION_USER WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FindByPKCPF_PATIENT_RELATION_USER" resultMap="result_map_CPF_PATIENT_RELATION_USER">SELECT ID,RELATION_PATIENT_ID,PATIENT_ID,USER_ID,CREATE_DT,TYPE FROM CPF_PATIENT_RELATION_USER WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FreeFindCPF_PATIENT_RELATION_USER" resultMap="result_map_CPF_PATIENT_RELATION_USER">
+    SELECT ID,RELATION_PATIENT_ID,PATIENT_ID,USER_ID,CREATE_DT,TYPE FROM CPF_PATIENT_RELATION_USER
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="relationPatientId != null ">AND RELATION_PATIENT_ID=#{relationPatientId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="userId != null ">AND USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="type != null ">AND TYPE=#{type,jdbcType=CHAR}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindCPF_PATIENT_RELATION_USER" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM CPF_PATIENT_RELATION_USER
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="relationPatientId != null ">AND RELATION_PATIENT_ID=#{relationPatientId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="userId != null ">AND USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="type != null ">AND TYPE=#{type,jdbcType=CHAR}</if>
+    </trim>
+  </select>
+  <select id="FreeFindCPF_PATIENT_RELATION_USEROrdered" resultMap="result_map_CPF_PATIENT_RELATION_USER">
+    SELECT ID,RELATION_PATIENT_ID,PATIENT_ID,USER_ID,CREATE_DT,TYPE FROM CPF_PATIENT_RELATION_USER
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="relationPatientId != null ">AND RELATION_PATIENT_ID=#{relationPatientId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="userId != null ">AND USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="type != null ">AND TYPE=#{type,jdbcType=CHAR}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

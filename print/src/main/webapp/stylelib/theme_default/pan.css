@@ -1,0 +1,338 @@
+@media screen {
+
+    /* sidebar menu2 */
+    #sidebar .b-sidebar-menu2 {
+        padding: 0 0 60px 0;
+        border-top: 1px solid #444;
+        background-color: #666;
+    }
+
+    #sidebar .b-sidebar-menu2 li {
+        margin: 0;
+    }
+
+    #sidebar .b-sidebar-menu2 li a {
+        display: block;
+        padding: 10px 15px;
+        color:#fff;
+        font-size: 14px;
+    }
+
+    #sidebar .b-sidebar-menu2 li a:hover {
+        background-color: #444;
+        text-decoration: none;
+    }
+
+    #sidebar .b-sidebar-menu2 li.active a {
+        background-color: #0066cc;
+    }
+
+    #sidebar .b-sidebar-menu2 li a i {
+        display: inline-block;
+        width: 26px;
+        text-align: center;
+    }
+
+    #sidebar .b-sidebar-menu2 li a:hover i {
+        color:#FC4C03;
+    }
+
+    #sidebar .b-sidebar-menu2 .divider {
+        *width: 100%;
+        height: 1px;
+        margin: 9px 1px;
+        *margin: -5px 0 5px;
+        overflow: hidden;
+        background-color: #595959;
+        /*border-bottom: 1px solid #ffffff;*/
+    }
+
+
+    /* page actions 页头部工具栏 */
+    #main-content.page-actions {
+        padding-top: 60px;
+    }
+    .b-page-actions {
+        position: fixed;
+        top:60px;
+        left: 0;
+        right: 0;
+        margin-left: 180px;
+        z-index: 1000;
+        width: auto;
+        height: 40px;
+        background-color: #ddd;
+        border-top: 1px solid #ddd;
+    }
+
+    .b-page-actions .dropdown-menu {
+        margin-top: 2px;
+    }
+
+    .b-page-actions .bpab-morebar {
+        display: none;
+    }
+
+    .b-page-actions .bpab-morebar.show {
+        display: inline-block;
+    }
+
+    .b-usage {
+        float: right;
+        margin: 0 20px 0 0;
+        padding: 10px 0 0 0;
+        width: 100px;
+
+        /*z-index: 1001;*/
+    }
+
+    .b-usage .progress {
+        margin-bottom: 0;
+        height: 5px;   
+    }
+
+    .b-usage .progress .bar {
+        background-color: #666;
+    }
+
+    .b-usage .bu-text {
+        font-size: 11px;
+        color:#333;
+    }
+
+    .b-page-actions .btn-toolbar {
+        margin: 0;
+        padding: 5px 0 0 20px;
+    }
+
+    .b-page-actions .btn-toolbar .btn-group button,
+    .b-page-actions .btn-toolbar .btn-group a {
+        font-size: 12px;
+    }
+
+    /* File list */
+    /* b-files-headers */
+    .b-files-headers {
+        min-width: 400px;
+        background-color: #e9e9e9;
+        border: 1px solid #d5d5d5;
+        font-size: 12px;
+        -webkit-user-select: none;  /*webkit浏览器*/
+         -khtml-user-select: none; /*早期浏览器*/
+           -moz-user-select: none; /*火狐*/
+            -ms-user-select: none;   /*IE10*/
+                user-select: none;
+    }
+
+    .b-files-headers .m-col-c {
+        border-right: 1px solid #d5d5d5;
+        color:#666;
+    }
+
+    .b-files-headers .m-file-date .m-col-c {
+        border: 0;
+    }
+
+    .b-files-headers .checker,
+    .b-files-list .checker {
+        margin-top: -2px;
+        z-index: 2;
+    }
+    .b-files-headers .checker span,
+    .b-files-list .checker span {
+        margin-top: 0;
+    }
+
+    /* b-files-list */
+    .b-files-list {
+        margin-top: 0;
+        min-width: 400px;
+        font-size: 12px;
+
+        -webkit-user-select: none;  /*webkit浏览器*/
+         -khtml-user-select: none; /*早期浏览器*/
+           -moz-user-select: none; /*火狐*/
+            -ms-user-select: none;   /*IE10*/
+                user-select: none;
+    }
+
+    .b-files-list dd {
+        margin-left: 0;
+        border-bottom: 1px solid #d9d9d9;
+    }
+
+/*    .b-files-list dd .m-col-c {
+        height: 30px;
+        vertical-align: middle;
+        line-height: 30px;
+    }*/
+
+    .b-files-list .m-file-name a.mfn-name {
+        color:#333;
+        text-decoration: none;
+    }
+
+    .b-files-list .m-file-name a.mfn-name:hover {
+        color:#000;
+        text-decoration: underline;
+    }
+
+    .b-files-list .m-file-size {
+        color:#888;
+    }
+
+
+    .b-files-list .m-file-date {
+        color:#888;
+    }
+
+    .b-files-list dd.hover {
+        background-color: #eee;
+    }
+
+    .b-files-list dd.rele {
+        background-color: #FFFBC3;
+    }
+
+    .b-files-list .m-file-name .m-col-c {
+        position: relative;
+    }
+
+    .b-files-list .m-ddfile-bar {
+        display: none;
+        position: absolute;
+        top:6px;
+        right: 20px;
+    }
+
+    .b-files-list dd.hover .m-ddfile-bar {
+        display: block;
+    }
+
+    .m-ddfile-bar a {
+        display: inline-block;
+        margin: 0;
+        padding: 5px 5px;
+        font-size: 18px;
+        text-decoration: none;
+        color:#999;
+    }
+
+    .m-ddfile-bar a:hover {
+        color:#333;
+        text-decoration: none !important;
+    }
+
+    /**/
+    .m-file-name {
+        width: 60%;
+        white-space:nowrap; 
+    }
+
+    .m-file-name input[type="checkbox"] {
+        margin: -2px 10px 0 0;
+        padding: 0;
+    }
+
+    .m-file-size {
+        width: 20%;
+        white-space:nowrap; 
+    }
+
+    .m-file-date {
+        width: 20%;
+        white-space:nowrap;
+    } 
+
+    /* ico */
+    .m-f-folder,
+    .m-f-video,
+    .m-f-pack,
+    .m-f-text,
+    .m-f-pic,
+    .m-f-auto,
+    .m-f-doc,
+    .m-f-pdf,
+    .m-f-visio,
+    .m-f-excel,
+    .m-f-powerpoint,
+    .m-f-iso,
+    .m-f-apk,
+    .m-f-notype,
+    .m-f-torrent,
+    .m-f-publisher {
+        display: inline-block;
+        margin-right: 10px;
+        width: 26px;
+        height: 21px;
+        background-image: url(../images/sprite_list_icon.gif);
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        vertical-align: middle;
+    }
+
+    .m-f-folder {
+        background-position: 0 0;
+    }
+
+    .m-f-video {
+        background-position: -224px -80px;
+    }
+
+    .m-f-pack {
+        background-position: -352px -80px;
+    }
+
+    .m-f-text {
+        background-position: -160px -80px;
+    }
+
+    .m-f-pic {
+        background-position: 0 -80px;
+    }
+
+    .m-f-auto {
+        background-position: -192px -80px;
+    }
+
+    .m-f-doc {
+        background-position: -96px -80px;
+    }
+
+    .m-f-pdf {
+        background-position: -64px -80px;
+    }
+
+    .m-f-visio {
+        background-position: -32px -80px;
+    }
+
+    .m-f-excel {
+        background-position: -128px -80px;
+    }
+
+    .m-f-powerpoint {
+        background-position: -257px -80px;
+    }
+
+    .m-f-iso {
+        background-position: -320px -80px;
+    }
+
+    .m-f-apk {
+        background-position: -384px -80px;
+    }
+
+    .m-f-notype {
+        background-position: -416px -80px;
+    }
+
+    .m-f-torrent {
+        background-position: -448px -80px;
+    }
+
+    .m-f-publisher {
+        background-position: -509px -80px;
+    }
+
+}

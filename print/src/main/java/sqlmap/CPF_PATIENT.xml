@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CPF_PATIENT">
+  <resultMap id="flat_result_map_CPF_PATIENT" type="com.lubian.cpf.vo.CpfPatient">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="cardId" column="CARD_ID" jdbcType="VARCHAR" />
+    <result property="identityCard" column="IDENTITY_CARD" jdbcType="VARCHAR" />
+    <result property="fullname" column="FULLNAME" jdbcType="VARCHAR" />
+    <result property="icId" column="IC_ID" jdbcType="VARCHAR" />
+    <result property="icLoginFlag" column="IC_LOGIN_FLAG" jdbcType="CHAR" />
+    <result property="password" column="PASSWORD" jdbcType="VARCHAR" />
+    <result property="userName" column="USER_NAME" jdbcType="VARCHAR" />
+    <result property="mobile" column="MOBILE" jdbcType="VARCHAR" />
+    <result property="email" column="EMAIL" jdbcType="VARCHAR" />
+    <result property="xPictureId" column="X_PICTURE_ID" jdbcType="VARCHAR" />
+    <result property="sex" column="SEX" jdbcType="VARCHAR" />
+    <result property="birthday" column="BIRTHDAY" jdbcType="DATE" />
+    <result property="birthPlace" column="BIRTH_PLACE" jdbcType="VARCHAR" />
+    <result property="medicineHypersusceptibility" column="MEDICINE_HYPERSUSCEPTIBILITY" jdbcType="VARCHAR" />
+    <result property="bloodType" column="BLOOD_TYPE" jdbcType="VARCHAR" />
+    <result property="marryStaus" column="MARRY_STAUS" jdbcType="VARCHAR" />
+    <result property="familyIllHistory" column="FAMILY_ILL_HISTORY" jdbcType="VARCHAR" />
+    <result property="homeFlag" column="HOME_FLAG" jdbcType="CHAR" />
+    <result property="creator" column="CREATOR" jdbcType="VARCHAR" />
+    <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP" />
+    <result property="modifier" column="MODIFIER" jdbcType="VARCHAR" />
+    <result property="modilyTime" column="MODILY_TIME" jdbcType="TIMESTAMP" />
+    <result property="userId" column="USER_ID" jdbcType="INTEGER" />
+    <result property="hospitalId" column="HOSPITAL_ID" jdbcType="INTEGER" />
+    <result property="smallImage" column="SMALL_IMAGE" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="result_map_CPF_PATIENT" type="com.lubian.cpf.vo.CpfPatient">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="cardId" column="CARD_ID" jdbcType="VARCHAR" />
+    <result property="identityCard" column="IDENTITY_CARD" jdbcType="VARCHAR" />
+    <result property="fullname" column="FULLNAME" jdbcType="VARCHAR" />
+    <result property="icId" column="IC_ID" jdbcType="VARCHAR" />
+    <result property="icLoginFlag" column="IC_LOGIN_FLAG" jdbcType="CHAR" />
+    <result property="password" column="PASSWORD" jdbcType="VARCHAR" />
+    <result property="userName" column="USER_NAME" jdbcType="VARCHAR" />
+    <result property="mobile" column="MOBILE" jdbcType="VARCHAR" />
+    <result property="email" column="EMAIL" jdbcType="VARCHAR" />
+    <result property="xPictureId" column="X_PICTURE_ID" jdbcType="VARCHAR" />
+    <result property="sex" column="SEX" jdbcType="VARCHAR" />
+    <result property="birthday" column="BIRTHDAY" jdbcType="DATE" />
+    <result property="birthPlace" column="BIRTH_PLACE" jdbcType="VARCHAR" />
+    <result property="medicineHypersusceptibility" column="MEDICINE_HYPERSUSCEPTIBILITY" jdbcType="VARCHAR" />
+    <result property="bloodType" column="BLOOD_TYPE" jdbcType="VARCHAR" />
+    <result property="marryStaus" column="MARRY_STAUS" jdbcType="VARCHAR" />
+    <result property="familyIllHistory" column="FAMILY_ILL_HISTORY" jdbcType="VARCHAR" />
+    <result property="homeFlag" column="HOME_FLAG" jdbcType="CHAR" />
+    <result property="creator" column="CREATOR" jdbcType="VARCHAR" />
+    <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP" />
+    <result property="modifier" column="MODIFIER" jdbcType="VARCHAR" />
+    <result property="modilyTime" column="MODILY_TIME" jdbcType="TIMESTAMP" />
+    <result property="userId" column="USER_ID" jdbcType="INTEGER" />
+    <result property="hospitalId" column="HOSPITAL_ID" jdbcType="INTEGER" />
+    <result property="smallImage" column="SMALL_IMAGE" jdbcType="VARCHAR" />
+    <collection property="sysHospital" column="{id=HOSPITAL_ID}" ofType="SysHospital" select="SYS_HOSPITAL.FindSYS_HOSPITALForCPF_PATIENT_sysHospital" />
+  </resultMap>
+  <insert id="InsertCPF_PATIENT">
+    INSERT INTO CPF_PATIENT (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="cardId != null ">,CARD_ID</if>
+      <if test="identityCard != null ">,IDENTITY_CARD</if>
+      <if test="fullname != null ">,FULLNAME</if>
+      <if test="icId != null ">,IC_ID</if>
+      <if test="icLoginFlag != null ">,IC_LOGIN_FLAG</if>
+      <if test="password != null ">,PASSWORD</if>
+      <if test="userName != null ">,USER_NAME</if>
+      <if test="mobile != null ">,MOBILE</if>
+      <if test="email != null ">,EMAIL</if>
+      <if test="xPictureId != null ">,X_PICTURE_ID</if>
+      <if test="sex != null ">,SEX</if>
+      <if test="birthday != null ">,BIRTHDAY</if>
+      <if test="birthPlace != null ">,BIRTH_PLACE</if>
+      <if test="medicineHypersusceptibility != null ">,MEDICINE_HYPERSUSCEPTIBILITY</if>
+      <if test="bloodType != null ">,BLOOD_TYPE</if>
+      <if test="marryStaus != null ">,MARRY_STAUS</if>
+      <if test="familyIllHistory != null ">,FAMILY_ILL_HISTORY</if>
+      <if test="homeFlag != null ">,HOME_FLAG</if>
+      <if test="creator != null ">,CREATOR</if>
+      <if test="createTime != null ">,CREATE_TIME</if>
+      <if test="modifier != null ">,MODIFIER</if>
+      <if test="modilyTime != null ">,MODILY_TIME</if>
+      <if test="userId != null ">,USER_ID</if>
+      <if test="hospitalId != null ">,HOSPITAL_ID</if>
+      <if test="smallImage != null ">,SMALL_IMAGE</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="cardId != null ">,#{cardId,jdbcType=VARCHAR}</if>
+      <if test="identityCard != null ">,#{identityCard,jdbcType=VARCHAR}</if>
+      <if test="fullname != null ">,#{fullname,jdbcType=VARCHAR}</if>
+      <if test="icId != null ">,#{icId,jdbcType=VARCHAR}</if>
+      <if test="icLoginFlag != null ">,#{icLoginFlag,jdbcType=CHAR}</if>
+      <if test="password != null ">,#{password,jdbcType=VARCHAR}</if>
+      <if test="userName != null ">,#{userName,jdbcType=VARCHAR}</if>
+      <if test="mobile != null ">,#{mobile,jdbcType=VARCHAR}</if>
+      <if test="email != null ">,#{email,jdbcType=VARCHAR}</if>
+      <if test="xPictureId != null ">,#{xPictureId,jdbcType=VARCHAR}</if>
+      <if test="sex != null ">,#{sex,jdbcType=VARCHAR}</if>
+      <if test="birthday != null ">,#{birthday,jdbcType=DATE}</if>
+      <if test="birthPlace != null ">,#{birthPlace,jdbcType=VARCHAR}</if>
+      <if test="medicineHypersusceptibility != null ">,#{medicineHypersusceptibility,jdbcType=VARCHAR}</if>
+      <if test="bloodType != null ">,#{bloodType,jdbcType=VARCHAR}</if>
+      <if test="marryStaus != null ">,#{marryStaus,jdbcType=VARCHAR}</if>
+      <if test="familyIllHistory != null ">,#{familyIllHistory,jdbcType=VARCHAR}</if>
+      <if test="homeFlag != null ">,#{homeFlag,jdbcType=CHAR}</if>
+      <if test="creator != null ">,#{creator,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">,#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="modifier != null ">,#{modifier,jdbcType=VARCHAR}</if>
+      <if test="modilyTime != null ">,#{modilyTime,jdbcType=TIMESTAMP}</if>
+      <if test="userId != null ">,#{userId,jdbcType=INTEGER}</if>
+      <if test="hospitalId != null ">,#{hospitalId,jdbcType=INTEGER}</if>
+      <if test="smallImage != null ">,#{smallImage,jdbcType=VARCHAR}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID() AS ID</selectKey>
+  </insert>
+  <update id="UpdateCPF_PATIENT">
+    UPDATE CPF_PATIENT 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="cardId != null ">,CARD_ID=#{cardId,jdbcType=VARCHAR}</if>
+      <if test="identityCard != null ">,IDENTITY_CARD=#{identityCard,jdbcType=VARCHAR}</if>
+      <if test="fullname != null ">,FULLNAME=#{fullname,jdbcType=VARCHAR}</if>
+      <if test="icId != null ">,IC_ID=#{icId,jdbcType=VARCHAR}</if>
+      <if test="icLoginFlag != null ">,IC_LOGIN_FLAG=#{icLoginFlag,jdbcType=CHAR}</if>
+      <if test="password != null ">,PASSWORD=#{password,jdbcType=VARCHAR}</if>
+      <if test="userName != null ">,USER_NAME=#{userName,jdbcType=VARCHAR}</if>
+      <if test="mobile != null ">,MOBILE=#{mobile,jdbcType=VARCHAR}</if>
+      <if test="email != null ">,EMAIL=#{email,jdbcType=VARCHAR}</if>
+      <if test="xPictureId != null ">,X_PICTURE_ID=#{xPictureId,jdbcType=VARCHAR}</if>
+      <if test="sex != null ">,SEX=#{sex,jdbcType=VARCHAR}</if>
+      <if test="birthday != null ">,BIRTHDAY=#{birthday,jdbcType=DATE}</if>
+      <if test="birthPlace != null ">,BIRTH_PLACE=#{birthPlace,jdbcType=VARCHAR}</if>
+      <if test="medicineHypersusceptibility != null ">,MEDICINE_HYPERSUSCEPTIBILITY=#{medicineHypersusceptibility,jdbcType=VARCHAR}</if>
+      <if test="bloodType != null ">,BLOOD_TYPE=#{bloodType,jdbcType=VARCHAR}</if>
+      <if test="marryStaus != null ">,MARRY_STAUS=#{marryStaus,jdbcType=VARCHAR}</if>
+      <if test="familyIllHistory != null ">,FAMILY_ILL_HISTORY=#{familyIllHistory,jdbcType=VARCHAR}</if>
+      <if test="homeFlag != null ">,HOME_FLAG=#{homeFlag,jdbcType=CHAR}</if>
+      <if test="creator != null ">,CREATOR=#{creator,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">,CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="modifier != null ">,MODIFIER=#{modifier,jdbcType=VARCHAR}</if>
+      <if test="modilyTime != null ">,MODILY_TIME=#{modilyTime,jdbcType=TIMESTAMP}</if>
+      <if test="userId != null ">,USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="hospitalId != null ">,HOSPITAL_ID=#{hospitalId,jdbcType=INTEGER}</if>
+      <if test="smallImage != null ">,SMALL_IMAGE=#{smallImage,jdbcType=VARCHAR}</if>
+    </trim>
+     WHERE ID=#{id,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteCPF_PATIENT">DELETE FROM CPF_PATIENT WHERE ID=#{id,jdbcType=INTEGER}</delete>
+  <select id="FindCPF_PATIENTForCDF_NOTEBOOK_cpfPatient" resultMap="flat_result_map_CPF_PATIENT">
+    SELECT ID,CARD_ID,IDENTITY_CARD,FULLNAME,IC_ID,IC_LOGIN_FLAG,PASSWORD,USER_NAME,MOBILE,EMAIL,X_PICTURE_ID,SEX,BIRTHDAY,BIRTH_PLACE,MEDICINE_HYPERSUSCEPTIBILITY,BLOOD_TYPE,MARRY_STAUS,FAMILY_ILL_HISTORY,HOME_FLAG,CREATOR,CREATE_TIME,MODIFIER,MODILY_TIME,USER_ID,HOSPITAL_ID,SMALL_IMAGE FROM CPF_PATIENT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id == null ">AND 1=2</if>
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="FindCPF_PATIENTForCPF_CASE_HISTORY_cpfPatient" resultMap="flat_result_map_CPF_PATIENT">
+    SELECT ID,CARD_ID,IDENTITY_CARD,FULLNAME,IC_ID,IC_LOGIN_FLAG,PASSWORD,USER_NAME,MOBILE,EMAIL,X_PICTURE_ID,SEX,BIRTHDAY,BIRTH_PLACE,MEDICINE_HYPERSUSCEPTIBILITY,BLOOD_TYPE,MARRY_STAUS,FAMILY_ILL_HISTORY,HOME_FLAG,CREATOR,CREATE_TIME,MODIFIER,MODILY_TIME,USER_ID,HOSPITAL_ID,SMALL_IMAGE FROM CPF_PATIENT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id == null ">AND 1=2</if>
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="FindCPF_PATIENTForCPF_RELATION_relatePatient" resultMap="flat_result_map_CPF_PATIENT">
+    SELECT ID,CARD_ID,IDENTITY_CARD,FULLNAME,IC_ID,IC_LOGIN_FLAG,PASSWORD,USER_NAME,MOBILE,EMAIL,X_PICTURE_ID,SEX,BIRTHDAY,BIRTH_PLACE,MEDICINE_HYPERSUSCEPTIBILITY,BLOOD_TYPE,MARRY_STAUS,FAMILY_ILL_HISTORY,HOME_FLAG,CREATOR,CREATE_TIME,MODIFIER,MODILY_TIME,USER_ID,HOSPITAL_ID,SMALL_IMAGE FROM CPF_PATIENT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id == null ">AND 1=2</if>
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="FindCPF_PATIENTForCPF_REPLY_cpfPatient" resultMap="flat_result_map_CPF_PATIENT">
+    SELECT ID,CARD_ID,IDENTITY_CARD,FULLNAME,IC_ID,IC_LOGIN_FLAG,PASSWORD,USER_NAME,MOBILE,EMAIL,X_PICTURE_ID,SEX,BIRTHDAY,BIRTH_PLACE,MEDICINE_HYPERSUSCEPTIBILITY,BLOOD_TYPE,MARRY_STAUS,FAMILY_ILL_HISTORY,HOME_FLAG,CREATOR,CREATE_TIME,MODIFIER,MODILY_TIME,USER_ID,HOSPITAL_ID,SMALL_IMAGE FROM CPF_PATIENT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id == null ">AND 1=2</if>
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="FindCPF_PATIENTForCPF_SHARE_cpfPatient" resultMap="flat_result_map_CPF_PATIENT">
+    SELECT ID,CARD_ID,IDENTITY_CARD,FULLNAME,IC_ID,IC_LOGIN_FLAG,PASSWORD,USER_NAME,MOBILE,EMAIL,X_PICTURE_ID,SEX,BIRTHDAY,BIRTH_PLACE,MEDICINE_HYPERSUSCEPTIBILITY,BLOOD_TYPE,MARRY_STAUS,FAMILY_ILL_HISTORY,HOME_FLAG,CREATOR,CREATE_TIME,MODIFIER,MODILY_TIME,USER_ID,HOSPITAL_ID,SMALL_IMAGE FROM CPF_PATIENT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id == null ">AND 1=2</if>
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="FindCPF_PATIENTForCPF_PATIENT_RELATION_USER_cpfPatient" resultMap="flat_result_map_CPF_PATIENT">
+    SELECT ID,CARD_ID,IDENTITY_CARD,FULLNAME,IC_ID,IC_LOGIN_FLAG,PASSWORD,USER_NAME,MOBILE,EMAIL,X_PICTURE_ID,SEX,BIRTHDAY,BIRTH_PLACE,MEDICINE_HYPERSUSCEPTIBILITY,BLOOD_TYPE,MARRY_STAUS,FAMILY_ILL_HISTORY,HOME_FLAG,CREATOR,CREATE_TIME,MODIFIER,MODILY_TIME,USER_ID,HOSPITAL_ID,SMALL_IMAGE FROM CPF_PATIENT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id == null ">AND 1=2</if>
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="CountFindAllCPF_PATIENT" resultType="java.lang.Integer">SELECT count(1) as value FROM CPF_PATIENT</select>
+  <select id="CountCPF_PATIENT" resultType="java.lang.Integer">SELECT count(1) as value FROM CPF_PATIENT WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FindByPKCPF_PATIENT" resultMap="result_map_CPF_PATIENT">SELECT ID,CARD_ID,IDENTITY_CARD,FULLNAME,IC_ID,IC_LOGIN_FLAG,PASSWORD,USER_NAME,MOBILE,EMAIL,X_PICTURE_ID,SEX,BIRTHDAY,BIRTH_PLACE,MEDICINE_HYPERSUSCEPTIBILITY,BLOOD_TYPE,MARRY_STAUS,FAMILY_ILL_HISTORY,HOME_FLAG,CREATOR,CREATE_TIME,MODIFIER,MODILY_TIME,USER_ID,HOSPITAL_ID,SMALL_IMAGE FROM CPF_PATIENT WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FreeFindCPF_PATIENT" resultMap="result_map_CPF_PATIENT">
+    SELECT ID,CARD_ID,IDENTITY_CARD,FULLNAME,IC_ID,IC_LOGIN_FLAG,PASSWORD,USER_NAME,MOBILE,EMAIL,X_PICTURE_ID,SEX,BIRTHDAY,BIRTH_PLACE,MEDICINE_HYPERSUSCEPTIBILITY,BLOOD_TYPE,MARRY_STAUS,FAMILY_ILL_HISTORY,HOME_FLAG,CREATOR,CREATE_TIME,MODIFIER,MODILY_TIME,USER_ID,HOSPITAL_ID,SMALL_IMAGE FROM CPF_PATIENT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="id_instr != null ">AND ID in (${id_instr})</if>
+      <if test="cardId != null ">AND CARD_ID like '%${cardId}%'</if>
+      <if test="cardIdEq != null ">AND CARD_ID=#{cardIdEq,jdbcType=VARCHAR}</if>
+      <if test="identityCard != null ">AND IDENTITY_CARD like '%${identityCard}%'</if>
+      <if test="identityCardEq != null ">AND IDENTITY_CARD=#{identityCardEq,jdbcType=VARCHAR}</if>
+      <if test="fullname != null ">AND FULLNAME like '%${fullname}%'</if>
+      <if test="fullnameEq != null ">AND FULLNAME=#{fullnameEq,jdbcType=VARCHAR}</if>
+      <if test="icId != null ">AND IC_ID like '%${icId}%'</if>
+      <if test="icIdEq != null ">AND IC_ID=#{icIdEq,jdbcType=VARCHAR}</if>
+      <if test="icLoginFlag != null ">AND IC_LOGIN_FLAG like '%${icLoginFlag}%'</if>
+      <if test="icLoginFlagEq != null ">AND IC_LOGIN_FLAG=#{icLoginFlagEq,jdbcType=CHAR}</if>
+      <if test="password != null ">AND PASSWORD like '%${password}%'</if>
+      <if test="passwordEq != null ">AND PASSWORD=#{passwordEq,jdbcType=VARCHAR}</if>
+      <if test="userName != null ">AND USER_NAME like '%${userName}%'</if>
+      <if test="userNameEq != null ">AND USER_NAME=#{userNameEq,jdbcType=VARCHAR}</if>
+      <if test="mobile != null ">AND MOBILE like '%${mobile}%'</if>
+      <if test="mobileEq != null ">AND MOBILE=#{mobileEq,jdbcType=VARCHAR}</if>
+      <if test="email != null ">AND EMAIL like '%${email}%'</if>
+      <if test="emailEq != null ">AND EMAIL=#{emailEq,jdbcType=VARCHAR}</if>
+      <if test="xPictureId != null ">AND X_PICTURE_ID like '%${xPictureId}%'</if>
+      <if test="xPictureIdEq != null ">AND X_PICTURE_ID=#{xPictureIdEq,jdbcType=VARCHAR}</if>
+      <if test="sex != null ">AND SEX like '%${sex}%'</if>
+      <if test="sexEq != null ">AND SEX=#{sexEq,jdbcType=VARCHAR}</if>
+      <if test="birthday != null ">AND BIRTHDAY=#{birthday,jdbcType=DATE}</if>
+      <if test="birthdayFrom != null ">AND BIRTHDAY&gt;=#{birthdayFrom,jdbcType=DATE}</if>
+      <if test="birthdayTo != null ">AND BIRTHDAY&lt;=#{birthdayTo,jdbcType=DATE}</if>
+      <if test="birthPlace != null ">AND BIRTH_PLACE like '%${birthPlace}%'</if>
+      <if test="birthPlaceEq != null ">AND BIRTH_PLACE=#{birthPlaceEq,jdbcType=VARCHAR}</if>
+      <if test="medicineHypersusceptibility != null ">AND MEDICINE_HYPERSUSCEPTIBILITY like '%${medicineHypersusceptibility}%'</if>
+      <if test="medicineHypersusceptibilityEq != null ">AND MEDICINE_HYPERSUSCEPTIBILITY=#{medicineHypersusceptibilityEq,jdbcType=VARCHAR}</if>
+      <if test="bloodType != null ">AND BLOOD_TYPE like '%${bloodType}%'</if>
+      <if test="bloodTypeEq != null ">AND BLOOD_TYPE=#{bloodTypeEq,jdbcType=VARCHAR}</if>
+      <if test="marryStaus != null ">AND MARRY_STAUS like '%${marryStaus}%'</if>
+      <if test="marryStausEq != null ">AND MARRY_STAUS=#{marryStausEq,jdbcType=VARCHAR}</if>
+      <if test="familyIllHistory != null ">AND FAMILY_ILL_HISTORY like '%${familyIllHistory}%'</if>
+      <if test="familyIllHistoryEq != null ">AND FAMILY_ILL_HISTORY=#{familyIllHistoryEq,jdbcType=VARCHAR}</if>
+      <if test="homeFlag != null ">AND HOME_FLAG like '%${homeFlag}%'</if>
+      <if test="homeFlagEq != null ">AND HOME_FLAG=#{homeFlagEq,jdbcType=CHAR}</if>
+      <if test="creator != null ">AND CREATOR like '%${creator}%'</if>
+      <if test="creatorEq != null ">AND CREATOR=#{creatorEq,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="modifier != null ">AND MODIFIER like '%${modifier}%'</if>
+      <if test="modifierEq != null ">AND MODIFIER=#{modifierEq,jdbcType=VARCHAR}</if>
+      <if test="modilyTime != null ">AND MODILY_TIME=#{modilyTime,jdbcType=TIMESTAMP}</if>
+      <if test="modilyTimeFrom != null ">AND MODILY_TIME&gt;=#{modilyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modilyTimeTo != null ">AND MODILY_TIME&lt;=#{modilyTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="userId != null ">AND USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="hospitalId != null ">AND HOSPITAL_ID=#{hospitalId,jdbcType=INTEGER}</if>
+      <if test="smallImage != null ">AND SMALL_IMAGE like '%${smallImage}%'</if>
+      <if test="smallImageEq != null ">AND SMALL_IMAGE=#{smallImageEq,jdbcType=VARCHAR}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindCPF_PATIENT" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM CPF_PATIENT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="id_instr != null ">AND ID in (${id_instr})</if>
+      <if test="cardId != null ">AND CARD_ID like '%${cardId}%'</if>
+      <if test="cardIdEq != null ">AND CARD_ID=#{cardIdEq,jdbcType=VARCHAR}</if>
+      <if test="identityCard != null ">AND IDENTITY_CARD like '%${identityCard}%'</if>
+      <if test="identityCardEq != null ">AND IDENTITY_CARD=#{identityCardEq,jdbcType=VARCHAR}</if>
+      <if test="fullname != null ">AND FULLNAME like '%${fullname}%'</if>
+      <if test="fullnameEq != null ">AND FULLNAME=#{fullnameEq,jdbcType=VARCHAR}</if>
+      <if test="icId != null ">AND IC_ID like '%${icId}%'</if>
+      <if test="icIdEq != null ">AND IC_ID=#{icIdEq,jdbcType=VARCHAR}</if>
+      <if test="icLoginFlag != null ">AND IC_LOGIN_FLAG like '%${icLoginFlag}%'</if>
+      <if test="icLoginFlagEq != null ">AND IC_LOGIN_FLAG=#{icLoginFlagEq,jdbcType=CHAR}</if>
+      <if test="password != null ">AND PASSWORD like '%${password}%'</if>
+      <if test="passwordEq != null ">AND PASSWORD=#{passwordEq,jdbcType=VARCHAR}</if>
+      <if test="userName != null ">AND USER_NAME like '%${userName}%'</if>
+      <if test="userNameEq != null ">AND USER_NAME=#{userNameEq,jdbcType=VARCHAR}</if>
+      <if test="mobile != null ">AND MOBILE like '%${mobile}%'</if>
+      <if test="mobileEq != null ">AND MOBILE=#{mobileEq,jdbcType=VARCHAR}</if>
+      <if test="email != null ">AND EMAIL like '%${email}%'</if>
+      <if test="emailEq != null ">AND EMAIL=#{emailEq,jdbcType=VARCHAR}</if>
+      <if test="xPictureId != null ">AND X_PICTURE_ID like '%${xPictureId}%'</if>
+      <if test="xPictureIdEq != null ">AND X_PICTURE_ID=#{xPictureIdEq,jdbcType=VARCHAR}</if>
+      <if test="sex != null ">AND SEX like '%${sex}%'</if>
+      <if test="sexEq != null ">AND SEX=#{sexEq,jdbcType=VARCHAR}</if>
+      <if test="birthday != null ">AND BIRTHDAY=#{birthday,jdbcType=DATE}</if>
+      <if test="birthdayFrom != null ">AND BIRTHDAY&gt;=#{birthdayFrom,jdbcType=DATE}</if>
+      <if test="birthdayTo != null ">AND BIRTHDAY&lt;=#{birthdayTo,jdbcType=DATE}</if>
+      <if test="birthPlace != null ">AND BIRTH_PLACE like '%${birthPlace}%'</if>
+      <if test="birthPlaceEq != null ">AND BIRTH_PLACE=#{birthPlaceEq,jdbcType=VARCHAR}</if>
+      <if test="medicineHypersusceptibility != null ">AND MEDICINE_HYPERSUSCEPTIBILITY like '%${medicineHypersusceptibility}%'</if>
+      <if test="medicineHypersusceptibilityEq != null ">AND MEDICINE_HYPERSUSCEPTIBILITY=#{medicineHypersusceptibilityEq,jdbcType=VARCHAR}</if>
+      <if test="bloodType != null ">AND BLOOD_TYPE like '%${bloodType}%'</if>
+      <if test="bloodTypeEq != null ">AND BLOOD_TYPE=#{bloodTypeEq,jdbcType=VARCHAR}</if>
+      <if test="marryStaus != null ">AND MARRY_STAUS like '%${marryStaus}%'</if>
+      <if test="marryStausEq != null ">AND MARRY_STAUS=#{marryStausEq,jdbcType=VARCHAR}</if>
+      <if test="familyIllHistory != null ">AND FAMILY_ILL_HISTORY like '%${familyIllHistory}%'</if>
+      <if test="familyIllHistoryEq != null ">AND FAMILY_ILL_HISTORY=#{familyIllHistoryEq,jdbcType=VARCHAR}</if>
+      <if test="homeFlag != null ">AND HOME_FLAG like '%${homeFlag}%'</if>
+      <if test="homeFlagEq != null ">AND HOME_FLAG=#{homeFlagEq,jdbcType=CHAR}</if>
+      <if test="creator != null ">AND CREATOR like '%${creator}%'</if>
+      <if test="creatorEq != null ">AND CREATOR=#{creatorEq,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="modifier != null ">AND MODIFIER like '%${modifier}%'</if>
+      <if test="modifierEq != null ">AND MODIFIER=#{modifierEq,jdbcType=VARCHAR}</if>
+      <if test="modilyTime != null ">AND MODILY_TIME=#{modilyTime,jdbcType=TIMESTAMP}</if>
+      <if test="modilyTimeFrom != null ">AND MODILY_TIME&gt;=#{modilyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modilyTimeTo != null ">AND MODILY_TIME&lt;=#{modilyTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="userId != null ">AND USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="hospitalId != null ">AND HOSPITAL_ID=#{hospitalId,jdbcType=INTEGER}</if>
+      <if test="smallImage != null ">AND SMALL_IMAGE like '%${smallImage}%'</if>
+      <if test="smallImageEq != null ">AND SMALL_IMAGE=#{smallImageEq,jdbcType=VARCHAR}</if>
+    </trim>
+  </select>
+  <select id="FreeFindCPF_PATIENTOrdered" resultMap="result_map_CPF_PATIENT">
+    SELECT ID,CARD_ID,IDENTITY_CARD,FULLNAME,IC_ID,IC_LOGIN_FLAG,PASSWORD,USER_NAME,MOBILE,EMAIL,X_PICTURE_ID,SEX,BIRTHDAY,BIRTH_PLACE,MEDICINE_HYPERSUSCEPTIBILITY,BLOOD_TYPE,MARRY_STAUS,FAMILY_ILL_HISTORY,HOME_FLAG,CREATOR,CREATE_TIME,MODIFIER,MODILY_TIME,USER_ID,HOSPITAL_ID,SMALL_IMAGE FROM CPF_PATIENT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="id_instr != null ">AND ID in (${id_instr})</if>
+      <if test="cardId != null ">AND CARD_ID like '%${cardId}%'</if>
+      <if test="cardIdEq != null ">AND CARD_ID=#{cardIdEq,jdbcType=VARCHAR}</if>
+      <if test="identityCard != null ">AND IDENTITY_CARD like '%${identityCard}%'</if>
+      <if test="identityCardEq != null ">AND IDENTITY_CARD=#{identityCardEq,jdbcType=VARCHAR}</if>
+      <if test="fullname != null ">AND FULLNAME like '%${fullname}%'</if>
+      <if test="fullnameEq != null ">AND FULLNAME=#{fullnameEq,jdbcType=VARCHAR}</if>
+      <if test="icId != null ">AND IC_ID like '%${icId}%'</if>
+      <if test="icIdEq != null ">AND IC_ID=#{icIdEq,jdbcType=VARCHAR}</if>
+      <if test="icLoginFlag != null ">AND IC_LOGIN_FLAG like '%${icLoginFlag}%'</if>
+      <if test="icLoginFlagEq != null ">AND IC_LOGIN_FLAG=#{icLoginFlagEq,jdbcType=CHAR}</if>
+      <if test="password != null ">AND PASSWORD like '%${password}%'</if>
+      <if test="passwordEq != null ">AND PASSWORD=#{passwordEq,jdbcType=VARCHAR}</if>
+      <if test="userName != null ">AND USER_NAME like '%${userName}%'</if>
+      <if test="userNameEq != null ">AND USER_NAME=#{userNameEq,jdbcType=VARCHAR}</if>
+      <if test="mobile != null ">AND MOBILE like '%${mobile}%'</if>
+      <if test="mobileEq != null ">AND MOBILE=#{mobileEq,jdbcType=VARCHAR}</if>
+      <if test="email != null ">AND EMAIL like '%${email}%'</if>
+      <if test="emailEq != null ">AND EMAIL=#{emailEq,jdbcType=VARCHAR}</if>
+      <if test="xPictureId != null ">AND X_PICTURE_ID like '%${xPictureId}%'</if>
+      <if test="xPictureIdEq != null ">AND X_PICTURE_ID=#{xPictureIdEq,jdbcType=VARCHAR}</if>
+      <if test="sex != null ">AND SEX like '%${sex}%'</if>
+      <if test="sexEq != null ">AND SEX=#{sexEq,jdbcType=VARCHAR}</if>
+      <if test="birthday != null ">AND BIRTHDAY=#{birthday,jdbcType=DATE}</if>
+      <if test="birthdayFrom != null ">AND BIRTHDAY&gt;=#{birthdayFrom,jdbcType=DATE}</if>
+      <if test="birthdayTo != null ">AND BIRTHDAY&lt;=#{birthdayTo,jdbcType=DATE}</if>
+      <if test="birthPlace != null ">AND BIRTH_PLACE like '%${birthPlace}%'</if>
+      <if test="birthPlaceEq != null ">AND BIRTH_PLACE=#{birthPlaceEq,jdbcType=VARCHAR}</if>
+      <if test="medicineHypersusceptibility != null ">AND MEDICINE_HYPERSUSCEPTIBILITY like '%${medicineHypersusceptibility}%'</if>
+      <if test="medicineHypersusceptibilityEq != null ">AND MEDICINE_HYPERSUSCEPTIBILITY=#{medicineHypersusceptibilityEq,jdbcType=VARCHAR}</if>
+      <if test="bloodType != null ">AND BLOOD_TYPE like '%${bloodType}%'</if>
+      <if test="bloodTypeEq != null ">AND BLOOD_TYPE=#{bloodTypeEq,jdbcType=VARCHAR}</if>
+      <if test="marryStaus != null ">AND MARRY_STAUS like '%${marryStaus}%'</if>
+      <if test="marryStausEq != null ">AND MARRY_STAUS=#{marryStausEq,jdbcType=VARCHAR}</if>
+      <if test="familyIllHistory != null ">AND FAMILY_ILL_HISTORY like '%${familyIllHistory}%'</if>
+      <if test="familyIllHistoryEq != null ">AND FAMILY_ILL_HISTORY=#{familyIllHistoryEq,jdbcType=VARCHAR}</if>
+      <if test="homeFlag != null ">AND HOME_FLAG like '%${homeFlag}%'</if>
+      <if test="homeFlagEq != null ">AND HOME_FLAG=#{homeFlagEq,jdbcType=CHAR}</if>
+      <if test="creator != null ">AND CREATOR like '%${creator}%'</if>
+      <if test="creatorEq != null ">AND CREATOR=#{creatorEq,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="modifier != null ">AND MODIFIER like '%${modifier}%'</if>
+      <if test="modifierEq != null ">AND MODIFIER=#{modifierEq,jdbcType=VARCHAR}</if>
+      <if test="modilyTime != null ">AND MODILY_TIME=#{modilyTime,jdbcType=TIMESTAMP}</if>
+      <if test="modilyTimeFrom != null ">AND MODILY_TIME&gt;=#{modilyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modilyTimeTo != null ">AND MODILY_TIME&lt;=#{modilyTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="userId != null ">AND USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="hospitalId != null ">AND HOSPITAL_ID=#{hospitalId,jdbcType=INTEGER}</if>
+      <if test="smallImage != null ">AND SMALL_IMAGE like '%${smallImage}%'</if>
+      <if test="smallImageEq != null ">AND SMALL_IMAGE=#{smallImageEq,jdbcType=VARCHAR}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

@@ -1,0 +1,558 @@
+@media screen {
+    .b-metro-body {
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .b-metro-body.bg1 {
+        background-image: url(../images/metro/bg1.jpg);
+        background-position: top center;
+    }
+
+    .b-metro-body.bg2 {
+        background-image: url(../images/metro/bg2.jpg);
+        background-position: top center;
+    }
+
+    .b-metro-body.bg3 {
+        background-image: url(../images/metro/bg3.jpg);
+        background-position: bottom center;
+    }
+
+    .b-metro-body.bg4 {
+        background-image: url(../images/metro/bg4.jpg);
+        background-position: top center;
+    }
+
+    .b-metro-body.bg5 {
+        background-image: url(../images/metro/bg5.jpg);
+        background-position: top center;
+    }
+
+    .b-metro-body.bg6 {
+        background-image: url(../images/metro/bg6.jpg);
+        background-position: top center;
+    }
+
+    .b-metro-body.bg7 {
+        background-image: url(../images/metro/bg7.jpg);
+        background-position: top center;
+    }
+
+    #main-metro {
+        margin: 0;
+        padding: 20px 20px 60px 20px;
+        height: 100%;
+        background-color: transparent;
+        white-space:nowrap;
+    }
+
+    #main-metro .b-page-bar {
+        position: fixed;
+        top:60px;
+        left: 0;
+        right: 0;
+        padding: 15px 20px;
+    }
+
+    /*=====================================================
+    * metro style
+    =======================================================*/
+
+    .b-metro-nav {
+        margin: 60px 0 0 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+    .b-metro-nav .metro-black {
+        float: left;
+        margin: 0 0 30px 0;
+        padding: 0 15px;
+        width: 309px;
+        list-style-type: none;
+        min-height: 306px;
+    }
+
+    .b-metro-nav li a {
+        position: relative;
+        display: block;
+        float: left;
+        margin: 0 5px 5px 0;
+        padding: 0;
+        background-color: #ccc;
+        color:#333;
+    }
+
+    .b-metro-nav li a:hover {
+        background-color: #bbb;
+    }
+
+    .b-metro-nav li a strong {
+        position: absolute;
+        top:23px;
+        right: 0;
+        left: 0;
+        bottom: 20px;
+        display: block;
+        text-align: center;
+        font-weight: normal;
+    }
+
+    .b-metro-nav li a strong i {
+        font-size: 31.5px;
+    }
+
+    .b-metro-nav li a strong span {
+        display: block;
+        line-height: 22px;
+    }
+
+    .m-metro-w4 {
+        width: 1370px;
+    }
+
+    .b-metro-nav li a.ui-state-black,
+    .b-applist-nav li a.ui-state-black {
+        display: block;
+        overflow: hidden;
+        background-color: #FFFABF !important;
+        /*-webkit-box-shadow: inset 0 0 5px #ffdc40;
+        -moz-box-shadow: inset 0 0 5px #ffdc40;
+        box-shadow: inset 0 0 5px #ffdc40;*/
+    }
+
+    /* 块大小 */
+    .b-metro-nav .mb-size-largex {
+        width: 304px;
+        height: 201px;
+    }
+
+    .b-metro-nav .mb-size-largex strong {
+        top:70px;
+    } 
+
+    .b-metro-nav .mb-size-large {
+        width: 304px;
+        height: 98px;
+    }
+
+    .b-metro-nav .mb-size-medium {
+        width: 201px;
+        height: 98px;
+    }
+
+    .b-metro-nav .mb-size-mini {
+        width: 98px;
+        height: 98px;
+    }
+
+    /* 块可拖动效果 */
+    .b-metro-nav .m-drag-mark  {
+        display: block;
+        margin: 2px;
+        border: 1px dashed #fff;
+    }
+
+    .b-metro-nav .m-drag-mark i {
+        display: none;
+    }
+
+    .ie8 .b-metro-nav .m-drag-mark {
+        border-width: 1px;
+        border-color: #fff;
+    }
+
+    .b-metro-nav .mb-size-largex .m-drag-mark {
+        width: 298px;
+        height: 193px;
+    }
+
+    .b-metro-nav .mb-size-large .m-drag-mark {
+        width: 298px;
+        height: 90px;
+    }
+
+    .b-metro-nav .mb-size-medium .m-drag-mark {
+        width: 195px;
+        height: 90px;
+    }
+
+    .b-metro-nav .mb-size-mini .m-drag-mark {
+        width: 92px;
+        height: 90px;
+    }
+
+    .b-applist-nav .m-drag-mark {
+        position: absolute;
+        top:0;
+        right: 0;
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-color: #D20D00;
+        color:#fff;
+        font-size: 10px;
+        border-radius: 10px !important;
+        z-index: 2;
+    }
+
+
+
+
+
+    /* 块颜色 */
+    .b-metro-nav .mb-color-red {
+        background-color: #d24528;
+        color:#fff;
+    }
+
+    .b-metro-nav .mb-color-red:hover,
+    .b-metro-nav .mb-color-red:active
+     {
+        background-color: #c34126;
+    }
+
+    .b-metro-nav .mb-color-cyan {
+        background-color: #55c4c4;
+        color:#fff;
+    }
+
+    .b-metro-nav .mb-color-cyan:hover,
+    .b-metro-nav .mb-color-cyan:active {
+        background-color: #45b3b3;
+    }
+
+    .b-metro-nav .mb-color-blue {
+        background-color: #269fcc;
+        color:#fff;
+    }
+
+    .b-metro-nav .mb-color-blue:hover,
+    .b-metro-nav .mb-color-blue:active {
+        background-color: #2597c2;
+    }
+
+    .b-metro-nav .mb-color-light-green {
+        background-color: #91bf00;
+        color:#fff;
+    }
+
+    .b-metro-nav .mb-color-light-green:hover,
+    .b-metro-nav .mb-color-light-green:active {
+        background-color: #89b401;
+    }
+
+    .b-metro-nav .mb-color-green {
+        background-color: #39a930;
+        color:#fff;
+    }
+
+    .b-metro-nav .mb-color-green:hover,
+    .b-metro-nav .mb-color-green:active {
+        background-color: #369f2e;
+    }
+
+    .b-metro-nav .mb-color-yellow {
+        background-color: #e79700;
+        color:#fff;
+    }
+
+    .b-metro-nav .mb-color-yellow:hover,
+    .b-metro-nav .mb-color-yellow:active {
+        background-color: #dd9101;
+    }
+
+    .b-metro-nav .mb-color-light-purple {
+        background-color: #ba3483;
+        color:#fff;
+    }
+
+    .b-metro-nav .mb-color-light-purple:hover,
+    .b-metro-nav .mb-color-light-purple:active {
+        background-color: #ae317b;
+    }
+
+    .b-metro-nav .mb-color-purple {
+        background-color: #6c42b0;
+        color:#fff;
+    }
+
+    .b-metro-nav .mb-color-purple:hover,
+    .b-metro-nav .mb-color-purple:active {
+        background-color: #653ea5;
+    }
+
+    /*=====================================================
+    * app list style
+    =======================================================*/
+    .b-applist-nav {
+        margin: 60px 0 0 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .b-applist-nav .app-black {
+        float: left;
+        margin: 0 0 30px 0;
+        padding: 0 15px;
+        width: 309px;
+		min-height: 495px;
+        list-style-type: none;
+    }
+
+    .b-applist-nav .app-black a {
+        position: relative;
+        display: block;
+        float: left;
+        margin:0 6px 6px 0;
+        padding: 5px;
+        width: 87px;
+        text-align: center;
+    }
+
+    .b-applist-nav .app-black a:hover,
+    .b-applist-nav .app-black a:active {
+        text-decoration: none;
+    }
+
+    .b-applist-nav .app-black a:hover h5 {
+        text-shadow:0 0 6px #fff;
+    }
+
+    .b-applist-nav .app-black a img {
+        margin-top: 5px;
+    }
+
+    .b-applist-nav .app-black a h5 {
+        overflow: hidden;
+        margin: 5px 0 5px 0;
+        width: 87px;
+        line-height: normal;
+        white-space:nowrap;
+        border-radius: 10px !important;
+        /*background-color: rgba(255,255,255,0.6);*/
+        color:#fff;
+        text-shadow:0 0 3px #000;
+    }
+
+
+
+    .ie8 .b-applist-nav .app-black a,
+    .ie9 .b-applist-nav .app-black a {
+        background-color: #eee;
+    }
+
+    .ie8 .b-applist-nav .app-black a:hover,
+    .ie9 .b-applist-nav .app-black a:hover {
+        background-color: #ddd;
+    }
+
+    .ie8 .b-applist-nav .app-black a h5,
+    .ie9 .b-applist-nav .app-black a h5 {
+        color:#333;
+    }
+
+    /*
+    * =========================================
+    * Model Select 模块选择
+    * =========================================
+    */
+    .b-model-select {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .b-model-select li {
+        display: inline-block;
+        margin: 5px 5px;
+        padding: 0;
+        
+        list-style-type: none;
+        text-align: center;
+    }
+
+    .b-model-select li a {
+        display: block;
+        margin-bottom: 20px;
+        width: 156px;
+    }
+
+    .b-model-select li a span {
+        display: block;
+        margin: 0 auto 5px auto;
+        padding: 0;
+        width: 50px;
+        height: 50px;
+        background-color: #eee;
+        -webkit-border-radius: 25px !important;
+         -moz-border-radius: 25px !important;
+              border-radius: 25px !important;
+    }
+
+    .b-model-select li a span i {
+        margin-bottom: -5px;
+        font-size: 32px;
+        color:#8BA8E2;
+        line-height: 50px;
+    }
+
+    .b-model-select li a strong {
+        display: block;
+        font-size: 13px;
+        color:#666;
+        font-weight: normal;
+    }
+
+    .b-model-select li a:hover {
+        text-decoration: none;
+    }
+
+    .b-model-select li a:hover span {
+        background-color: #0066cc;
+    }
+
+    .b-model-select li a:hover span i {
+        color:#fff;
+    }
+
+    .b-model-select li a:hover strong {
+        color:#000;
+    }
+
+
+    /* b-tmp-topms ------------------------------ */
+    .b-tmp-topms {
+        display: block;
+        position: absolute;
+        top:15px;
+        left: 30%;
+        padding: 0 10px;
+        height: 30px;
+        line-height: 30px;
+        background-color: #0052B0;
+        color:#fff;
+        border-radius: 15px !important;
+        font-size: 12px;
+    }
+
+    .b-tmp-topms:hover {
+        background-color: #004098;
+        text-decoration: none;
+        color:#fff;
+    }
+
+    /* b-select-mbg */
+    .b-select-mbg {
+        margin: 0;
+        padding: 0;
+    }
+
+    .b-select-mbg li {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+
+    .b-select-mbg li label {
+        display: block;
+        float: left;
+        margin: 0;
+        padding: 4px;
+    }
+
+    .b-select-mbg li.active label,
+    .b-select-mbg li.js-hover label {
+        background-color: #546274;
+    }
+
+    .b-select-mbg li input {
+        display: none;
+    }
+
+    /* b-arrange-active */
+    .b-arrange-active {
+        position: relative;
+    }
+
+    .b-arrange-active .bac-mask {
+        display: block;
+        position: absolute;
+        left: 0;
+        top:-3px;
+        right: 0;
+        bottom: -4px;
+        background: transparent url(../images/onepx.gif) 0 0 repeat;
+        z-index: 2;
+    }
+
+    .ie8 .b-arrange-active .bac-mask,
+    .ie9 .b-arrange-active .bac-mask {
+        top:-5px;
+        right: -2px;
+        width: 65px;
+        height: 28px;
+    }
+
+    #blacknode-start {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 10px;
+        height: 10px;
+    }
+
+    #blacknode-end {
+        position: absolute;
+        top: 0;
+        left: 1390px;
+        display: block;
+        width: 10px;
+        height: 10px;
+    }
+
+    #blacknode-left,
+    #blacknode-right {
+        position: fixed;
+        top: 200px;
+        z-index: 100;
+        display: none;
+        padding: 80px 10px;
+        font-size: 46px;
+        background-color: rgba(0,0,0,0.1);
+        color: #eee;
+        color: #666\9;
+        text-decoration: none;
+    }
+
+    #blacknode-left:hover,
+    #blacknode-right:hover {
+        color: #fff;
+        color: #333\9;
+    }
+
+    #blacknode-left { left: 0; }
+    #blacknode-right { right: 0; }
+
+    #blacknode-left i,
+    #blacknode-right i {
+        line-height: normal;
+    }
+
+}
+
+@media (max-width: 979px) {
+    #main-metro .b-page-bar {
+        position: static;
+        padding: 0;
+    }
+
+    .m-metro-w4 {
+        margin-top: 20px;
+        width: auto;
+    }
+
+}

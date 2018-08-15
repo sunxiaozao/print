@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CPF_RELATION">
+  <resultMap id="flat_result_map_CPF_RELATION" type="com.lubian.cpf.vo.CpfRelation">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="patientId" column="PATIENT_ID" jdbcType="INTEGER" />
+    <result property="type" column="TYPE" jdbcType="VARCHAR" />
+    <result property="relatePatientId" column="RELATE_PATIENT_ID" jdbcType="INTEGER" />
+    <result property="password" column="PASSWORD" jdbcType="VARCHAR" />
+    <result property="status" column="STATUS" jdbcType="VARCHAR" />
+    <result property="applyTime" column="APPLY_TIME" jdbcType="TIMESTAMP" />
+    <result property="applyReason" column="APPLY_REASON" jdbcType="VARCHAR" />
+    <result property="checkTime" column="CHECK_TIME" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="result_map_CPF_RELATION" type="com.lubian.cpf.vo.CpfRelation">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="patientId" column="PATIENT_ID" jdbcType="INTEGER" />
+    <result property="type" column="TYPE" jdbcType="VARCHAR" />
+    <result property="relatePatientId" column="RELATE_PATIENT_ID" jdbcType="INTEGER" />
+    <result property="password" column="PASSWORD" jdbcType="VARCHAR" />
+    <result property="status" column="STATUS" jdbcType="VARCHAR" />
+    <result property="applyTime" column="APPLY_TIME" jdbcType="TIMESTAMP" />
+    <result property="applyReason" column="APPLY_REASON" jdbcType="VARCHAR" />
+    <result property="checkTime" column="CHECK_TIME" jdbcType="TIMESTAMP" />
+    <collection property="relatePatient" column="{id=RELATE_PATIENT_ID}" ofType="CpfPatient" select="CPF_PATIENT.FindCPF_PATIENTForCPF_RELATION_relatePatient" />
+  </resultMap>
+  <insert id="InsertCPF_RELATION">
+    INSERT INTO CPF_RELATION (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="patientId != null ">,PATIENT_ID</if>
+      <if test="type != null ">,TYPE</if>
+      <if test="relatePatientId != null ">,RELATE_PATIENT_ID</if>
+      <if test="password != null ">,PASSWORD</if>
+      <if test="status != null ">,STATUS</if>
+      <if test="applyTime != null ">,APPLY_TIME</if>
+      <if test="applyReason != null ">,APPLY_REASON</if>
+      <if test="checkTime != null ">,CHECK_TIME</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="patientId != null ">,#{patientId,jdbcType=INTEGER}</if>
+      <if test="type != null ">,#{type,jdbcType=VARCHAR}</if>
+      <if test="relatePatientId != null ">,#{relatePatientId,jdbcType=INTEGER}</if>
+      <if test="password != null ">,#{password,jdbcType=VARCHAR}</if>
+      <if test="status != null ">,#{status,jdbcType=VARCHAR}</if>
+      <if test="applyTime != null ">,#{applyTime,jdbcType=TIMESTAMP}</if>
+      <if test="applyReason != null ">,#{applyReason,jdbcType=VARCHAR}</if>
+      <if test="checkTime != null ">,#{checkTime,jdbcType=TIMESTAMP}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID() AS ID</selectKey>
+  </insert>
+  <update id="UpdateCPF_RELATION">
+    UPDATE CPF_RELATION 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="patientId != null ">,PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="type != null ">,TYPE=#{type,jdbcType=VARCHAR}</if>
+      <if test="relatePatientId != null ">,RELATE_PATIENT_ID=#{relatePatientId,jdbcType=INTEGER}</if>
+      <if test="password != null ">,PASSWORD=#{password,jdbcType=VARCHAR}</if>
+      <if test="status != null ">,STATUS=#{status,jdbcType=VARCHAR}</if>
+      <if test="applyTime != null ">,APPLY_TIME=#{applyTime,jdbcType=TIMESTAMP}</if>
+      <if test="applyReason != null ">,APPLY_REASON=#{applyReason,jdbcType=VARCHAR}</if>
+      <if test="checkTime != null ">,CHECK_TIME=#{checkTime,jdbcType=TIMESTAMP}</if>
+    </trim>
+     WHERE ID=#{id,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteCPF_RELATION">DELETE FROM CPF_RELATION WHERE ID=#{id,jdbcType=INTEGER}</delete>
+  <select id="CountFindAllCPF_RELATION" resultType="java.lang.Integer">SELECT count(1) as value FROM CPF_RELATION</select>
+  <select id="CountCPF_RELATION" resultType="java.lang.Integer">SELECT count(1) as value FROM CPF_RELATION WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FindByPKCPF_RELATION" resultMap="result_map_CPF_RELATION">SELECT ID,PATIENT_ID,TYPE,RELATE_PATIENT_ID,PASSWORD,STATUS,APPLY_TIME,APPLY_REASON,CHECK_TIME FROM CPF_RELATION WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FreeFindCPF_RELATION" resultMap="result_map_CPF_RELATION">
+    SELECT ID,PATIENT_ID,TYPE,RELATE_PATIENT_ID,PASSWORD,STATUS,APPLY_TIME,APPLY_REASON,CHECK_TIME FROM CPF_RELATION
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="patientId_instr != null ">AND PATIENT_ID in (${patientId_instr})</if>
+      <if test="type != null ">AND TYPE like '%${type}%'</if>
+      <if test="typeEq != null ">AND TYPE=#{typeEq,jdbcType=VARCHAR}</if>
+      <if test="relatePatientId != null ">AND RELATE_PATIENT_ID=#{relatePatientId,jdbcType=INTEGER}</if>
+      <if test="relatePatientId_instr != null ">AND RELATE_PATIENT_ID in (${relatePatientId_instr})</if>
+      <if test="password != null ">AND PASSWORD like '%${password}%'</if>
+      <if test="passwordEq != null ">AND PASSWORD=#{passwordEq,jdbcType=VARCHAR}</if>
+      <if test="status != null ">AND STATUS like '%${status}%'</if>
+      <if test="statusEq != null ">AND STATUS=#{statusEq,jdbcType=VARCHAR}</if>
+      <if test="applyTime != null ">AND APPLY_TIME=#{applyTime,jdbcType=TIMESTAMP}</if>
+      <if test="applyTimeFrom != null ">AND APPLY_TIME&gt;=#{applyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="applyTimeTo != null ">AND APPLY_TIME&lt;=#{applyTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="applyReason != null ">AND APPLY_REASON like '%${applyReason}%'</if>
+      <if test="applyReasonEq != null ">AND APPLY_REASON=#{applyReasonEq,jdbcType=VARCHAR}</if>
+      <if test="checkTime != null ">AND CHECK_TIME=#{checkTime,jdbcType=TIMESTAMP}</if>
+      <if test="checkTimeFrom != null ">AND CHECK_TIME&gt;=#{checkTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="checkTimeTo != null ">AND CHECK_TIME&lt;=#{checkTimeTo,jdbcType=TIMESTAMP}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindCPF_RELATION" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM CPF_RELATION
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="patientId_instr != null ">AND PATIENT_ID in (${patientId_instr})</if>
+      <if test="type != null ">AND TYPE like '%${type}%'</if>
+      <if test="typeEq != null ">AND TYPE=#{typeEq,jdbcType=VARCHAR}</if>
+      <if test="relatePatientId != null ">AND RELATE_PATIENT_ID=#{relatePatientId,jdbcType=INTEGER}</if>
+      <if test="relatePatientId_instr != null ">AND RELATE_PATIENT_ID in (${relatePatientId_instr})</if>
+      <if test="password != null ">AND PASSWORD like '%${password}%'</if>
+      <if test="passwordEq != null ">AND PASSWORD=#{passwordEq,jdbcType=VARCHAR}</if>
+      <if test="status != null ">AND STATUS like '%${status}%'</if>
+      <if test="statusEq != null ">AND STATUS=#{statusEq,jdbcType=VARCHAR}</if>
+      <if test="applyTime != null ">AND APPLY_TIME=#{applyTime,jdbcType=TIMESTAMP}</if>
+      <if test="applyTimeFrom != null ">AND APPLY_TIME&gt;=#{applyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="applyTimeTo != null ">AND APPLY_TIME&lt;=#{applyTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="applyReason != null ">AND APPLY_REASON like '%${applyReason}%'</if>
+      <if test="applyReasonEq != null ">AND APPLY_REASON=#{applyReasonEq,jdbcType=VARCHAR}</if>
+      <if test="checkTime != null ">AND CHECK_TIME=#{checkTime,jdbcType=TIMESTAMP}</if>
+      <if test="checkTimeFrom != null ">AND CHECK_TIME&gt;=#{checkTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="checkTimeTo != null ">AND CHECK_TIME&lt;=#{checkTimeTo,jdbcType=TIMESTAMP}</if>
+    </trim>
+  </select>
+  <select id="FreeFindCPF_RELATIONOrdered" resultMap="result_map_CPF_RELATION">
+    SELECT ID,PATIENT_ID,TYPE,RELATE_PATIENT_ID,PASSWORD,STATUS,APPLY_TIME,APPLY_REASON,CHECK_TIME FROM CPF_RELATION
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="patientId_instr != null ">AND PATIENT_ID in (${patientId_instr})</if>
+      <if test="type != null ">AND TYPE like '%${type}%'</if>
+      <if test="typeEq != null ">AND TYPE=#{typeEq,jdbcType=VARCHAR}</if>
+      <if test="relatePatientId != null ">AND RELATE_PATIENT_ID=#{relatePatientId,jdbcType=INTEGER}</if>
+      <if test="relatePatientId_instr != null ">AND RELATE_PATIENT_ID in (${relatePatientId_instr})</if>
+      <if test="password != null ">AND PASSWORD like '%${password}%'</if>
+      <if test="passwordEq != null ">AND PASSWORD=#{passwordEq,jdbcType=VARCHAR}</if>
+      <if test="status != null ">AND STATUS like '%${status}%'</if>
+      <if test="statusEq != null ">AND STATUS=#{statusEq,jdbcType=VARCHAR}</if>
+      <if test="applyTime != null ">AND APPLY_TIME=#{applyTime,jdbcType=TIMESTAMP}</if>
+      <if test="applyTimeFrom != null ">AND APPLY_TIME&gt;=#{applyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="applyTimeTo != null ">AND APPLY_TIME&lt;=#{applyTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="applyReason != null ">AND APPLY_REASON like '%${applyReason}%'</if>
+      <if test="applyReasonEq != null ">AND APPLY_REASON=#{applyReasonEq,jdbcType=VARCHAR}</if>
+      <if test="checkTime != null ">AND CHECK_TIME=#{checkTime,jdbcType=TIMESTAMP}</if>
+      <if test="checkTimeFrom != null ">AND CHECK_TIME&gt;=#{checkTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="checkTimeTo != null ">AND CHECK_TIME&lt;=#{checkTimeTo,jdbcType=TIMESTAMP}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

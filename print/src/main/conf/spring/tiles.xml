@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="admin.parent" template="/WEB-INF/jsp/template/main_layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/jsp/common/head.jsp" />
+		<put-attribute name="left" value="/WEB-INF/jsp/common/left.jsp" />
+		<put-attribute name="search" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="foot" value="/WEB-INF/jsp/common/footer.jsp" />
+		<put-attribute name="script" value="/WEB-INF/jsp/common/blank.jsp" />
+	</definition>
+	
+	<!-- 管理员登录后主页 -->	
+	<definition name="tiles.admin.index" extends="admin.parent">
+	    <put-attribute name="body"     value="/WEB-INF/jsp/admin/dashboard.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/admin/dashboard_script.jsp" />
+	</definition>
+	
+	<!-- 组织机构管理 -->	
+	<definition name="tiles.admin.orgList" extends="admin.parent">
+	    <put-attribute name="search"   value="/WEB-INF/jsp/admin/org/searchOrg.jsp" />
+	    <put-attribute name="body"     value="/WEB-INF/jsp/admin/org/orgList.jsp" />
+	    <put-attribute name="script"   value="/WEB-INF/jsp/admin/org/script.jsp" />
+	</definition>
+	
+	<definition name="tiles.admin.orgEdit" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/org/orgEdit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/org/script.jsp" />
+	</definition>
+	
+	<definition name="tiles.admin.orgAdd" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/org/orgAdd.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/org/script.jsp" />
+	</definition>
+	
+	<!-- 组管理 -->	
+	<definition name="tiles.admin.groupList" extends="admin.parent">
+	    <put-attribute name="search"   value="/WEB-INF/jsp/admin/group/search.jsp" />
+	    <put-attribute name="body"     value="/WEB-INF/jsp/admin/group/groupList.jsp" />
+	    <put-attribute name="script"   value="/WEB-INF/jsp/admin/group/script.jsp" />
+	</definition>
+	
+	<definition name="tiles.admin.groupEdit" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/group/groupEdit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/group/script.jsp" />
+	</definition>
+	
+	<definition name="tiles.admin.groupAdd" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/group/groupAdd.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/group/script.jsp" />
+	</definition>
+	
+    <!-- 用户管理 -->
+	<definition name="tiles.admin.userList" extends="admin.parent">
+		<put-attribute name="search"   value="/WEB-INF/jsp/admin/user/search.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/user/userList.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/user/script.jsp" />
+	</definition>
+	
+	<definition name="tiles.admin.userEdit" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/user/userEdit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/user/script.jsp" />
+	</definition>
+	
+	<definition name="tiles.admin.userAdd" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/user/userAdd.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/user/script.jsp" />
+	</definition>	
+	
+	<!-- 角色管理 -->
+	<definition name="tiles.admin.roleList" extends="admin.parent">
+	    <put-attribute name="search"   value="/WEB-INF/jsp/admin/role/searchRole.jsp" />
+		<put-attribute name="body"     value="/WEB-INF/jsp/admin/role/roleList.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/role/script.jsp" />
+	</definition>
+	
+	<definition name="tiles.admin.roleAdd" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/role/roleAdd.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/role/script.jsp" />
+	</definition>
+	
+	<definition name="tiles.admin.roleEdit" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/role/roleEdit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/role/script.jsp" />
+	</definition>
+		
+	<definition name="tiles.admin.roleView" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/role/roleView.jsp" />
+	</definition>
+	
+	<!-- 消息管理 -->	
+	<definition name="tiles.admin.userMessageList" extends="admin.parent">
+		<put-attribute name="search"   value="/WEB-INF/jsp/admin/userMessage/search.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/userMessage/list.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/userMessage/script.jsp" />
+	</definition>
+	<definition name="tiles.admin.userMessageEdit" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/userMessage/edit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/userMessage/script.jsp" />
+	</definition>
+	<definition name="tiles.admin.userMessageAdd" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/userMessage/add.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/userMessage/script.jsp" />
+	</definition>
+	
+	<!-- 系统日志 -->
+	<definition name="tiles.admin.sysLogs" extends="admin.parent">
+		<put-attribute name="search"   value="/WEB-INF/jsp/admin/syslogs/searchSys.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/syslogs/list.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/syslogs/script.jsp" />
+	</definition>	
+	
+	<!-- 系统参数管理 -->
+	<definition name="tiles.admin.sysParaList" extends="admin.parent">
+		<put-attribute name="search"   value="/WEB-INF/jsp/admin/syspara/search.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/syspara/list.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/syspara/script.jsp" />
+	</definition>
+	<definition name="tiles.admin.sysParaAdd" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/syspara/add.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/syspara/script.jsp" />
+	</definition>
+		<definition name="tiles.admin.editSysPara" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/syspara/edit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/syspara/script.jsp" />
+	</definition>
+	
+	<!-- 数据字典管理 -->
+	<definition name="tiles.admin.cfgDictList" extends="admin.parent">
+		<put-attribute name="search"   value="/WEB-INF/jsp/admin/sysdict/search.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/sysdict/list.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/sysdict/script.jsp" />
+	</definition>
+	<definition name="tiles.admin.cfgDictAdd" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/sysdict/add.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/sysdict/script.jsp" />
+	</definition>
+		<definition name="tiles.admin.cfgDictEdit" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/sysdict/edit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/sysdict/script.jsp" />
+	</definition>
+	
+	<!-- 医院管理 -->
+	<definition name="tiles.hospital.hospitalList" extends="admin.parent">
+		<put-attribute name="search"   value="/WEB-INF/jsp/admin/hospital/search.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/hospital/list.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/hospital/script.jsp" />
+	</definition>
+	
+	<definition name="tiles.hospital.hospitalAdd" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/hospital/hospitalAdd.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/hospital/script.jsp" />
+	</definition>
+	<definition name="tiles.hospital.hospitalEdit" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/hospital/hospitalEdit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/hospital/script.jsp" />
+	</definition>
+	
+	<!-- 科室管理 -->
+	<definition name="tiles.department.departmentList" extends="admin.parent">
+		<put-attribute name="search"   value="/WEB-INF/jsp/admin/hospital/department/search.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/hospital/department/list.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/hospital/department/script.jsp" />
+	</definition>
+	
+	<definition name="tiles.department.departmentAdd" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/hospital/department/departmentAdd.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/hospital/department/script.jsp" />
+	</definition>
+	<definition name="tiles.department.departmentEdit" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/hospital/department/departmentEdit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/hospital/department/script.jsp" />
+	</definition>
+	
+	
+	<!-- 医生管理 -->
+	<definition name="tiles.doctor.doctorList" extends="admin.parent">
+		<put-attribute name="search"   value="/WEB-INF/jsp/admin/hospital/doctor/search.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/hospital/doctor/list.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/hospital/doctor/script.jsp" />
+	</definition>
+	
+	<definition name="tiles.doctor.doctorAdd" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/hospital/doctor/doctorAdd.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/hospital/doctor/script.jsp" />
+	</definition>
+	<definition name="tiles.doctor.doctorEdit" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/hospital/doctor/doctorEdit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/hospital/doctor/script.jsp" />
+	</definition>
+	
+	<!-- 病人管理 -->
+	<definition name="tiles.admin.patientList" extends="admin.parent">
+		<put-attribute name="search"   value="/WEB-INF/jsp/admin/patient/search.jsp" />
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/patient/patientList.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/patient/script.jsp" />
+	</definition>
+	<!-- <definition name="tiles.admin.patientEdit" extends="admin.parent">
+		<put-attribute name="body"   value="/WEB-INF/jsp/admin/patient/patientEdit.jsp" />
+		<put-attribute name="script"   value="/WEB-INF/jsp/admin/patient/script.jsp" />
+	</definition> -->
+	
+</tiles-definitions>

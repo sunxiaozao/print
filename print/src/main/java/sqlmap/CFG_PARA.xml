@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CFG_PARA">
+  <resultMap id="result_map_CFG_PARA" type="com.lubian.cpf.vo.CfgPara">
+    <id property="paraCode" column="PARA_CODE" jdbcType="VARCHAR" />
+    <result property="paraName" column="PARA_NAME" jdbcType="VARCHAR" />
+    <result property="paraValue" column="PARA_VALUE" jdbcType="VARCHAR" />
+    <result property="parentCode" column="PARENT_CODE" jdbcType="VARCHAR" />
+    <result property="paraType" column="PARA_TYPE" jdbcType="CHAR" />
+    <result property="priority" column="PRIORITY" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="getParaType_result_map_CFG_PARA" type="com.lubian.cpf.vo.CfgPara">
+    <id property="paraCode" column="PARA_CODE" jdbcType="VARCHAR" />
+    <result property="paraName" column="PARA_NAME" jdbcType="VARCHAR" />
+    <result property="paraValue" column="PARA_VALUE" jdbcType="VARCHAR" />
+    <result property="parentCode" column="PARENT_CODE" jdbcType="VARCHAR" />
+    <result property="priority" column="PRIORITY" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="InsertCFG_PARA">
+    INSERT INTO CFG_PARA (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="paraCode != null ">,PARA_CODE</if>
+      <if test="paraName != null ">,PARA_NAME</if>
+      <if test="paraValue != null ">,PARA_VALUE</if>
+      <if test="parentCode != null ">,PARENT_CODE</if>
+      <if test="paraType != null ">,PARA_TYPE</if>
+      <if test="priority != null ">,PRIORITY</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="paraCode != null ">,#{paraCode,jdbcType=VARCHAR}</if>
+      <if test="paraName != null ">,#{paraName,jdbcType=VARCHAR}</if>
+      <if test="paraValue != null ">,#{paraValue,jdbcType=VARCHAR}</if>
+      <if test="parentCode != null ">,#{parentCode,jdbcType=VARCHAR}</if>
+      <if test="paraType != null ">,#{paraType,jdbcType=CHAR}</if>
+      <if test="priority != null ">,#{priority,jdbcType=INTEGER}</if>
+    </trim>
+    )
+  </insert>
+  <update id="UpdateCFG_PARA">
+    UPDATE CFG_PARA 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="paraName != null ">,PARA_NAME=#{paraName,jdbcType=VARCHAR}</if>
+      <if test="paraValue != null ">,PARA_VALUE=#{paraValue,jdbcType=VARCHAR}</if>
+      <if test="parentCode != null ">,PARENT_CODE=#{parentCode,jdbcType=VARCHAR}</if>
+      <if test="paraType != null ">,PARA_TYPE=#{paraType,jdbcType=CHAR}</if>
+      <if test="priority != null ">,PRIORITY=#{priority,jdbcType=INTEGER}</if>
+    </trim>
+     WHERE PARA_CODE=#{paraCode,jdbcType=VARCHAR}
+  </update>
+  <delete id="DeleteCFG_PARA">DELETE FROM CFG_PARA WHERE PARA_CODE=#{paraCode,jdbcType=VARCHAR}</delete>
+  <select id="CountFindAllCFG_PARA" resultType="java.lang.Integer">SELECT count(1) as value FROM CFG_PARA</select>
+  <select id="CountCFG_PARA" resultType="java.lang.Integer">SELECT count(1) as value FROM CFG_PARA WHERE PARA_CODE=#{paraCode,jdbcType=VARCHAR}</select>
+  <select id="FindByPKCFG_PARA" resultMap="result_map_CFG_PARA">SELECT PARA_CODE,PARA_NAME,PARA_VALUE,PARENT_CODE,PARA_TYPE,PRIORITY FROM CFG_PARA WHERE PARA_CODE=#{paraCode,jdbcType=VARCHAR}</select>
+  <select id="FreeFindCFG_PARA" resultMap="result_map_CFG_PARA">
+    SELECT PARA_CODE,PARA_NAME,PARA_VALUE,PARENT_CODE,PARA_TYPE,PRIORITY FROM CFG_PARA
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="paraCode != null ">AND PARA_CODE like '%${paraCode}%'</if>
+      <if test="paraCodeEq != null ">AND PARA_CODE=#{paraCodeEq,jdbcType=VARCHAR}</if>
+      <if test="paraName != null ">AND PARA_NAME like '%${paraName}%'</if>
+      <if test="paraNameEq != null ">AND PARA_NAME=#{paraNameEq,jdbcType=VARCHAR}</if>
+      <if test="paraValue != null ">AND PARA_VALUE like '%${paraValue}%'</if>
+      <if test="paraValueEq != null ">AND PARA_VALUE=#{paraValueEq,jdbcType=VARCHAR}</if>
+      <if test="parentCode != null ">AND PARENT_CODE like '%${parentCode}%'</if>
+      <if test="parentCodeEq != null ">AND PARENT_CODE=#{parentCodeEq,jdbcType=VARCHAR}</if>
+      <if test="paraType != null ">AND PARA_TYPE like '%${paraType}%'</if>
+      <if test="paraTypeEq != null ">AND PARA_TYPE=#{paraTypeEq,jdbcType=CHAR}</if>
+      <if test="priority != null ">AND PRIORITY=#{priority,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindCFG_PARA" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM CFG_PARA
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="paraCode != null ">AND PARA_CODE like '%${paraCode}%'</if>
+      <if test="paraCodeEq != null ">AND PARA_CODE=#{paraCodeEq,jdbcType=VARCHAR}</if>
+      <if test="paraName != null ">AND PARA_NAME like '%${paraName}%'</if>
+      <if test="paraNameEq != null ">AND PARA_NAME=#{paraNameEq,jdbcType=VARCHAR}</if>
+      <if test="paraValue != null ">AND PARA_VALUE like '%${paraValue}%'</if>
+      <if test="paraValueEq != null ">AND PARA_VALUE=#{paraValueEq,jdbcType=VARCHAR}</if>
+      <if test="parentCode != null ">AND PARENT_CODE like '%${parentCode}%'</if>
+      <if test="parentCodeEq != null ">AND PARENT_CODE=#{parentCodeEq,jdbcType=VARCHAR}</if>
+      <if test="paraType != null ">AND PARA_TYPE like '%${paraType}%'</if>
+      <if test="paraTypeEq != null ">AND PARA_TYPE=#{paraTypeEq,jdbcType=CHAR}</if>
+      <if test="priority != null ">AND PRIORITY=#{priority,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="FreeFindCFG_PARAOrdered" resultMap="result_map_CFG_PARA">
+    SELECT PARA_CODE,PARA_NAME,PARA_VALUE,PARENT_CODE,PARA_TYPE,PRIORITY FROM CFG_PARA
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="paraCode != null ">AND PARA_CODE like '%${paraCode}%'</if>
+      <if test="paraCodeEq != null ">AND PARA_CODE=#{paraCodeEq,jdbcType=VARCHAR}</if>
+      <if test="paraName != null ">AND PARA_NAME like '%${paraName}%'</if>
+      <if test="paraNameEq != null ">AND PARA_NAME=#{paraNameEq,jdbcType=VARCHAR}</if>
+      <if test="paraValue != null ">AND PARA_VALUE like '%${paraValue}%'</if>
+      <if test="paraValueEq != null ">AND PARA_VALUE=#{paraValueEq,jdbcType=VARCHAR}</if>
+      <if test="parentCode != null ">AND PARENT_CODE like '%${parentCode}%'</if>
+      <if test="parentCodeEq != null ">AND PARENT_CODE=#{parentCodeEq,jdbcType=VARCHAR}</if>
+      <if test="paraType != null ">AND PARA_TYPE like '%${paraType}%'</if>
+      <if test="paraTypeEq != null ">AND PARA_TYPE=#{paraTypeEq,jdbcType=CHAR}</if>
+      <if test="priority != null ">AND PRIORITY=#{priority,jdbcType=INTEGER}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+  <select id="GetParaTypeCFG_PARA" resultMap="getParaType_result_map_CFG_PARA">SELECT PARA_CODE,PARA_NAME,PARA_VALUE,PARENT_CODE,PRIORITY FROM CFG_PARA  WHERE PARENT_CODE IS NULL ORDER BY PRIORITY DESC</select>
+  <select id="CountGetParaTypeCFG_PARA" resultType="java.lang.Integer">SELECT count(1) as value FROM CFG_PARA  WHERE PARENT_CODE IS NULL ORDER BY PRIORITY DESC</select>
+</mapper>
+

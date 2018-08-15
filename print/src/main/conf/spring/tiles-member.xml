@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="member.parent" template="/WEB-INF/jsp/template/main_layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/jsp/member/head.jsp" />
+		<put-attribute name="left" value="/WEB-INF/jsp/member/left.jsp" />
+		<put-attribute name="search" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="foot" value="/WEB-INF/jsp/common/footer.jsp" />
+		<put-attribute name="script" value="/WEB-INF/jsp/common/blank.jsp" />
+	</definition>
+	
+	<!-- 病人登录后主页 -->	
+	<definition name="tiles.member.index" extends="member.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/dashboard.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/dashboard_script.jsp" />
+	</definition>
+	
+	<!-- 病人 我的分享 -->	
+	<definition name="tiles.member.share.list" extends="member.parent">
+		<put-attribute name="search" value="/WEB-INF/jsp/member/share/search.jsp" />
+		<put-attribute name="head" value="/WEB-INF/jsp/member/share/head.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/share/list.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/dashboard_script.jsp" />
+	</definition>
+
+	<!-- 病人 我的分享情况 -->	
+	<definition name="tiles.member.share.detail" extends="member.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/share/detail.jsp" />
+	</definition>
+
+	<!-- 病人 我的分享  查看病历资料 -->	
+	<definition name="tiles.member.share.pass" extends="member.parent">
+		<put-attribute name="head" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="left" value="/WEB-INF/jsp/common/blank.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/share/showCase/pass.jsp" />
+	</definition>
+	
+	
+
+
+
+	
+	<!-- 病人 我的关注 -->
+	<definition name="tiles.member.relation.list" extends="member.parent">
+		<put-attribute name="head" value="/WEB-INF/jsp/member/relation/head.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/relation/list.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/relation/relation_script.jsp" />
+	</definition>
+	
+	<!-- 病人 我的关注 增加 -->
+	<definition name="tiles.member.relation.add" extends="member.parent">
+		<put-attribute name="head" value="/WEB-INF/jsp/member/relation/head.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/relation/relationAdd.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/relation/relation_script.jsp" />
+	</definition>
+	
+	<!-- 病人 我的分享弹出窗口 
+	<definition name="tiles.member.share" extends="member.parent">
+ 		<put-attribute name="head" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="left" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="search" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="foot" value="/WEB-INF/jsp/common/blank.jsp" /> 
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/share/share.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/share/share_script.jsp" />
+	</definition>-->	
+	
+	<!-- 病历夹管理 -->	
+	<definition name="tiles.member.folder" extends="member.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/folder/caseFolder.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/folder/caseFolder_script.jsp" />
+	</definition>
+	
+	
+	
+	<!-- 病历夹管理之授权管理 -->	
+	<definition name="tiles.member.folder.caseFolderImpower" extends="member.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/folder/caseFolderImpower.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/folder/caseFolder_script.jsp" />
+	</definition>
+		<!-- 病人个人中心 -->	
+	<definition name="tiles.member.info" extends="member.parent">
+	<put-attribute name="head" value="/WEB-INF/jsp/member/patientinfo/head.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/patientinfo/info.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/patientinfo/script.jsp" />
+	</definition>
+	<!-- 病人之按病历夹方式显示 -->	
+	<definition name="tiles.member.folderShow" extends="member.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/folderShow/caseFolder.jsp" />
+	   	<put-attribute name="search" value="/WEB-INF/jsp/member/folderShow/search.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/folderShow/caseFolder_script.jsp" />
+	</definition>
+	
+	<!-- 添加病例资料 -->
+	<definition name="tiles.member.casehistory" extends="member.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/admin/casehistory/add.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/admin/casehistory/addScript.jsp" />
+	</definition>
+	<definition name="tiles.member.casehistory.update" extends="member.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/admin/casehistory/update.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/admin/casehistory/addScript.jsp" />
+	</definition>
+	<!-- 添加本地病例资料 -->
+	<definition name="tiles.member.casehistory.local" extends="member.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/admin/casehistory/addLocal.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/admin/casehistory/addScript.jsp" />
+	</definition>
+	<!--添加病例资料列表 -->	
+	<definition name="tiles.member.casehistory.list" extends="member.parent">
+	    <put-attribute name="body" value="/WEB-INF/jsp/admin/casehistory/list.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/admin/casehistory/script.jsp" />
+	</definition>
+	
+	
+	
+		<!-- 临时医生模板 -->
+	<definition name="zero.doctor.parent" template="/WEB-INF/jsp/template/zero_doctor_layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="script" value="/WEB-INF/jsp/common/blank.jsp" />
+	</definition>
+	<definition name="tiles.member.share.show" extends="zero.doctor.parent">
+		<put-attribute name="head" value="/WEB-INF/jsp/member/share/showCase/head.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/share/showCase/show.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/share/showCase/script.jsp" />
+	</definition>
+	<definition name="tiles.member.share.showpdf" extends="zero.doctor.parent">
+		<put-attribute name="head" value="/WEB-INF/jsp/member/share/showCase/head.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/share/showCase/showpdf.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/share/showCase/script.jsp" />
+	</definition>
+	<definition name="tiles.member.share.showpdf2" extends="zero.doctor.parent">
+		<put-attribute name="head" value="/WEB-INF/jsp/member/share/showCase/head.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/share/showCase/showpdf2.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/share/showCase/script.jsp" />
+	</definition>
+	<definition name="tiles.member.share.shownil" extends="zero.doctor.parent">
+		<put-attribute name="head" value="/WEB-INF/jsp/member/share/showCase/head.jsp" />
+	    <put-attribute name="body" value="/WEB-INF/jsp/member/share/showCase/shownil.jsp" />
+	    <put-attribute name="script" value="/WEB-INF/jsp/member/share/showCase/script.jsp" />
+	</definition>
+
+	<!-- iframe模板 -->
+	<definition name="iframe.parent" template="/WEB-INF/jsp/template/iframe_layout.jsp">
+		<put-attribute name="body" value="/WEB-INF/jsp/common/blank.jsp" />
+		<put-attribute name="script" value="/WEB-INF/jsp/common/blank.jsp" />
+	</definition>
+	
+
+<!-- 结束 -->
+</tiles-definitions>

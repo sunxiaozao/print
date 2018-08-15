@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CDF_NOTEBOOK">
+  <resultMap id="flat_result_map_CDF_NOTEBOOK" type="com.lubian.cpf.vo.CdfNotebook">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="caseHistoryId" column="CASE_HISTORY_ID" jdbcType="INTEGER" />
+    <result property="patientId" column="PATIENT_ID" jdbcType="INTEGER" />
+    <result property="doctorId" column="DOCTOR_ID" jdbcType="INTEGER" />
+    <result property="content" column="CONTENT" jdbcType="VARCHAR" />
+    <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP" />
+    <result property="replyCount" column="REPLY_COUNT" jdbcType="INTEGER" />
+    <result property="status" column="STATUS" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="result_map_CDF_NOTEBOOK" type="com.lubian.cpf.vo.CdfNotebook">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="caseHistoryId" column="CASE_HISTORY_ID" jdbcType="INTEGER" />
+    <result property="patientId" column="PATIENT_ID" jdbcType="INTEGER" />
+    <result property="doctorId" column="DOCTOR_ID" jdbcType="INTEGER" />
+    <result property="content" column="CONTENT" jdbcType="VARCHAR" />
+    <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP" />
+    <result property="replyCount" column="REPLY_COUNT" jdbcType="INTEGER" />
+    <result property="status" column="STATUS" jdbcType="VARCHAR" />
+    <collection property="cpfPatient" column="{id=PATIENT_ID}" ofType="CpfPatient" select="CPF_PATIENT.FindCPF_PATIENTForCDF_NOTEBOOK_cpfPatient" />
+    <collection property="sysDoctor" column="{id=DOCTOR_ID}" ofType="SysDoctor" select="SYS_DOCTOR.FindSYS_DOCTORForCDF_NOTEBOOK_sysDoctor" />
+  </resultMap>
+  <insert id="InsertCDF_NOTEBOOK">
+    INSERT INTO CDF_NOTEBOOK (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="caseHistoryId != null ">,CASE_HISTORY_ID</if>
+      <if test="patientId != null ">,PATIENT_ID</if>
+      <if test="doctorId != null ">,DOCTOR_ID</if>
+      <if test="content != null ">,CONTENT</if>
+      <if test="createTime != null ">,CREATE_TIME</if>
+      <if test="replyCount != null ">,REPLY_COUNT</if>
+      <if test="status != null ">,STATUS</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="caseHistoryId != null ">,#{caseHistoryId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">,#{patientId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">,#{doctorId,jdbcType=INTEGER}</if>
+      <if test="content != null ">,#{content,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">,#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="replyCount != null ">,#{replyCount,jdbcType=INTEGER}</if>
+      <if test="status != null ">,#{status,jdbcType=VARCHAR}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID() AS ID</selectKey>
+  </insert>
+  <update id="UpdateCDF_NOTEBOOK">
+    UPDATE CDF_NOTEBOOK 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="caseHistoryId != null ">,CASE_HISTORY_ID=#{caseHistoryId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">,PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">,DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="content != null ">,CONTENT=#{content,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">,CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="replyCount != null ">,REPLY_COUNT=#{replyCount,jdbcType=INTEGER}</if>
+      <if test="status != null ">,STATUS=#{status,jdbcType=VARCHAR}</if>
+    </trim>
+     WHERE ID=#{id,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteCDF_NOTEBOOK">DELETE FROM CDF_NOTEBOOK WHERE ID=#{id,jdbcType=INTEGER}</delete>
+  <select id="CountFindAllCDF_NOTEBOOK" resultType="java.lang.Integer">SELECT count(1) as value FROM CDF_NOTEBOOK</select>
+  <select id="CountCDF_NOTEBOOK" resultType="java.lang.Integer">SELECT count(1) as value FROM CDF_NOTEBOOK WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FindByPKCDF_NOTEBOOK" resultMap="result_map_CDF_NOTEBOOK">SELECT ID,CASE_HISTORY_ID,PATIENT_ID,DOCTOR_ID,CONTENT,CREATE_TIME,REPLY_COUNT,STATUS FROM CDF_NOTEBOOK WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FreeFindCDF_NOTEBOOK" resultMap="result_map_CDF_NOTEBOOK">
+    SELECT ID,CASE_HISTORY_ID,PATIENT_ID,DOCTOR_ID,CONTENT,CREATE_TIME,REPLY_COUNT,STATUS FROM CDF_NOTEBOOK
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="id_instr != null ">AND ID in (${id_instr})</if>
+      <if test="caseHistoryId != null ">AND CASE_HISTORY_ID=#{caseHistoryId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="patientId_instr != null ">AND PATIENT_ID in (${patientId_instr})</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="doctorId_instr != null ">AND DOCTOR_ID in (${doctorId_instr})</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="replyCount != null ">AND REPLY_COUNT=#{replyCount,jdbcType=INTEGER}</if>
+      <if test="status != null ">AND STATUS like '%${status}%'</if>
+      <if test="statusEq != null ">AND STATUS=#{statusEq,jdbcType=VARCHAR}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindCDF_NOTEBOOK" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM CDF_NOTEBOOK
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="id_instr != null ">AND ID in (${id_instr})</if>
+      <if test="caseHistoryId != null ">AND CASE_HISTORY_ID=#{caseHistoryId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="patientId_instr != null ">AND PATIENT_ID in (${patientId_instr})</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="doctorId_instr != null ">AND DOCTOR_ID in (${doctorId_instr})</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="replyCount != null ">AND REPLY_COUNT=#{replyCount,jdbcType=INTEGER}</if>
+      <if test="status != null ">AND STATUS like '%${status}%'</if>
+      <if test="statusEq != null ">AND STATUS=#{statusEq,jdbcType=VARCHAR}</if>
+    </trim>
+  </select>
+  <select id="FreeFindCDF_NOTEBOOKOrdered" resultMap="result_map_CDF_NOTEBOOK">
+    SELECT ID,CASE_HISTORY_ID,PATIENT_ID,DOCTOR_ID,CONTENT,CREATE_TIME,REPLY_COUNT,STATUS FROM CDF_NOTEBOOK
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="id_instr != null ">AND ID in (${id_instr})</if>
+      <if test="caseHistoryId != null ">AND CASE_HISTORY_ID=#{caseHistoryId,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="patientId_instr != null ">AND PATIENT_ID in (${patientId_instr})</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="doctorId_instr != null ">AND DOCTOR_ID in (${doctorId_instr})</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="replyCount != null ">AND REPLY_COUNT=#{replyCount,jdbcType=INTEGER}</if>
+      <if test="status != null ">AND STATUS like '%${status}%'</if>
+      <if test="statusEq != null ">AND STATUS=#{statusEq,jdbcType=VARCHAR}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

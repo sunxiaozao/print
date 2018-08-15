@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SYS_USER_SMS">
+  <resultMap id="result_map_SYS_USER_SMS" type="com.lubian.cpf.vo.SysUserSms">
+    <id property="smsId" column="SMS_ID" jdbcType="INTEGER" />
+    <result property="phoneNo" column="PHONE_NO" jdbcType="VARCHAR" />
+    <result property="content" column="CONTENT" jdbcType="VARCHAR" />
+    <result property="respStr" column="RESP_STR" jdbcType="VARCHAR" />
+    <result property="isSent" column="IS_SENT" jdbcType="CHAR" />
+    <result property="sentDt" column="SENT_DT" jdbcType="TIMESTAMP" />
+    <result property="createBy" column="CREATE_BY" jdbcType="VARCHAR" />
+    <result property="createDt" column="CREATE_DT" jdbcType="TIMESTAMP" />
+    <result property="userId" column="USER_ID" jdbcType="INTEGER" />
+    <result property="isUpgoing" column="IS_UPGOING" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="InsertSYS_USER_SMS">
+    INSERT INTO SYS_USER_SMS (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="phoneNo != null ">,PHONE_NO</if>
+      <if test="content != null ">,CONTENT</if>
+      <if test="respStr != null ">,RESP_STR</if>
+      <if test="isSent != null ">,IS_SENT</if>
+      <if test="sentDt != null ">,SENT_DT</if>
+      <if test="createBy != null ">,CREATE_BY</if>
+      <if test="createDt != null ">,CREATE_DT</if>
+      <if test="userId != null ">,USER_ID</if>
+      <if test="isUpgoing != null ">,IS_UPGOING</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="phoneNo != null ">,#{phoneNo,jdbcType=VARCHAR}</if>
+      <if test="content != null ">,#{content,jdbcType=VARCHAR}</if>
+      <if test="respStr != null ">,#{respStr,jdbcType=VARCHAR}</if>
+      <if test="isSent != null ">,#{isSent,jdbcType=CHAR}</if>
+      <if test="sentDt != null ">,#{sentDt,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">,#{createBy,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">,#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="userId != null ">,#{userId,jdbcType=INTEGER}</if>
+      <if test="isUpgoing != null ">,#{isUpgoing,jdbcType=CHAR}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="smsId" order="AFTER">SELECT LAST_INSERT_ID() AS SMS_ID</selectKey>
+  </insert>
+  <update id="UpdateSYS_USER_SMS">
+    UPDATE SYS_USER_SMS 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="phoneNo != null ">,PHONE_NO=#{phoneNo,jdbcType=VARCHAR}</if>
+      <if test="content != null ">,CONTENT=#{content,jdbcType=VARCHAR}</if>
+      <if test="respStr != null ">,RESP_STR=#{respStr,jdbcType=VARCHAR}</if>
+      <if test="isSent != null ">,IS_SENT=#{isSent,jdbcType=CHAR}</if>
+      <if test="sentDt != null ">,SENT_DT=#{sentDt,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">,CREATE_BY=#{createBy,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">,CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="userId != null ">,USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="isUpgoing != null ">,IS_UPGOING=#{isUpgoing,jdbcType=CHAR}</if>
+    </trim>
+     WHERE SMS_ID=#{smsId,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteSYS_USER_SMS">DELETE FROM SYS_USER_SMS WHERE SMS_ID=#{smsId,jdbcType=INTEGER}</delete>
+  <select id="CountFindAllSYS_USER_SMS" resultType="java.lang.Integer">SELECT count(1) as value FROM SYS_USER_SMS</select>
+  <select id="CountSYS_USER_SMS" resultType="java.lang.Integer">SELECT count(1) as value FROM SYS_USER_SMS WHERE SMS_ID=#{smsId,jdbcType=INTEGER}</select>
+  <select id="FindByPKSYS_USER_SMS" resultMap="result_map_SYS_USER_SMS">SELECT SMS_ID,PHONE_NO,CONTENT,RESP_STR,IS_SENT,SENT_DT,CREATE_BY,CREATE_DT,USER_ID,IS_UPGOING FROM SYS_USER_SMS WHERE SMS_ID=#{smsId,jdbcType=INTEGER}</select>
+  <select id="FreeFindSYS_USER_SMS" resultMap="result_map_SYS_USER_SMS">
+    SELECT SMS_ID,PHONE_NO,CONTENT,RESP_STR,IS_SENT,SENT_DT,CREATE_BY,CREATE_DT,USER_ID,IS_UPGOING FROM SYS_USER_SMS
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="smsId != null ">AND SMS_ID=#{smsId,jdbcType=INTEGER}</if>
+      <if test="phoneNo != null ">AND PHONE_NO like '%${phoneNo}%'</if>
+      <if test="phoneNoEq != null ">AND PHONE_NO=#{phoneNoEq,jdbcType=VARCHAR}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="respStr != null ">AND RESP_STR like '%${respStr}%'</if>
+      <if test="respStrEq != null ">AND RESP_STR=#{respStrEq,jdbcType=VARCHAR}</if>
+      <if test="isSent != null ">AND IS_SENT=#{isSent,jdbcType=CHAR}</if>
+      <if test="sentDt != null ">AND SENT_DT=#{sentDt,jdbcType=TIMESTAMP}</if>
+      <if test="sentDtFrom != null ">AND SENT_DT&gt;=#{sentDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="sentDtTo != null ">AND SENT_DT&lt;=#{sentDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">AND CREATE_BY like '%${createBy}%'</if>
+      <if test="createByEq != null ">AND CREATE_BY=#{createByEq,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="userId != null ">AND USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="isUpgoing != null ">AND IS_UPGOING=#{isUpgoing,jdbcType=CHAR}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindSYS_USER_SMS" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM SYS_USER_SMS
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="smsId != null ">AND SMS_ID=#{smsId,jdbcType=INTEGER}</if>
+      <if test="phoneNo != null ">AND PHONE_NO like '%${phoneNo}%'</if>
+      <if test="phoneNoEq != null ">AND PHONE_NO=#{phoneNoEq,jdbcType=VARCHAR}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="respStr != null ">AND RESP_STR like '%${respStr}%'</if>
+      <if test="respStrEq != null ">AND RESP_STR=#{respStrEq,jdbcType=VARCHAR}</if>
+      <if test="isSent != null ">AND IS_SENT=#{isSent,jdbcType=CHAR}</if>
+      <if test="sentDt != null ">AND SENT_DT=#{sentDt,jdbcType=TIMESTAMP}</if>
+      <if test="sentDtFrom != null ">AND SENT_DT&gt;=#{sentDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="sentDtTo != null ">AND SENT_DT&lt;=#{sentDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">AND CREATE_BY like '%${createBy}%'</if>
+      <if test="createByEq != null ">AND CREATE_BY=#{createByEq,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="userId != null ">AND USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="isUpgoing != null ">AND IS_UPGOING=#{isUpgoing,jdbcType=CHAR}</if>
+    </trim>
+  </select>
+  <select id="FreeFindSYS_USER_SMSOrdered" resultMap="result_map_SYS_USER_SMS">
+    SELECT SMS_ID,PHONE_NO,CONTENT,RESP_STR,IS_SENT,SENT_DT,CREATE_BY,CREATE_DT,USER_ID,IS_UPGOING FROM SYS_USER_SMS
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="smsId != null ">AND SMS_ID=#{smsId,jdbcType=INTEGER}</if>
+      <if test="phoneNo != null ">AND PHONE_NO like '%${phoneNo}%'</if>
+      <if test="phoneNoEq != null ">AND PHONE_NO=#{phoneNoEq,jdbcType=VARCHAR}</if>
+      <if test="content != null ">AND CONTENT like '%${content}%'</if>
+      <if test="contentEq != null ">AND CONTENT=#{contentEq,jdbcType=VARCHAR}</if>
+      <if test="respStr != null ">AND RESP_STR like '%${respStr}%'</if>
+      <if test="respStrEq != null ">AND RESP_STR=#{respStrEq,jdbcType=VARCHAR}</if>
+      <if test="isSent != null ">AND IS_SENT=#{isSent,jdbcType=CHAR}</if>
+      <if test="sentDt != null ">AND SENT_DT=#{sentDt,jdbcType=TIMESTAMP}</if>
+      <if test="sentDtFrom != null ">AND SENT_DT&gt;=#{sentDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="sentDtTo != null ">AND SENT_DT&lt;=#{sentDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="createBy != null ">AND CREATE_BY like '%${createBy}%'</if>
+      <if test="createByEq != null ">AND CREATE_BY=#{createByEq,jdbcType=VARCHAR}</if>
+      <if test="createDt != null ">AND CREATE_DT=#{createDt,jdbcType=TIMESTAMP}</if>
+      <if test="createDtFrom != null ">AND CREATE_DT&gt;=#{createDtFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createDtTo != null ">AND CREATE_DT&lt;=#{createDtTo,jdbcType=TIMESTAMP}</if>
+      <if test="userId != null ">AND USER_ID=#{userId,jdbcType=INTEGER}</if>
+      <if test="isUpgoing != null ">AND IS_UPGOING=#{isUpgoing,jdbcType=CHAR}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CPF_CASE_ASSAY_REPORT">
+  <resultMap id="result_map_CPF_CASE_ASSAY_REPORT" type="com.lubian.cpf.vo.CpfCaseAssayReport">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="patientId" column="PATIENT_ID" jdbcType="INTEGER" />
+    <result property="folderId" column="FOLDER_ID" jdbcType="INTEGER" />
+    <result property="hospitalId" column="HOSPITAL_ID" jdbcType="INTEGER" />
+    <result property="departmentId" column="DEPARTMENT_ID" jdbcType="INTEGER" />
+    <result property="doctorId" column="DOCTOR_ID" jdbcType="INTEGER" />
+    <result property="tempId" column="TEMP_ID" jdbcType="VARCHAR" />
+    <result property="viewPassword" column="VIEW_PASSWORD" jdbcType="VARCHAR" />
+    <result property="caseDate" column="CASE_DATE" jdbcType="DATE" />
+    <result property="caseType" column="CASE_TYPE" jdbcType="VARCHAR" />
+    <result property="caseName" column="CASE_NAME" jdbcType="VARCHAR" />
+    <result property="catgory" column="CATGORY" jdbcType="VARCHAR" />
+    <result property="item" column="ITEM" jdbcType="VARCHAR" />
+    <result property="technician" column="TECHNICIAN" jdbcType="VARCHAR" />
+    <result property="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+    <result property="hospitalNo" column="HOSPITAL_NO" jdbcType="VARCHAR" />
+    <result property="bedNo" column="BED_NO" jdbcType="VARCHAR" />
+    <result property="patientCatgory" column="PATIENT_CATGORY" jdbcType="VARCHAR" />
+    <result property="picUrl" column="PIC_URL" jdbcType="VARCHAR" />
+    <result property="applyUrl" column="APPLY_URL" jdbcType="VARCHAR" />
+    <result property="reportUrl" column="REPORT_URL" jdbcType="VARCHAR" />
+    <result property="checkFormUrl" column="CHECK_FORM_URL" jdbcType="VARCHAR" />
+    <result property="others" column="OTHERS" jdbcType="VARCHAR" />
+    <result property="shareStatus" column="SHARE_STATUS" jdbcType="VARCHAR" />
+    <result property="shareCount" column="SHARE_COUNT" jdbcType="INTEGER" />
+    <result property="favoriteCount" column="FAVORITE_COUNT" jdbcType="INTEGER" />
+    <result property="favoriteStatus" column="FAVORITE_STATUS" jdbcType="VARCHAR" />
+    <result property="relateStatus" column="RELATE_STATUS" jdbcType="VARCHAR" />
+    <result property="viewStatus" column="VIEW_STATUS" jdbcType="VARCHAR" />
+    <result property="downloadCount" column="DOWNLOAD_COUNT" jdbcType="INTEGER" />
+    <result property="downStatus" column="DOWN_STATUS" jdbcType="VARCHAR" />
+    <result property="creator" column="CREATOR" jdbcType="VARCHAR" />
+    <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP" />
+    <result property="modifier" column="MODIFIER" jdbcType="VARCHAR" />
+    <result property="modifyTime" column="MODIFY_TIME" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <insert id="InsertCPF_CASE_ASSAY_REPORT">
+    INSERT INTO CPF_CASE_ASSAY_REPORT (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="patientId != null ">,PATIENT_ID</if>
+      <if test="folderId != null ">,FOLDER_ID</if>
+      <if test="hospitalId != null ">,HOSPITAL_ID</if>
+      <if test="departmentId != null ">,DEPARTMENT_ID</if>
+      <if test="doctorId != null ">,DOCTOR_ID</if>
+      <if test="tempId != null ">,TEMP_ID</if>
+      <if test="viewPassword != null ">,VIEW_PASSWORD</if>
+      <if test="caseDate != null ">,CASE_DATE</if>
+      <if test="caseType != null ">,CASE_TYPE</if>
+      <if test="caseName != null ">,CASE_NAME</if>
+      <if test="catgory != null ">,CATGORY</if>
+      <if test="item != null ">,ITEM</if>
+      <if test="technician != null ">,TECHNICIAN</if>
+      <if test="description != null ">,DESCRIPTION</if>
+      <if test="hospitalNo != null ">,HOSPITAL_NO</if>
+      <if test="bedNo != null ">,BED_NO</if>
+      <if test="patientCatgory != null ">,PATIENT_CATGORY</if>
+      <if test="picUrl != null ">,PIC_URL</if>
+      <if test="applyUrl != null ">,APPLY_URL</if>
+      <if test="reportUrl != null ">,REPORT_URL</if>
+      <if test="checkFormUrl != null ">,CHECK_FORM_URL</if>
+      <if test="others != null ">,OTHERS</if>
+      <if test="shareStatus != null ">,SHARE_STATUS</if>
+      <if test="shareCount != null ">,SHARE_COUNT</if>
+      <if test="favoriteCount != null ">,FAVORITE_COUNT</if>
+      <if test="favoriteStatus != null ">,FAVORITE_STATUS</if>
+      <if test="relateStatus != null ">,RELATE_STATUS</if>
+      <if test="viewStatus != null ">,VIEW_STATUS</if>
+      <if test="downloadCount != null ">,DOWNLOAD_COUNT</if>
+      <if test="downStatus != null ">,DOWN_STATUS</if>
+      <if test="creator != null ">,CREATOR</if>
+      <if test="createTime != null ">,CREATE_TIME</if>
+      <if test="modifier != null ">,MODIFIER</if>
+      <if test="modifyTime != null ">,MODIFY_TIME</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="patientId != null ">,#{patientId,jdbcType=INTEGER}</if>
+      <if test="folderId != null ">,#{folderId,jdbcType=INTEGER}</if>
+      <if test="hospitalId != null ">,#{hospitalId,jdbcType=INTEGER}</if>
+      <if test="departmentId != null ">,#{departmentId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">,#{doctorId,jdbcType=INTEGER}</if>
+      <if test="tempId != null ">,#{tempId,jdbcType=VARCHAR}</if>
+      <if test="viewPassword != null ">,#{viewPassword,jdbcType=VARCHAR}</if>
+      <if test="caseDate != null ">,#{caseDate,jdbcType=DATE}</if>
+      <if test="caseType != null ">,#{caseType,jdbcType=VARCHAR}</if>
+      <if test="caseName != null ">,#{caseName,jdbcType=VARCHAR}</if>
+      <if test="catgory != null ">,#{catgory,jdbcType=VARCHAR}</if>
+      <if test="item != null ">,#{item,jdbcType=VARCHAR}</if>
+      <if test="technician != null ">,#{technician,jdbcType=VARCHAR}</if>
+      <if test="description != null ">,#{description,jdbcType=VARCHAR}</if>
+      <if test="hospitalNo != null ">,#{hospitalNo,jdbcType=VARCHAR}</if>
+      <if test="bedNo != null ">,#{bedNo,jdbcType=VARCHAR}</if>
+      <if test="patientCatgory != null ">,#{patientCatgory,jdbcType=VARCHAR}</if>
+      <if test="picUrl != null ">,#{picUrl,jdbcType=VARCHAR}</if>
+      <if test="applyUrl != null ">,#{applyUrl,jdbcType=VARCHAR}</if>
+      <if test="reportUrl != null ">,#{reportUrl,jdbcType=VARCHAR}</if>
+      <if test="checkFormUrl != null ">,#{checkFormUrl,jdbcType=VARCHAR}</if>
+      <if test="others != null ">,#{others,jdbcType=VARCHAR}</if>
+      <if test="shareStatus != null ">,#{shareStatus,jdbcType=VARCHAR}</if>
+      <if test="shareCount != null ">,#{shareCount,jdbcType=INTEGER}</if>
+      <if test="favoriteCount != null ">,#{favoriteCount,jdbcType=INTEGER}</if>
+      <if test="favoriteStatus != null ">,#{favoriteStatus,jdbcType=VARCHAR}</if>
+      <if test="relateStatus != null ">,#{relateStatus,jdbcType=VARCHAR}</if>
+      <if test="viewStatus != null ">,#{viewStatus,jdbcType=VARCHAR}</if>
+      <if test="downloadCount != null ">,#{downloadCount,jdbcType=INTEGER}</if>
+      <if test="downStatus != null ">,#{downStatus,jdbcType=VARCHAR}</if>
+      <if test="creator != null ">,#{creator,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">,#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="modifier != null ">,#{modifier,jdbcType=VARCHAR}</if>
+      <if test="modifyTime != null ">,#{modifyTime,jdbcType=TIMESTAMP}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID() AS ID</selectKey>
+  </insert>
+  <update id="UpdateCPF_CASE_ASSAY_REPORT">
+    UPDATE CPF_CASE_ASSAY_REPORT 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="patientId != null ">,PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="folderId != null ">,FOLDER_ID=#{folderId,jdbcType=INTEGER}</if>
+      <if test="hospitalId != null ">,HOSPITAL_ID=#{hospitalId,jdbcType=INTEGER}</if>
+      <if test="departmentId != null ">,DEPARTMENT_ID=#{departmentId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">,DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="tempId != null ">,TEMP_ID=#{tempId,jdbcType=VARCHAR}</if>
+      <if test="viewPassword != null ">,VIEW_PASSWORD=#{viewPassword,jdbcType=VARCHAR}</if>
+      <if test="caseDate != null ">,CASE_DATE=#{caseDate,jdbcType=DATE}</if>
+      <if test="caseType != null ">,CASE_TYPE=#{caseType,jdbcType=VARCHAR}</if>
+      <if test="caseName != null ">,CASE_NAME=#{caseName,jdbcType=VARCHAR}</if>
+      <if test="catgory != null ">,CATGORY=#{catgory,jdbcType=VARCHAR}</if>
+      <if test="item != null ">,ITEM=#{item,jdbcType=VARCHAR}</if>
+      <if test="technician != null ">,TECHNICIAN=#{technician,jdbcType=VARCHAR}</if>
+      <if test="description != null ">,DESCRIPTION=#{description,jdbcType=VARCHAR}</if>
+      <if test="hospitalNo != null ">,HOSPITAL_NO=#{hospitalNo,jdbcType=VARCHAR}</if>
+      <if test="bedNo != null ">,BED_NO=#{bedNo,jdbcType=VARCHAR}</if>
+      <if test="patientCatgory != null ">,PATIENT_CATGORY=#{patientCatgory,jdbcType=VARCHAR}</if>
+      <if test="picUrl != null ">,PIC_URL=#{picUrl,jdbcType=VARCHAR}</if>
+      <if test="applyUrl != null ">,APPLY_URL=#{applyUrl,jdbcType=VARCHAR}</if>
+      <if test="reportUrl != null ">,REPORT_URL=#{reportUrl,jdbcType=VARCHAR}</if>
+      <if test="checkFormUrl != null ">,CHECK_FORM_URL=#{checkFormUrl,jdbcType=VARCHAR}</if>
+      <if test="others != null ">,OTHERS=#{others,jdbcType=VARCHAR}</if>
+      <if test="shareStatus != null ">,SHARE_STATUS=#{shareStatus,jdbcType=VARCHAR}</if>
+      <if test="shareCount != null ">,SHARE_COUNT=#{shareCount,jdbcType=INTEGER}</if>
+      <if test="favoriteCount != null ">,FAVORITE_COUNT=#{favoriteCount,jdbcType=INTEGER}</if>
+      <if test="favoriteStatus != null ">,FAVORITE_STATUS=#{favoriteStatus,jdbcType=VARCHAR}</if>
+      <if test="relateStatus != null ">,RELATE_STATUS=#{relateStatus,jdbcType=VARCHAR}</if>
+      <if test="viewStatus != null ">,VIEW_STATUS=#{viewStatus,jdbcType=VARCHAR}</if>
+      <if test="downloadCount != null ">,DOWNLOAD_COUNT=#{downloadCount,jdbcType=INTEGER}</if>
+      <if test="downStatus != null ">,DOWN_STATUS=#{downStatus,jdbcType=VARCHAR}</if>
+      <if test="creator != null ">,CREATOR=#{creator,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">,CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="modifier != null ">,MODIFIER=#{modifier,jdbcType=VARCHAR}</if>
+      <if test="modifyTime != null ">,MODIFY_TIME=#{modifyTime,jdbcType=TIMESTAMP}</if>
+    </trim>
+     WHERE ID=#{id,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteCPF_CASE_ASSAY_REPORT">DELETE FROM CPF_CASE_ASSAY_REPORT WHERE ID=#{id,jdbcType=INTEGER}</delete>
+  <select id="CountFindAllCPF_CASE_ASSAY_REPORT" resultType="java.lang.Integer">SELECT count(1) as value FROM CPF_CASE_ASSAY_REPORT</select>
+  <select id="CountCPF_CASE_ASSAY_REPORT" resultType="java.lang.Integer">SELECT count(1) as value FROM CPF_CASE_ASSAY_REPORT WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FindByPKCPF_CASE_ASSAY_REPORT" resultMap="result_map_CPF_CASE_ASSAY_REPORT">SELECT ID,PATIENT_ID,FOLDER_ID,HOSPITAL_ID,DEPARTMENT_ID,DOCTOR_ID,TEMP_ID,VIEW_PASSWORD,CASE_DATE,CASE_TYPE,CASE_NAME,CATGORY,ITEM,TECHNICIAN,DESCRIPTION,HOSPITAL_NO,BED_NO,PATIENT_CATGORY,PIC_URL,APPLY_URL,REPORT_URL,CHECK_FORM_URL,OTHERS,SHARE_STATUS,SHARE_COUNT,FAVORITE_COUNT,FAVORITE_STATUS,RELATE_STATUS,VIEW_STATUS,DOWNLOAD_COUNT,DOWN_STATUS,CREATOR,CREATE_TIME,MODIFIER,MODIFY_TIME FROM CPF_CASE_ASSAY_REPORT WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FreeFindCPF_CASE_ASSAY_REPORT" resultMap="result_map_CPF_CASE_ASSAY_REPORT">
+    SELECT ID,PATIENT_ID,FOLDER_ID,HOSPITAL_ID,DEPARTMENT_ID,DOCTOR_ID,TEMP_ID,VIEW_PASSWORD,CASE_DATE,CASE_TYPE,CASE_NAME,CATGORY,ITEM,TECHNICIAN,DESCRIPTION,HOSPITAL_NO,BED_NO,PATIENT_CATGORY,PIC_URL,APPLY_URL,REPORT_URL,CHECK_FORM_URL,OTHERS,SHARE_STATUS,SHARE_COUNT,FAVORITE_COUNT,FAVORITE_STATUS,RELATE_STATUS,VIEW_STATUS,DOWNLOAD_COUNT,DOWN_STATUS,CREATOR,CREATE_TIME,MODIFIER,MODIFY_TIME FROM CPF_CASE_ASSAY_REPORT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="folderId != null ">AND FOLDER_ID=#{folderId,jdbcType=INTEGER}</if>
+      <if test="hospitalId != null ">AND HOSPITAL_ID=#{hospitalId,jdbcType=INTEGER}</if>
+      <if test="departmentId != null ">AND DEPARTMENT_ID=#{departmentId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="tempId != null ">AND TEMP_ID like '%${tempId}%'</if>
+      <if test="tempIdEq != null ">AND TEMP_ID=#{tempIdEq,jdbcType=VARCHAR}</if>
+      <if test="viewPassword != null ">AND VIEW_PASSWORD like '%${viewPassword}%'</if>
+      <if test="viewPasswordEq != null ">AND VIEW_PASSWORD=#{viewPasswordEq,jdbcType=VARCHAR}</if>
+      <if test="caseDate != null ">AND CASE_DATE=#{caseDate,jdbcType=DATE}</if>
+      <if test="caseDateFrom != null ">AND CASE_DATE&gt;=#{caseDateFrom,jdbcType=DATE}</if>
+      <if test="caseDateTo != null ">AND CASE_DATE&lt;=#{caseDateTo,jdbcType=DATE}</if>
+      <if test="caseType != null ">AND CASE_TYPE like '%${caseType}%'</if>
+      <if test="caseTypeEq != null ">AND CASE_TYPE=#{caseTypeEq,jdbcType=VARCHAR}</if>
+      <if test="caseName != null ">AND CASE_NAME like '%${caseName}%'</if>
+      <if test="caseNameEq != null ">AND CASE_NAME=#{caseNameEq,jdbcType=VARCHAR}</if>
+      <if test="catgory != null ">AND CATGORY like '%${catgory}%'</if>
+      <if test="catgoryEq != null ">AND CATGORY=#{catgoryEq,jdbcType=VARCHAR}</if>
+      <if test="item != null ">AND ITEM like '%${item}%'</if>
+      <if test="itemEq != null ">AND ITEM=#{itemEq,jdbcType=VARCHAR}</if>
+      <if test="technician != null ">AND TECHNICIAN like '%${technician}%'</if>
+      <if test="technicianEq != null ">AND TECHNICIAN=#{technicianEq,jdbcType=VARCHAR}</if>
+      <if test="description != null ">AND DESCRIPTION like '%${description}%'</if>
+      <if test="descriptionEq != null ">AND DESCRIPTION=#{descriptionEq,jdbcType=VARCHAR}</if>
+      <if test="hospitalNo != null ">AND HOSPITAL_NO like '%${hospitalNo}%'</if>
+      <if test="hospitalNoEq != null ">AND HOSPITAL_NO=#{hospitalNoEq,jdbcType=VARCHAR}</if>
+      <if test="bedNo != null ">AND BED_NO like '%${bedNo}%'</if>
+      <if test="bedNoEq != null ">AND BED_NO=#{bedNoEq,jdbcType=VARCHAR}</if>
+      <if test="patientCatgory != null ">AND PATIENT_CATGORY like '%${patientCatgory}%'</if>
+      <if test="patientCatgoryEq != null ">AND PATIENT_CATGORY=#{patientCatgoryEq,jdbcType=VARCHAR}</if>
+      <if test="picUrl != null ">AND PIC_URL like '%${picUrl}%'</if>
+      <if test="picUrlEq != null ">AND PIC_URL=#{picUrlEq,jdbcType=VARCHAR}</if>
+      <if test="applyUrl != null ">AND APPLY_URL like '%${applyUrl}%'</if>
+      <if test="applyUrlEq != null ">AND APPLY_URL=#{applyUrlEq,jdbcType=VARCHAR}</if>
+      <if test="reportUrl != null ">AND REPORT_URL like '%${reportUrl}%'</if>
+      <if test="reportUrlEq != null ">AND REPORT_URL=#{reportUrlEq,jdbcType=VARCHAR}</if>
+      <if test="checkFormUrl != null ">AND CHECK_FORM_URL like '%${checkFormUrl}%'</if>
+      <if test="checkFormUrlEq != null ">AND CHECK_FORM_URL=#{checkFormUrlEq,jdbcType=VARCHAR}</if>
+      <if test="others != null ">AND OTHERS like '%${others}%'</if>
+      <if test="othersEq != null ">AND OTHERS=#{othersEq,jdbcType=VARCHAR}</if>
+      <if test="shareStatus != null ">AND SHARE_STATUS like '%${shareStatus}%'</if>
+      <if test="shareStatusEq != null ">AND SHARE_STATUS=#{shareStatusEq,jdbcType=VARCHAR}</if>
+      <if test="shareCount != null ">AND SHARE_COUNT=#{shareCount,jdbcType=INTEGER}</if>
+      <if test="favoriteCount != null ">AND FAVORITE_COUNT=#{favoriteCount,jdbcType=INTEGER}</if>
+      <if test="favoriteStatus != null ">AND FAVORITE_STATUS like '%${favoriteStatus}%'</if>
+      <if test="favoriteStatusEq != null ">AND FAVORITE_STATUS=#{favoriteStatusEq,jdbcType=VARCHAR}</if>
+      <if test="relateStatus != null ">AND RELATE_STATUS like '%${relateStatus}%'</if>
+      <if test="relateStatusEq != null ">AND RELATE_STATUS=#{relateStatusEq,jdbcType=VARCHAR}</if>
+      <if test="viewStatus != null ">AND VIEW_STATUS like '%${viewStatus}%'</if>
+      <if test="viewStatusEq != null ">AND VIEW_STATUS=#{viewStatusEq,jdbcType=VARCHAR}</if>
+      <if test="downloadCount != null ">AND DOWNLOAD_COUNT=#{downloadCount,jdbcType=INTEGER}</if>
+      <if test="downStatus != null ">AND DOWN_STATUS like '%${downStatus}%'</if>
+      <if test="downStatusEq != null ">AND DOWN_STATUS=#{downStatusEq,jdbcType=VARCHAR}</if>
+      <if test="creator != null ">AND CREATOR like '%${creator}%'</if>
+      <if test="creatorEq != null ">AND CREATOR=#{creatorEq,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="modifier != null ">AND MODIFIER like '%${modifier}%'</if>
+      <if test="modifierEq != null ">AND MODIFIER=#{modifierEq,jdbcType=VARCHAR}</if>
+      <if test="modifyTime != null ">AND MODIFY_TIME=#{modifyTime,jdbcType=TIMESTAMP}</if>
+      <if test="modifyTimeFrom != null ">AND MODIFY_TIME&gt;=#{modifyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modifyTimeTo != null ">AND MODIFY_TIME&lt;=#{modifyTimeTo,jdbcType=TIMESTAMP}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindCPF_CASE_ASSAY_REPORT" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM CPF_CASE_ASSAY_REPORT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="folderId != null ">AND FOLDER_ID=#{folderId,jdbcType=INTEGER}</if>
+      <if test="hospitalId != null ">AND HOSPITAL_ID=#{hospitalId,jdbcType=INTEGER}</if>
+      <if test="departmentId != null ">AND DEPARTMENT_ID=#{departmentId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="tempId != null ">AND TEMP_ID like '%${tempId}%'</if>
+      <if test="tempIdEq != null ">AND TEMP_ID=#{tempIdEq,jdbcType=VARCHAR}</if>
+      <if test="viewPassword != null ">AND VIEW_PASSWORD like '%${viewPassword}%'</if>
+      <if test="viewPasswordEq != null ">AND VIEW_PASSWORD=#{viewPasswordEq,jdbcType=VARCHAR}</if>
+      <if test="caseDate != null ">AND CASE_DATE=#{caseDate,jdbcType=DATE}</if>
+      <if test="caseDateFrom != null ">AND CASE_DATE&gt;=#{caseDateFrom,jdbcType=DATE}</if>
+      <if test="caseDateTo != null ">AND CASE_DATE&lt;=#{caseDateTo,jdbcType=DATE}</if>
+      <if test="caseType != null ">AND CASE_TYPE like '%${caseType}%'</if>
+      <if test="caseTypeEq != null ">AND CASE_TYPE=#{caseTypeEq,jdbcType=VARCHAR}</if>
+      <if test="caseName != null ">AND CASE_NAME like '%${caseName}%'</if>
+      <if test="caseNameEq != null ">AND CASE_NAME=#{caseNameEq,jdbcType=VARCHAR}</if>
+      <if test="catgory != null ">AND CATGORY like '%${catgory}%'</if>
+      <if test="catgoryEq != null ">AND CATGORY=#{catgoryEq,jdbcType=VARCHAR}</if>
+      <if test="item != null ">AND ITEM like '%${item}%'</if>
+      <if test="itemEq != null ">AND ITEM=#{itemEq,jdbcType=VARCHAR}</if>
+      <if test="technician != null ">AND TECHNICIAN like '%${technician}%'</if>
+      <if test="technicianEq != null ">AND TECHNICIAN=#{technicianEq,jdbcType=VARCHAR}</if>
+      <if test="description != null ">AND DESCRIPTION like '%${description}%'</if>
+      <if test="descriptionEq != null ">AND DESCRIPTION=#{descriptionEq,jdbcType=VARCHAR}</if>
+      <if test="hospitalNo != null ">AND HOSPITAL_NO like '%${hospitalNo}%'</if>
+      <if test="hospitalNoEq != null ">AND HOSPITAL_NO=#{hospitalNoEq,jdbcType=VARCHAR}</if>
+      <if test="bedNo != null ">AND BED_NO like '%${bedNo}%'</if>
+      <if test="bedNoEq != null ">AND BED_NO=#{bedNoEq,jdbcType=VARCHAR}</if>
+      <if test="patientCatgory != null ">AND PATIENT_CATGORY like '%${patientCatgory}%'</if>
+      <if test="patientCatgoryEq != null ">AND PATIENT_CATGORY=#{patientCatgoryEq,jdbcType=VARCHAR}</if>
+      <if test="picUrl != null ">AND PIC_URL like '%${picUrl}%'</if>
+      <if test="picUrlEq != null ">AND PIC_URL=#{picUrlEq,jdbcType=VARCHAR}</if>
+      <if test="applyUrl != null ">AND APPLY_URL like '%${applyUrl}%'</if>
+      <if test="applyUrlEq != null ">AND APPLY_URL=#{applyUrlEq,jdbcType=VARCHAR}</if>
+      <if test="reportUrl != null ">AND REPORT_URL like '%${reportUrl}%'</if>
+      <if test="reportUrlEq != null ">AND REPORT_URL=#{reportUrlEq,jdbcType=VARCHAR}</if>
+      <if test="checkFormUrl != null ">AND CHECK_FORM_URL like '%${checkFormUrl}%'</if>
+      <if test="checkFormUrlEq != null ">AND CHECK_FORM_URL=#{checkFormUrlEq,jdbcType=VARCHAR}</if>
+      <if test="others != null ">AND OTHERS like '%${others}%'</if>
+      <if test="othersEq != null ">AND OTHERS=#{othersEq,jdbcType=VARCHAR}</if>
+      <if test="shareStatus != null ">AND SHARE_STATUS like '%${shareStatus}%'</if>
+      <if test="shareStatusEq != null ">AND SHARE_STATUS=#{shareStatusEq,jdbcType=VARCHAR}</if>
+      <if test="shareCount != null ">AND SHARE_COUNT=#{shareCount,jdbcType=INTEGER}</if>
+      <if test="favoriteCount != null ">AND FAVORITE_COUNT=#{favoriteCount,jdbcType=INTEGER}</if>
+      <if test="favoriteStatus != null ">AND FAVORITE_STATUS like '%${favoriteStatus}%'</if>
+      <if test="favoriteStatusEq != null ">AND FAVORITE_STATUS=#{favoriteStatusEq,jdbcType=VARCHAR}</if>
+      <if test="relateStatus != null ">AND RELATE_STATUS like '%${relateStatus}%'</if>
+      <if test="relateStatusEq != null ">AND RELATE_STATUS=#{relateStatusEq,jdbcType=VARCHAR}</if>
+      <if test="viewStatus != null ">AND VIEW_STATUS like '%${viewStatus}%'</if>
+      <if test="viewStatusEq != null ">AND VIEW_STATUS=#{viewStatusEq,jdbcType=VARCHAR}</if>
+      <if test="downloadCount != null ">AND DOWNLOAD_COUNT=#{downloadCount,jdbcType=INTEGER}</if>
+      <if test="downStatus != null ">AND DOWN_STATUS like '%${downStatus}%'</if>
+      <if test="downStatusEq != null ">AND DOWN_STATUS=#{downStatusEq,jdbcType=VARCHAR}</if>
+      <if test="creator != null ">AND CREATOR like '%${creator}%'</if>
+      <if test="creatorEq != null ">AND CREATOR=#{creatorEq,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="modifier != null ">AND MODIFIER like '%${modifier}%'</if>
+      <if test="modifierEq != null ">AND MODIFIER=#{modifierEq,jdbcType=VARCHAR}</if>
+      <if test="modifyTime != null ">AND MODIFY_TIME=#{modifyTime,jdbcType=TIMESTAMP}</if>
+      <if test="modifyTimeFrom != null ">AND MODIFY_TIME&gt;=#{modifyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modifyTimeTo != null ">AND MODIFY_TIME&lt;=#{modifyTimeTo,jdbcType=TIMESTAMP}</if>
+    </trim>
+  </select>
+  <select id="FreeFindCPF_CASE_ASSAY_REPORTOrdered" resultMap="result_map_CPF_CASE_ASSAY_REPORT">
+    SELECT ID,PATIENT_ID,FOLDER_ID,HOSPITAL_ID,DEPARTMENT_ID,DOCTOR_ID,TEMP_ID,VIEW_PASSWORD,CASE_DATE,CASE_TYPE,CASE_NAME,CATGORY,ITEM,TECHNICIAN,DESCRIPTION,HOSPITAL_NO,BED_NO,PATIENT_CATGORY,PIC_URL,APPLY_URL,REPORT_URL,CHECK_FORM_URL,OTHERS,SHARE_STATUS,SHARE_COUNT,FAVORITE_COUNT,FAVORITE_STATUS,RELATE_STATUS,VIEW_STATUS,DOWNLOAD_COUNT,DOWN_STATUS,CREATOR,CREATE_TIME,MODIFIER,MODIFY_TIME FROM CPF_CASE_ASSAY_REPORT
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="patientId != null ">AND PATIENT_ID=#{patientId,jdbcType=INTEGER}</if>
+      <if test="folderId != null ">AND FOLDER_ID=#{folderId,jdbcType=INTEGER}</if>
+      <if test="hospitalId != null ">AND HOSPITAL_ID=#{hospitalId,jdbcType=INTEGER}</if>
+      <if test="departmentId != null ">AND DEPARTMENT_ID=#{departmentId,jdbcType=INTEGER}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="tempId != null ">AND TEMP_ID like '%${tempId}%'</if>
+      <if test="tempIdEq != null ">AND TEMP_ID=#{tempIdEq,jdbcType=VARCHAR}</if>
+      <if test="viewPassword != null ">AND VIEW_PASSWORD like '%${viewPassword}%'</if>
+      <if test="viewPasswordEq != null ">AND VIEW_PASSWORD=#{viewPasswordEq,jdbcType=VARCHAR}</if>
+      <if test="caseDate != null ">AND CASE_DATE=#{caseDate,jdbcType=DATE}</if>
+      <if test="caseDateFrom != null ">AND CASE_DATE&gt;=#{caseDateFrom,jdbcType=DATE}</if>
+      <if test="caseDateTo != null ">AND CASE_DATE&lt;=#{caseDateTo,jdbcType=DATE}</if>
+      <if test="caseType != null ">AND CASE_TYPE like '%${caseType}%'</if>
+      <if test="caseTypeEq != null ">AND CASE_TYPE=#{caseTypeEq,jdbcType=VARCHAR}</if>
+      <if test="caseName != null ">AND CASE_NAME like '%${caseName}%'</if>
+      <if test="caseNameEq != null ">AND CASE_NAME=#{caseNameEq,jdbcType=VARCHAR}</if>
+      <if test="catgory != null ">AND CATGORY like '%${catgory}%'</if>
+      <if test="catgoryEq != null ">AND CATGORY=#{catgoryEq,jdbcType=VARCHAR}</if>
+      <if test="item != null ">AND ITEM like '%${item}%'</if>
+      <if test="itemEq != null ">AND ITEM=#{itemEq,jdbcType=VARCHAR}</if>
+      <if test="technician != null ">AND TECHNICIAN like '%${technician}%'</if>
+      <if test="technicianEq != null ">AND TECHNICIAN=#{technicianEq,jdbcType=VARCHAR}</if>
+      <if test="description != null ">AND DESCRIPTION like '%${description}%'</if>
+      <if test="descriptionEq != null ">AND DESCRIPTION=#{descriptionEq,jdbcType=VARCHAR}</if>
+      <if test="hospitalNo != null ">AND HOSPITAL_NO like '%${hospitalNo}%'</if>
+      <if test="hospitalNoEq != null ">AND HOSPITAL_NO=#{hospitalNoEq,jdbcType=VARCHAR}</if>
+      <if test="bedNo != null ">AND BED_NO like '%${bedNo}%'</if>
+      <if test="bedNoEq != null ">AND BED_NO=#{bedNoEq,jdbcType=VARCHAR}</if>
+      <if test="patientCatgory != null ">AND PATIENT_CATGORY like '%${patientCatgory}%'</if>
+      <if test="patientCatgoryEq != null ">AND PATIENT_CATGORY=#{patientCatgoryEq,jdbcType=VARCHAR}</if>
+      <if test="picUrl != null ">AND PIC_URL like '%${picUrl}%'</if>
+      <if test="picUrlEq != null ">AND PIC_URL=#{picUrlEq,jdbcType=VARCHAR}</if>
+      <if test="applyUrl != null ">AND APPLY_URL like '%${applyUrl}%'</if>
+      <if test="applyUrlEq != null ">AND APPLY_URL=#{applyUrlEq,jdbcType=VARCHAR}</if>
+      <if test="reportUrl != null ">AND REPORT_URL like '%${reportUrl}%'</if>
+      <if test="reportUrlEq != null ">AND REPORT_URL=#{reportUrlEq,jdbcType=VARCHAR}</if>
+      <if test="checkFormUrl != null ">AND CHECK_FORM_URL like '%${checkFormUrl}%'</if>
+      <if test="checkFormUrlEq != null ">AND CHECK_FORM_URL=#{checkFormUrlEq,jdbcType=VARCHAR}</if>
+      <if test="others != null ">AND OTHERS like '%${others}%'</if>
+      <if test="othersEq != null ">AND OTHERS=#{othersEq,jdbcType=VARCHAR}</if>
+      <if test="shareStatus != null ">AND SHARE_STATUS like '%${shareStatus}%'</if>
+      <if test="shareStatusEq != null ">AND SHARE_STATUS=#{shareStatusEq,jdbcType=VARCHAR}</if>
+      <if test="shareCount != null ">AND SHARE_COUNT=#{shareCount,jdbcType=INTEGER}</if>
+      <if test="favoriteCount != null ">AND FAVORITE_COUNT=#{favoriteCount,jdbcType=INTEGER}</if>
+      <if test="favoriteStatus != null ">AND FAVORITE_STATUS like '%${favoriteStatus}%'</if>
+      <if test="favoriteStatusEq != null ">AND FAVORITE_STATUS=#{favoriteStatusEq,jdbcType=VARCHAR}</if>
+      <if test="relateStatus != null ">AND RELATE_STATUS like '%${relateStatus}%'</if>
+      <if test="relateStatusEq != null ">AND RELATE_STATUS=#{relateStatusEq,jdbcType=VARCHAR}</if>
+      <if test="viewStatus != null ">AND VIEW_STATUS like '%${viewStatus}%'</if>
+      <if test="viewStatusEq != null ">AND VIEW_STATUS=#{viewStatusEq,jdbcType=VARCHAR}</if>
+      <if test="downloadCount != null ">AND DOWNLOAD_COUNT=#{downloadCount,jdbcType=INTEGER}</if>
+      <if test="downStatus != null ">AND DOWN_STATUS like '%${downStatus}%'</if>
+      <if test="downStatusEq != null ">AND DOWN_STATUS=#{downStatusEq,jdbcType=VARCHAR}</if>
+      <if test="creator != null ">AND CREATOR like '%${creator}%'</if>
+      <if test="creatorEq != null ">AND CREATOR=#{creatorEq,jdbcType=VARCHAR}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="modifier != null ">AND MODIFIER like '%${modifier}%'</if>
+      <if test="modifierEq != null ">AND MODIFIER=#{modifierEq,jdbcType=VARCHAR}</if>
+      <if test="modifyTime != null ">AND MODIFY_TIME=#{modifyTime,jdbcType=TIMESTAMP}</if>
+      <if test="modifyTimeFrom != null ">AND MODIFY_TIME&gt;=#{modifyTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="modifyTimeTo != null ">AND MODIFY_TIME&lt;=#{modifyTimeTo,jdbcType=TIMESTAMP}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

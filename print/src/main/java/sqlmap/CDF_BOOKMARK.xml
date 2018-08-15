@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CDF_BOOKMARK">
+  <resultMap id="result_map_CDF_BOOKMARK" type="com.lubian.cpf.vo.CdfBookmark">
+    <id property="id" column="ID" jdbcType="INTEGER" />
+    <result property="name" column="NAME" jdbcType="VARCHAR" />
+    <result property="doctorId" column="DOCTOR_ID" jdbcType="INTEGER" />
+    <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP" />
+    <result property="description" column="DESCRIPTION" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="InsertCDF_BOOKMARK">
+    INSERT INTO CDF_BOOKMARK (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="name != null ">,NAME</if>
+      <if test="doctorId != null ">,DOCTOR_ID</if>
+      <if test="createTime != null ">,CREATE_TIME</if>
+      <if test="description != null ">,DESCRIPTION</if>
+    </trim>
+    )  VALUES (
+    <trim prefix=" " prefixOverrides=",">
+      <if test="name != null ">,#{name,jdbcType=VARCHAR}</if>
+      <if test="doctorId != null ">,#{doctorId,jdbcType=INTEGER}</if>
+      <if test="createTime != null ">,#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="description != null ">,#{description,jdbcType=VARCHAR}</if>
+    </trim>
+    )
+    <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">SELECT LAST_INSERT_ID() AS ID</selectKey>
+  </insert>
+  <update id="UpdateCDF_BOOKMARK">
+    UPDATE CDF_BOOKMARK 
+    <trim prefix=" SET " prefixOverrides=",">
+      <if test="name != null ">,NAME=#{name,jdbcType=VARCHAR}</if>
+      <if test="doctorId != null ">,DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="createTime != null ">,CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="description != null ">,DESCRIPTION=#{description,jdbcType=VARCHAR}</if>
+    </trim>
+     WHERE ID=#{id,jdbcType=INTEGER}
+  </update>
+  <delete id="DeleteCDF_BOOKMARK">DELETE FROM CDF_BOOKMARK WHERE ID=#{id,jdbcType=INTEGER}</delete>
+  <select id="FindCDF_BOOKMARKForCDF_FAVORITE_cdfBookmark" resultMap="result_map_CDF_BOOKMARK">
+    SELECT ID,NAME,DOCTOR_ID,CREATE_TIME,DESCRIPTION FROM CDF_BOOKMARK
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id == null ">AND 1=2</if>
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+    </trim>
+  </select>
+  <select id="CountFindAllCDF_BOOKMARK" resultType="java.lang.Integer">SELECT count(1) as value FROM CDF_BOOKMARK</select>
+  <select id="CountCDF_BOOKMARK" resultType="java.lang.Integer">SELECT count(1) as value FROM CDF_BOOKMARK WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FindByPKCDF_BOOKMARK" resultMap="result_map_CDF_BOOKMARK">SELECT ID,NAME,DOCTOR_ID,CREATE_TIME,DESCRIPTION FROM CDF_BOOKMARK WHERE ID=#{id,jdbcType=INTEGER}</select>
+  <select id="FreeFindCDF_BOOKMARK" resultMap="result_map_CDF_BOOKMARK">
+    SELECT ID,NAME,DOCTOR_ID,CREATE_TIME,DESCRIPTION FROM CDF_BOOKMARK
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="name != null ">AND NAME like '%${name}%'</if>
+      <if test="nameEq != null ">AND NAME=#{nameEq,jdbcType=VARCHAR}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="description != null ">AND DESCRIPTION like '%${description}%'</if>
+      <if test="descriptionEq != null ">AND DESCRIPTION=#{descriptionEq,jdbcType=VARCHAR}</if>
+    </trim>
+  </select>
+  <select id="CountFreeFindCDF_BOOKMARK" resultType="java.lang.Integer">
+    SELECT count(1) as value FROM CDF_BOOKMARK
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="name != null ">AND NAME like '%${name}%'</if>
+      <if test="nameEq != null ">AND NAME=#{nameEq,jdbcType=VARCHAR}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="description != null ">AND DESCRIPTION like '%${description}%'</if>
+      <if test="descriptionEq != null ">AND DESCRIPTION=#{descriptionEq,jdbcType=VARCHAR}</if>
+    </trim>
+  </select>
+  <select id="FreeFindCDF_BOOKMARKOrdered" resultMap="result_map_CDF_BOOKMARK">
+    SELECT ID,NAME,DOCTOR_ID,CREATE_TIME,DESCRIPTION FROM CDF_BOOKMARK
+    <trim prefix=" WHERE " prefixOverrides="AND ">
+      <if test="id != null ">AND ID=#{id,jdbcType=INTEGER}</if>
+      <if test="name != null ">AND NAME like '%${name}%'</if>
+      <if test="nameEq != null ">AND NAME=#{nameEq,jdbcType=VARCHAR}</if>
+      <if test="doctorId != null ">AND DOCTOR_ID=#{doctorId,jdbcType=INTEGER}</if>
+      <if test="createTime != null ">AND CREATE_TIME=#{createTime,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeFrom != null ">AND CREATE_TIME&gt;=#{createTimeFrom,jdbcType=TIMESTAMP}</if>
+      <if test="createTimeTo != null ">AND CREATE_TIME&lt;=#{createTimeTo,jdbcType=TIMESTAMP}</if>
+      <if test="description != null ">AND DESCRIPTION like '%${description}%'</if>
+      <if test="descriptionEq != null ">AND DESCRIPTION=#{descriptionEq,jdbcType=VARCHAR}</if>
+    </trim>
+     ORDER BY ${_orderBy}
+  </select>
+</mapper>
+

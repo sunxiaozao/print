@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+
+<configuration>
+<properties>
+	<property name="dialect" value="mysql"/>
+</properties>
+
+<plugins>
+	<plugin interceptor="org.mybatis.extend.interceptor.PaginationInterceptor"/>
+</plugins>
+<mappers>
+  <mapper resource="sqlmap/SYS_FUNCTION.xml"/>
+  <mapper resource="sqlmap/SYS_FUNCTION_CATEGORY.xml"/>
+  <mapper resource="sqlmap/SYS_FUNCTION_CRUD.xml"/>
+  <mapper resource="sqlmap/SYS_LOGS.xml"/>
+  <mapper resource="sqlmap/SYS_MAIL_JOB.xml"/>
+  <mapper resource="sqlmap/SYS_MAIL_JOB_ITEM.xml"/>
+  <mapper resource="sqlmap/SYS_ORG.xml"/>
+  <mapper resource="sqlmap/SYS_REL_ROLE_FUNC.xml"/>
+  <mapper resource="sqlmap/SYS_ROLE.xml"/>
+  <mapper resource="sqlmap/SYS_USER.xml"/>
+  <mapper resource="sqlmap/SYS_USER_GROUP.xml"/>
+  <mapper resource="sqlmap/SYS_USER_MESSAGE.xml"/>
+  <mapper resource="sqlmap/SYS_USER_MESSAGE_ITEM.xml"/>
+  <mapper resource="sqlmap/CFG_DICT.xml"/>
+  <mapper resource="sqlmap/CFG_PARA.xml"/>
+  <mapper resource="sqlmap/SYS_NOTIFICATION.xml"/>
+  <mapper resource="sqlmap/SYS_DEPARTMENT.xml"/>
+  <mapper resource="sqlmap/SYS_DOCTOR.xml"/>
+  <mapper resource="sqlmap/SYS_FEEDBACK.xml"/>
+  <mapper resource="sqlmap/SYS_HOSPITAL.xml"/>
+  <mapper resource="sqlmap/SYS_USER_SMS.xml"/>
+</mappers>
+
+</configuration>
